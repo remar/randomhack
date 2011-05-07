@@ -1,8 +1,6 @@
-Randomhack: Randomhack.as Level.as org
-	mxmlc -static-link-runtime-shared-libraries Randomhack.as
-
-org:
-	cp -r ../../flixel/org .
+Randomhack: Randomhack.as
+	mxmlc -library-path+=../lib/flixel-2.35.swc \
+	-static-link-runtime-shared-libraries Randomhack.as
 
 clean:
-	rm -rf Randomhack.swf org/ *~
+	rm -rf Randomhack.swf *~
