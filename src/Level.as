@@ -13,7 +13,8 @@ package
 
 	    field = new Field();
 	    field.generate();
-	    field.setTile(4, 5, Field.BLOCK);
+	    field.carveHole(5, 5, 2);
+	    field.setTile(4, 5, Tile.BLOCK);
 	}
 
 	override public function render():void
