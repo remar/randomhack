@@ -13,15 +13,12 @@ package
 
 	    field = new Field();
 	    field.generate();
-	    field.carveHole(5, 5, 2);
-	    field.setTile(4, 5, Tile.BLOCK);
 	}
 
 	override public function render():void
 	{
-	    field.draw(drawable);
-
 	    super.render();
+	    field.draw(drawable);
 	}
     }
 }

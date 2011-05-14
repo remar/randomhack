@@ -5,8 +5,8 @@ package
   public class Field
   {
     // Playing field is 32*24 blocks
-    private static const WIDTH:int = 32;
-    private static const HEIGHT:int = 24;
+    public static const WIDTH:int = 32;
+    public static const HEIGHT:int = 24;
 
     // Offset when drawing on the screen
     public static const X_OFFSET:int = 0;
@@ -32,16 +32,50 @@ package
 	}
     }
 
-    public function generate():void
+    public function generate():Array
     {
       // Flood with water (0-7 pools of water)
+
       // Carve holes (7-13 holes)
-      // Carve paths
+      var numHoles:int = 4;
+      var numHoles2:int = 3 + Math.floor(Math.random() * 7); // [3-9]
+      var maxHoleSize:int = 2 + Math.floor(Math.random() * 3); // [2-4]
+      var holes:Array = [];
+
+      for(var i:int = 0;i < numHoles;i++)
+	{
+	  holes.push([Math.round(Math.random() * (WIDTH - 2)) + 1,
+		      Math.round(Math.random() * (HEIGHT - 2)) + 1]);
+	  carveHole(holes[i][0], holes[i][1], Math.floor(Math.random() * maxHoleSize));
+	  // Carve path
+	  if(i != 0)
+	    {
+	      carvePath(holes[i-1], holes[i], 2 + Math.floor(Math.random() * 2));
+	    }
+	}
+
+      for(i = 0;i < numHoles2;i++)
+	{
+	  var hole:Array = [Math.round(Math.random() * (WIDTH - 2)) + 1,
+			    Math.round(Math.random() * (HEIGHT - 2)) + 1];
+	  carveHole(hole[0], hole[1], Math.floor(Math.random() * maxHoleSize));
+	  carvePath(hole, holes[Math.floor(Math.random() * (numHoles - 1))],
+		    2 + Math.floor(Math.random() * 2));
+	}
+
       // Return proposed start and goal positions
+      return [holes[0], holes[holes.length - 1]];
     }
 
     public function setTile(x:int, y:int, type:int):void
     {
+      if ((x < 0 || x >= WIDTH || y < 0 || y >= WIDTH) ||
+	  (type == Tile.EMPTY && (x == 0 || x == WIDTH - 1 ||
+				  y == 0 || y == HEIGHT - 1)))
+	{
+	  return;
+	}
+
       field[x][y] = new Tile(type);
     }
 
@@ -57,38 +91,98 @@ package
 	  setTile(i, j, Tile.EMPTY);
     }
 
-    private function carveOrthogonalPath(startPoint:Array, direction:Array,
-					 length:int, width:int):void
-    {
-      var x:int = startPoint[0];
-      var y:int = startPoint[1];
-
-      setTile(x, y, Tile.EMPTY);
-      for(var i:int = 0;i <= length;i++)
-	{
-	  x += direction[0];
-	  y += direction[1];
-	  setTile(x, y, Tile.EMPTY);
-	}
-    }
-
     public function carvePath(p1:Array, p2:Array, width:int):void
     {
       // Carve horizontal path
       if(p1[1] == p2[1])
 	{
-	  carveOrthogonalPath(p1, p1[0] < p2[0] ? [+1, 0] : [-1, 0],
-			      Math.abs(p1[0] - p2[0]), width);
+	  carveSimplePath(p1, p1[0] < p2[0] ? [+1, 0] : [-1, 0],
+			  Math.abs(p1[0] - p2[0]) + 1, width);
 	}
 
       // Carve vertical path
-      if(p1[0] == p2[0])
+      else if(p1[0] == p2[0])
 	{
-	  carveOrthogonalPath(p1, p1[1] < p2[1] ? [0, +1] : [0, -1],
-			      Math.abs(p1[1] - p2[1]), width);
+	  carveSimplePath(p1, p1[1] < p2[1] ? [0, +1] : [0, -1],
+			  Math.abs(p1[1] - p2[1]) + 1, width);
+	}
+
+      // Carve diagonal path
+      else if(Math.abs(p1[0] - p2[0]) == Math.abs(p1[1] - p2[1]))
+	{
+	  carveSimplePath(p1, [(p2[0] - p1[0])/Math.abs(p1[0] - p2[0]),
+			       (p2[1] - p1[1])/Math.abs(p1[1] - p2[1])],
+			  Math.abs(p1[0] - p2[0]) + 1, width);
 	}
 
       // Bresenhams
+      else
+	{
+	  carveBresenhamPath(p1, p2, width);
+	}
+    }
+
+    private function carveSimplePath(startPoint:Array, direction:Array,
+					 length:int, width:int):void
+    {
+      var x:int = startPoint[0];
+      var y:int = startPoint[1];
+
+      for(var i:int = 0;i < length;i++)
+	{
+	  if(width == 1)
+	    {
+	      setTile(x, y, Tile.EMPTY);
+	    }
+	  else
+	    {
+	      carveSimplePath([x, y],
+			      [direction[1] != 0 ? -1 : 0,
+			       direction[1] == 0 ? -1 : 0],
+			      width, 1);
+	    }
+	  x += direction[0];
+	  y += direction[1];
+	}
+    }
+
+    private function carveBresenhamPath(startPoint:Array, endPoint:Array,
+					width:int):void
+    {
+      var dx:int = Math.abs(endPoint[0] - startPoint[0]);
+      var dy:int = Math.abs(endPoint[1] - startPoint[1]);
+      var sx:int = startPoint[0] < endPoint[0] ? 1 : -1;
+      var sy:int = startPoint[1] < endPoint[1] ? 1 : -1;
+      var err:int = dx - dy;
+      var dir:Array = err > 0 ? [0, -1] : [-1, 0];
+      while(true)
+	{
+	  if(width == 1)
+	    {
+	      setTile(startPoint[0], startPoint[1], Tile.EMPTY);
+	    }
+	  else
+	    {
+	      carveSimplePath(startPoint, dir, width, 1);
+	    }
+
+	  if(startPoint[0] == endPoint[0] && startPoint[1] == endPoint[1])
+	    {
+	      break;
+	    }
+
+	  var e2:int = 2*err;
+	  if(e2 > -dy)
+	    {
+	      err -= dy;
+	      startPoint[0] += sx;
+	    }
+	  if(e2 < dx)
+	    {
+	      err += dx;
+	      startPoint[1] += sy;
+	    }
+	}
     }
 
     public function draw(drawable:Drawable):void

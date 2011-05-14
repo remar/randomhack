@@ -107,6 +107,146 @@ package
       for(var i:int = 1;i <= 9;i++)
 	Assert.assertEquals(Tile.EMPTY, field.getTile(1, i).getType());
     }
+
+    [Test]
+    public function testCarveDiagonalPath():void
+    {
+      field.carvePath([2, 2], [5, 5], 1);
+
+      for(var i:int = 2;i <= 5;i++)
+	Assert.assertEquals(Tile.EMPTY, field.getTile(i, i).getType());
+    }
+
+    [Test]
+    public function testCarveDiagonalPathReversed():void
+    {
+      field.carvePath([5, 5], [2, 2], 1);
+
+      for(var i:int = 2;i <= 5;i++)
+	Assert.assertEquals(Tile.EMPTY, field.getTile(i, i).getType());
+    }
+
+    [Test]
+    public function testCarveEastSouthEastPath():void
+    {
+      /*
+	Path will look like this:
+	......
+	.xx...
+	...xx.
+	......
+       */
+
+      field.carvePath([1, 1], [4, 2], 1);
+
+      Assert.assertEquals(Tile.EMPTY, field.getTile(1, 1).getType());
+      Assert.assertEquals(Tile.EMPTY, field.getTile(2, 1).getType());
+      Assert.assertEquals(Tile.EMPTY, field.getTile(3, 2).getType());
+      Assert.assertEquals(Tile.EMPTY, field.getTile(4, 2).getType());
+    }
+
+    [Test]
+    public function testCarveHorizontalPathWithWidthTwo():void
+    {
+      field.carvePath([1, 2], [5, 2], 2);
+
+      for(var i:int = 1;i <= 5;i++)
+	{
+	  Assert.assertEquals(Tile.EMPTY, field.getTile(i, 1).getType());
+	  Assert.assertEquals(Tile.EMPTY, field.getTile(i, 2).getType());
+	}
+    }
+
+    [Test]
+    public function testCarveVerticalPathWithWidthTwo():void
+    {
+      field.carvePath([2, 1], [2, 5], 2);
+
+      for(var i:int = 1;i <= 5;i++)
+	{
+	  Assert.assertEquals(Tile.EMPTY, field.getTile(1, i).getType());
+	  Assert.assertEquals(Tile.EMPTY, field.getTile(2, i).getType());
+	}
+    }
+
+    [Test]
+    public function testCarveDiagonalPathWithWidthTwo():void
+    {
+      field.carvePath([3, 4], [7, 8], 2);
+
+      for(var i:int = 3;i <= 7;i++)
+	{
+	  Assert.assertEquals(Tile.EMPTY, field.getTile(i, i+1).getType());
+	  Assert.assertEquals(Tile.EMPTY, field.getTile(i-1, i+1).getType());
+	}
+    }
+
+    [Test]
+    public function testCarveEastSouthEastPathWithWidthTwo():void
+    {
+      field.carvePath([2, 2], [5, 3], 2);
+
+      var points:Array = [[2, 2], [3, 2], [4, 3], [5, 3]];
+
+      for(var i:int = 0;i < points.length;i++)
+	{
+	  Assert.assertEquals(Tile.EMPTY,
+			      field.getTile(points[i][0],
+					    points[i][1]).getType());
+	  Assert.assertEquals(Tile.EMPTY,
+			      field.getTile(points[i][0],
+					    points[i][1] - 1).getType());
+	}
+    }
+
+    [Test]
+    public function testCarveSouthSouthEastPathWithWidthTwo():void
+    {
+      /*
+	......
+	......
+	.xx...
+	.xx...
+	..xx..
+	..xx..
+	......
+       */
+
+      field.carvePath([2, 2], [3, 5], 2);
+
+      var points:Array = [[2, 2], [2, 3], [3, 4], [3, 5]];
+
+      for(var i:int = 0;i < points.length;i++)
+	{
+	  Assert.assertEquals(Tile.EMPTY,
+			      field.getTile(points[i][0],
+					    points[i][1]).getType());
+	  Assert.assertEquals(Tile.EMPTY,
+			      field.getTile(points[i][0] - 1,
+					    points[i][1]).getType());
+	}
+    }
+
+    [Test]
+    public function testSetBorderTileToEmpty():void
+    {
+      var points:Array = [[5, 0], [0, 3],
+			  [5, Field.HEIGHT - 1], [Field.WIDTH -1, 7]];
+
+      for(var i:int = 0;i < points.length;i++)
+	{
+	  field.setTile(points[i][0], points[i][1], Tile.EMPTY);
+	  Assert.assertEquals(Tile.BLOCK,
+			      field.getTile(points[i][0],
+					    points[i][1]).getType());
+	}
+    }
+
+    [Test]
+    public function testSetTileOutsideOfFile():void
+    {
+      field.setTile(-5, -3, Tile.EMPTY);
+    }
   }
 }
 
