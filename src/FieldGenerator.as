@@ -17,10 +17,10 @@ package
       this.field = field;
     }
 
-    public function carveHole(x:int, y:int, size:int):void
+    public function carveHole(p:Point, size:int):void
     {
-      for(var j:int = y - size;j <= y + size;j++)
-	for(var i:int = x - size;i <= x + size;i++)
+      for(var j:int = p.getY() - size;j <= p.getY() + size;j++)
+	for(var i:int = p.getX() - size;i <= p.getX() + size;i++)
 	  field.setTile(i, j, Tile.EMPTY);
     }
 
@@ -42,28 +42,31 @@ package
 	}
     }
 
-    public function carvePath(p1:Array, p2:Array, width:int):void
+    public function carvePath(p1:Point, p2:Point, width:int):void
     {
       // Carve horizontal path
-      if(p1[1] == p2[1])
+      if(p1.getY() == p2.getY())
 	{
-	  carveSimplePath(p1, p1[0] < p2[0] ? [+1, 0] : [-1, 0],
-			  Math.abs(p1[0] - p2[0]) + 1, width);
+	  carveSimplePath(p1, p1.getX() < p2.getX() ? [+1, 0] : [-1, 0],
+			  Math.abs(p1.getX() - p2.getX()) + 1, width);
 	}
 
       // Carve vertical path
-      else if(p1[0] == p2[0])
+      else if(p1.getX() == p2.getX())
 	{
-	  carveSimplePath(p1, p1[1] < p2[1] ? [0, +1] : [0, -1],
-			  Math.abs(p1[1] - p2[1]) + 1, width);
+	  carveSimplePath(p1, p1.getY() < p2.getY() ? [0, +1] : [0, -1],
+			  Math.abs(p1.getY() - p2.getY()) + 1, width);
 	}
 
       // Carve diagonal path
-      else if(Math.abs(p1[0] - p2[0]) == Math.abs(p1[1] - p2[1]))
+      else if(Math.abs(p1.getX() - p2.getX())
+	      == Math.abs(p1.getY() - p2.getY()))
 	{
-	  carveSimplePath(p1, [(p2[0] - p1[0])/Math.abs(p1[0] - p2[0]),
-			       (p2[1] - p1[1])/Math.abs(p1[1] - p2[1])],
-			  Math.abs(p1[0] - p2[0]) + 1, width);
+	  carveSimplePath(p1, [(p2.getX() - p1.getX())
+			       /Math.abs(p1.getX() - p2.getX()),
+			       (p2.getY() - p1.getY())
+			       /Math.abs(p1.getY() - p2.getY())],
+			  Math.abs(p1.getX() - p2.getX()) + 1, width);
 	}
 
       // Bresenhams
@@ -73,11 +76,11 @@ package
 	}
     }
 
-    private function carveSimplePath(startPoint:Array, direction:Array,
+    private function carveSimplePath(startPoint:Point, direction:Array,
 					 length:int, width:int):void
     {
-      var x:int = startPoint[0];
-      var y:int = startPoint[1];
+      var x:int = startPoint.getX();
+      var y:int = startPoint.getY();
 
       for(var i:int = 0;i < length;i++)
 	{
@@ -87,7 +90,7 @@ package
 	    }
 	  else
 	    {
-	      carveSimplePath([x, y],
+	      carveSimplePath(new Point(x, y),
 			      [direction[1] != 0 ? -1 : 0,
 			       direction[1] == 0 ? -1 : 0],
 			      width, 1);
@@ -97,27 +100,29 @@ package
 	}
     }
 
-    private function carveBresenhamPath(startPoint:Array, endPoint:Array,
+    private function carveBresenhamPath(startPoint:Point, endPoint:Point,
 					width:int):void
     {
-      var dx:int = Math.abs(endPoint[0] - startPoint[0]);
-      var dy:int = Math.abs(endPoint[1] - startPoint[1]);
-      var sx:int = startPoint[0] < endPoint[0] ? 1 : -1;
-      var sy:int = startPoint[1] < endPoint[1] ? 1 : -1;
+      var x:int = startPoint.getX();
+      var y:int = startPoint.getY();
+      var dx:int = Math.abs(endPoint.getX() - startPoint.getX());
+      var dy:int = Math.abs(endPoint.getY() - startPoint.getY());
+      var sx:int = startPoint.getX() < endPoint.getX() ? 1 : -1;
+      var sy:int = startPoint.getY() < endPoint.getY() ? 1 : -1;
       var err:int = dx - dy;
       var dir:Array = err > 0 ? [0, -1] : [-1, 0];
       while(true)
 	{
 	  if(width == 1)
 	    {
-	      field.setTile(startPoint[0], startPoint[1], Tile.EMPTY);
+	      field.setTile(x, y, Tile.EMPTY);
 	    }
 	  else
 	    {
-	      carveSimplePath(startPoint, dir, width, 1);
+	      carveSimplePath(new Point(x, y), dir, width, 1);
 	    }
 
-	  if(startPoint[0] == endPoint[0] && startPoint[1] == endPoint[1])
+	  if(x == endPoint.getX() && y == endPoint.getY())
 	    {
 	      break;
 	    }
@@ -126,12 +131,12 @@ package
 	  if(e2 > -dy)
 	    {
 	      err -= dy;
-	      startPoint[0] += sx;
+	      x += sx;
 	    }
 	  if(e2 < dx)
 	    {
 	      err += dx;
-	      startPoint[1] += sy;
+	      y += sy;
 	    }
 	}
     }

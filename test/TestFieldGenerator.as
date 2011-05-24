@@ -24,7 +24,7 @@ package
     [Test]
     public function testCarveHole():void
     {
-      generator.carveHole(3, 3, 1);
+      generator.carveHole(new Point(3, 3), 1);
 
       for(var y:int = 2;y <= 4;y++)
 	for(var x:int = 2;x <= 4;x++)
@@ -34,23 +34,22 @@ package
     [Test]
     public function testCarveVeryShortPath():void
     {
-      generator.carvePath([1, 1], [1, 1], 1);
+      generator.carvePath(new Point(1, 1), new Point(1, 1), 1);
       Assert.assertEquals(Tile.EMPTY, field.getTile(1, 1).getType());
     }
 
     [Test]
     public function testCarveHorizontalPath():void
     {
-      generator.carvePath([1, 1], [8, 1], 1);
+      generator.carvePath(new Point(1, 1), new Point(8, 1), 1);
 
       for(var i:int = 1;i <= 8;i++)
 	Assert.assertEquals(Tile.EMPTY, field.getTile(i, 1).getType());
     }
-
     [Test]
     public function testCarveVerticalPath():void
     {
-      generator.carvePath([1, 1], [1, 9], 1);
+      generator.carvePath(new Point(1, 1), new Point(1, 9), 1);
 
       for(var i:int = 1;i <= 9;i++)
 	Assert.assertEquals(Tile.EMPTY, field.getTile(1, i).getType());
@@ -59,7 +58,7 @@ package
     [Test]
     public function testCarveDiagonalPath():void
     {
-      generator.carvePath([2, 2], [5, 5], 1);
+      generator.carvePath(new Point(2, 2), new Point(5, 5), 1);
 
       for(var i:int = 2;i <= 5;i++)
 	Assert.assertEquals(Tile.EMPTY, field.getTile(i, i).getType());
@@ -68,7 +67,7 @@ package
     [Test]
     public function testCarveDiagonalPathReversed():void
     {
-      generator.carvePath([5, 5], [2, 2], 1);
+      generator.carvePath(new Point(5, 5), new Point(2, 2), 1);
 
       for(var i:int = 2;i <= 5;i++)
 	Assert.assertEquals(Tile.EMPTY, field.getTile(i, i).getType());
@@ -84,8 +83,7 @@ package
 	...xx.
 	......
        */
-
-      generator.carvePath([1, 1], [4, 2], 1);
+      generator.carvePath(new Point(1, 1), new Point(4, 2), 1);
 
       Assert.assertEquals(Tile.EMPTY, field.getTile(1, 1).getType());
       Assert.assertEquals(Tile.EMPTY, field.getTile(2, 1).getType());
@@ -96,7 +94,7 @@ package
     [Test]
     public function testCarveHorizontalPathWithWidthTwo():void
     {
-      generator.carvePath([1, 2], [5, 2], 2);
+      generator.carvePath(new Point(1, 2), new Point(5, 2), 2);
 
       for(var i:int = 1;i <= 5;i++)
 	{
@@ -108,7 +106,7 @@ package
     [Test]
     public function testCarveVerticalPathWithWidthTwo():void
     {
-      generator.carvePath([2, 1], [2, 5], 2);
+      generator.carvePath(new Point(2, 1), new Point(2, 5), 2);
 
       for(var i:int = 1;i <= 5;i++)
 	{
@@ -120,7 +118,7 @@ package
     [Test]
     public function testCarveDiagonalPathWithWidthTwo():void
     {
-      generator.carvePath([3, 4], [7, 8], 2);
+      generator.carvePath(new Point(3, 4), new Point(7, 8), 2);
 
       for(var i:int = 3;i <= 7;i++)
 	{
@@ -132,7 +130,7 @@ package
     [Test]
     public function testCarveEastSouthEastPathWithWidthTwo():void
     {
-      generator.carvePath([2, 2], [5, 3], 2);
+      generator.carvePath(new Point(2, 2), new Point(5, 3), 2);
 
       var points:Array = [[2, 2], [3, 2], [4, 3], [5, 3]];
 
@@ -159,8 +157,7 @@ package
 	..xx..
 	......
        */
-
-      generator.carvePath([2, 2], [3, 5], 2);
+      generator.carvePath(new Point(2, 2), new Point(3, 5), 2);
 
       var points:Array = [[2, 2], [2, 3], [3, 4], [3, 5]];
 
@@ -225,7 +222,6 @@ package
 	xxx.....
 	........
        */
-
       generator.createPool(numberGenerator);
 
       var water:Array = [[1, 1], [2, 1], [3, 1],
@@ -240,7 +236,6 @@ package
 					    water[i][1]).getType());	
 	}
     }
-
     /*
       test water with jagged edges
       test maximum water
