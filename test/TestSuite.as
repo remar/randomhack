@@ -5,6 +5,7 @@ package
 	public class TestSuite
 	{
 		public var testField:TestField;
+		public var testFieldGenerator:TestFieldGenerator;
 		public var testTile:TestTile;
 	}
 }
