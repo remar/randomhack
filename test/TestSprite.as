@@ -4,8 +4,16 @@ package
 
   public class TestSprite
   {
+    private var drawable:Drawable;
+
+    [Before]
+    public function setUp():void
+    {
+      drawable = new FakeDrawable(16, 16);
+    }
+
     [Test]
-    public function testShouldDrawPixels():void
+    public function shouldDrawPixels():void
     {
       var sprite:Sprite = new Sprite(2, 2);
       var data:Array = [1,0,
@@ -15,44 +23,12 @@ package
       sprite.setData(data);
       sprite.setColor(color);
 
-      var drawable:Drawable = new FakeDrawable(16, 16);
+      sprite.draw(drawable, new Point(0, 0));
 
-      sprite.draw(drawable, 1, 1);
-
-      Assert.assertEquals(color, drawable.getPixel(1, 1))
-      Assert.assertEquals(0x000000, drawable.getPixel(2, 1))
-      Assert.assertEquals(color, drawable.getPixel(2, 2))
-      Assert.assertEquals(0x000000, drawable.getPixel(1, 2))
+      Assert.assertEquals(color, drawable.getPixel(0, 0));
+      Assert.assertEquals(0x000000, drawable.getPixel(1, 0));
+      Assert.assertEquals(color, drawable.getPixel(1, 1));
+      Assert.assertEquals(0x000000, drawable.getPixel(0, 1));
     }
-  }
-}
-
-
-class FakeDrawable implements Drawable
-{
-  private var canvas:Array;
-  private static const defaultColor:int = 0x000000;
-
-  public function FakeDrawable(width:int, height:int):void
-  {
-    canvas = new Array(width);
-    for(var i:int = 0;i < width;i++)
-      {
-	canvas[i] = new Array(height);
-	for(var j:int = 0;j < height;j++)
-	  {
-	    canvas[i][j] = defaultColor;
-	  }
-      }
-  }
-
-  public function setPixel(x:int, y:int, color:int):void
-  {
-    canvas[x][y] = color;
-  }
-
-  public function getPixel(x:int, y:int):int
-  {
-    return canvas[x][y];
   }
 }

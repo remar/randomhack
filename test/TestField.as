@@ -109,27 +109,3 @@ package
     //  test water on level edge
   }
 }
-
-class FakeDrawable implements Drawable
-{
-  private var canvas:Array;
-
-  public function FakeDrawable(width:int, height:int):void
-  {
-    canvas = new Array(width);
-    for(var i:int = 0;i < width;i++)
-      {
-	canvas[i] = new Array(height);
-      }
-  }
-
-  public function setPixel(x:int, y:int, color:int):void
-  {
-    canvas[x][y] = color;
-  }
-
-  public function getPixel(x:int, y:int):int
-  {
-    return canvas[x][y];
-  }
-}

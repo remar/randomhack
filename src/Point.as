@@ -20,5 +20,20 @@ package
     {
       return y;
     }
+
+    public function add(x:int, y:int):Point
+    {
+      return new Point(this.x + x, this.y + y);
+    }
+
+    public function multiple(multiplier:int):Point
+    {
+      return new Point(x * multiplier, y * multiplier);
+    }
+
+    public function equals(other:Point):Boolean
+    {
+      return x == other.getX() && y == other.getY();
+    }
   }
 }

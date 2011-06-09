@@ -25,19 +25,21 @@ package
       this.color = color;
     }
 
-    public function draw(d:Drawable, xPos:int, yPos:int):void
+    public function draw(drawable:Drawable, offset:Point):void
     {
+      var xPos:int = offset.getX();
+      var yPos:int = offset.getY();
+
       for(var y:int = 0;y < height;y++)
 	{
 	  for(var x:int = 0;x < width;x++)
 	    {
 	      if(data[x + y * width] == 1)
 		{
-		  d.setPixel(xPos + x, yPos + y, color);
+		  drawable.setPixel(xPos + x, yPos + y, color);
 		}
 	    }
-	}
+	}    
     }
   }
 }
-
