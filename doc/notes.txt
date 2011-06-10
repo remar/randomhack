@@ -1,0 +1,23 @@
+LevelBuilder/FieldBuilder abstract classes.
+RandomLevelBuilder/RandomFieldBuilder implementation.
+(StaticLevelBuilder implementation as well?)
+
+Some kind of GraphicsFactory to abstract creation of sprites?  Must be
+compatible with Drawable in some way. GraphicsFactory should create
+the Drawable as well? How to handle background tiles?
+
+InputHandler interface. Make a RecordingInputHandler (and
+RecordingNumberGenerator) to make a "demo" mode.
+
+Class hierarchy for game objects?
+
+GameObject
+|
++-Player
++-Goal
+
+. GameObject
+Interface for objects in the game. Provides methods for updating the
+objects state (update()), for setting and getting its position, and
+for drawing the object in a Drawable.
+
