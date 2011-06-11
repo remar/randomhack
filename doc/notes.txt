@@ -4,20 +4,51 @@ RandomLevelBuilder/RandomFieldBuilder implementation.
 
 Some kind of GraphicsFactory to abstract creation of sprites?  Must be
 compatible with Drawable in some way. GraphicsFactory should create
-the Drawable as well? How to handle background tiles?
+the Drawable as well? How to handle background tiles? Background tiles
+should also be represented as sprites. Maybe call sprites something
+else entirely.
+
++---------------+
+|GraphicsFactory|
++---------------+
+|createDrawable |
+|createPlayer   |
+|createGoal     |
+|create...      |
++---------------+
+
+public class PixelGraphicsFactory implements GraphicsFactory {}
+
+Drawable shouldn't define pixel setting and getting, that's too
+specific. Maybe a PixelDrawable interface?
 
 InputHandler interface. Make a RecordingInputHandler (and
 RecordingNumberGenerator) to make a "demo" mode.
 
-Class hierarchy for game objects?
+Priority for drawables (e.g. to draw Player over Items).
+
+Class hierarchy for game objects:
 
 GameObject
 |
 +-Player
 +-Goal
++-Enemy
+| |
+| +-Bat
+| +-Gnome
+|   ...
++-Item
+  |
+  +-Weapon
+  | |
+  | +-Dagger
+  | ...
+  +-BitterBerries
+  +-SweetBerries
 
 . GameObject
-Interface for objects in the game. Provides methods for updating the
+Base class for objects in the game. Provides methods for updating the
 objects state (update()), for setting and getting its position, and
 for drawing the object in a Drawable.
 
