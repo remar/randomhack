@@ -20,7 +20,18 @@ else entirely.
 public class PixelGraphicsFactory implements GraphicsFactory {}
 
 Drawable shouldn't define pixel setting and getting, that's too
-specific. Maybe a PixelDrawable interface?
+specific. Maybe a PixelDrawable interface? Or a PixelDrawable
+implementation directly!
+
+Methods for a GraphicsFactory:
+
+getDrawable(width, height)
+getBackground(<type>, <surrounding>)
+getSprite(<type>)
+
+getBackground takes some kind of <surrounding> argument, so it can
+return background tiles that know about its surroundings.
+
 
 InputHandler interface. Make a RecordingInputHandler (and
 RecordingNumberGenerator) to make a "demo" mode.
