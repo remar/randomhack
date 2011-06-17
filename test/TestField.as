@@ -50,7 +50,7 @@ package
     [Test]
     public function testDraw():void
     {
-      var sprite:Drawable = new FakeDrawable(256, 384);
+      var sprite:PixelDrawable = new FakePixelDrawable(256, 384);
 
       field.setTile(0, 0, Tile.BLOCK);
       field.draw(sprite);

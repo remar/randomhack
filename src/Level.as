@@ -9,8 +9,8 @@ package
     public static const Y_OFFSET:int = 192;
 
     private var field:Field;
-    private var drawable:Drawable;
-    private var fieldDrawable:OffsetDrawable;
+    private var drawable:PixelDrawable;
+    private var fieldDrawable:OffsetPixelDrawable;
     private var numberGenerator:NumberGenerator;
 
     private var player:Player;
@@ -18,8 +18,8 @@ package
 
     override public function create():void
     {
-      drawable = new DrawableImpl(screen);
-      fieldDrawable = new OffsetDrawable(drawable, X_OFFSET, Y_OFFSET);
+      drawable = new FlixelPixelDrawable(screen);
+      fieldDrawable = new OffsetPixelDrawable(drawable, X_OFFSET, Y_OFFSET);
 	    
       numberGenerator = new RandomNumberGenerator();
       field = new Field(32, 24);

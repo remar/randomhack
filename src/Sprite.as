@@ -25,7 +25,7 @@ package
       this.color = color;
     }
 
-    public function draw(drawable:Drawable, offset:Point):void
+    public function draw(drawable:PixelDrawable, offset:Point):void
     {
       var xPos:int = offset.getX();
       var yPos:int = offset.getY();

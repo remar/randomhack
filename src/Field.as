@@ -100,7 +100,7 @@ package
 	return field[x][y];
       }
 
-    public function draw(drawable:Drawable):void
+    public function draw(drawable:PixelDrawable):void
     {
       for(var y:int = 0;y < height;y++)
 	{
@@ -111,7 +111,7 @@ package
 	}
     }
 
-    private function drawBlock(drawable:Drawable,
+    private function drawBlock(drawable:PixelDrawable,
 			       blockX:int, blockY:int, color:int):void
     {
       for(var y:int = 0;y < 8;y++)

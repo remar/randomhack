@@ -4,12 +4,12 @@ package
 
   public class TestSprite
   {
-    private var drawable:Drawable;
+    private var pixelDrawable:PixelDrawable;
 
     [Before]
     public function setUp():void
     {
-      drawable = new FakeDrawable(16, 16);
+      pixelDrawable = new FakePixelDrawable(16, 16);
     }
 
     [Test]
@@ -23,12 +23,12 @@ package
       sprite.setData(data);
       sprite.setColor(color);
 
-      sprite.draw(drawable, new Point(0, 0));
+      sprite.draw(pixelDrawable, new Point(0, 0));
 
-      Assert.assertEquals(color, drawable.getPixel(0, 0));
-      Assert.assertEquals(0x000000, drawable.getPixel(1, 0));
-      Assert.assertEquals(color, drawable.getPixel(1, 1));
-      Assert.assertEquals(0x000000, drawable.getPixel(0, 1));
+      Assert.assertEquals(color, pixelDrawable.getPixel(0, 0));
+      Assert.assertEquals(0x000000, pixelDrawable.getPixel(1, 0));
+      Assert.assertEquals(color, pixelDrawable.getPixel(1, 1));
+      Assert.assertEquals(0x000000, pixelDrawable.getPixel(0, 1));
     }
   }
 }

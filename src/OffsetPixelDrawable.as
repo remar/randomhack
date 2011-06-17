@@ -1,13 +1,13 @@
 package
 {
-  public class OffsetDrawable implements Drawable
+  public class OffsetPixelDrawable implements PixelDrawable
   {
-    private var parentDrawable:Drawable;
+    private var parentDrawable:PixelDrawable;
     private var xOffset:int;
     private var yOffset:int;
 
-    public function OffsetDrawable(parentDrawable:Drawable,
-				   xOffset:int, yOffset:int):void
+    public function OffsetPixelDrawable(parentDrawable:PixelDrawable,
+					xOffset:int, yOffset:int):void
     {
       this.parentDrawable = parentDrawable;
       this.xOffset = xOffset;

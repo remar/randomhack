@@ -4,12 +4,12 @@ package
 
   public class TestSpriteInstance
   {
-    private var drawable:Drawable;
+    private var drawable:PixelDrawable;
 
     [Before]
     public function setUp():void
     {
-      drawable = new FakeDrawable(16, 16);
+      drawable = new FakePixelDrawable(16, 16);
     }
 
     [Test]

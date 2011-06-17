@@ -21,7 +21,7 @@ package
       this.position = position.multiple(8);
     }
 
-    public function draw(drawable:Drawable):void
+    public function draw(drawable:PixelDrawable):void
     {
       sprite.draw(drawable, position);
     }
