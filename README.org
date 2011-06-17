@@ -1,0 +1,16 @@
+* Randomhack
+** Introduction
+   Randhomhack is a simple dungeoncrawler with a point'n'click
+   interface. It was originally implemented for the Nintendo DS, with
+   only primitive pixel by pixel drawing. This is a complete
+   reimplementation of that game in ActionScript 3.
+** Disclaimer
+   As the game is under development, much of what is said here isn't
+   implemented yet.
+** Controls
+   The game will be controlled with the mouse. Click on the playing
+   field to move the player or attack a creature in that
+   direction. Shortcut keys will also be available.
+** Current version
+   To get a glimpse of the current version, point your browser at
+   http://remar.se/andreas/randomhack.swf.
