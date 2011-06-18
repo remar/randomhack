@@ -1,10 +1,10 @@
 package
 {
-  public class FieldGenerator
+  public class FieldCarver
   {
     private var field:Field;
 
-    public function FieldGenerator(field:Field = null):void
+    public function FieldCarver(field:Field = null):void
     {
       if(field != null)
 	{

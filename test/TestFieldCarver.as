@@ -2,16 +2,16 @@ package
 {
   import org.flexunit.Assert;
 
-  public class TestFieldGenerator
+  public class TestFieldCarver
   {
     private var field:Field;
-    private var generator:FieldGenerator;
+    private var generator:FieldCarver;
 
     [Before]
     public function setUp():void
     {
       field = new Field(32, 24);
-      generator = new FieldGenerator(field);
+      generator = new FieldCarver(field);
     }
 
     [After]

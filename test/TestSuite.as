@@ -5,7 +5,7 @@ package
   public class TestSuite
     {
       public var testField:TestField;
-      public var testFieldGenerator:TestFieldGenerator;
+      public var testFieldCarver:TestFieldCarver;
       public var testTile:TestTile;
       public var testSprite:TestSprite;
       public var testPlayer:TestPlayer;

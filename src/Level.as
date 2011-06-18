@@ -33,7 +33,7 @@ package
     {
       player.update();
 
-      if(goal.position.equals(new Point(player.x, player.y)))
+      if(goal.position.equals(player.position))
 	{
 	  // WOOO!!!
 	  generateLevel();
@@ -53,9 +53,12 @@ package
     private function generateLevel():void
     {
       field.clearField(Tile.BLOCK);
-      var positions:Array = field.generate(numberGenerator);
-      player = new Player(field, positions[0]);
-      goal = new Goal(positions[1]);
+
+      var fieldBuilder:FieldBuilder = new RandomFieldBuilder(numberGenerator);
+
+      var positions:StartPositions = fieldBuilder.generate(field);
+      player = new Player(field, positions.start);
+      goal = new Goal(positions.goal);
     }
   }
 }

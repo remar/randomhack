@@ -21,7 +21,7 @@ package
 		      0,0,1,1,0,1,1,0]);
       sprite.setColor(0xcccccc);
       super(sprite);
-      super.position = position;
+      this.position = position;
     }
 
     override public function update():void
@@ -58,7 +58,7 @@ package
     {
       if(field.getTile(position.getX() + xRel, position.getY() + yRel).getType() == Tile.EMPTY)
 	{
-	  super.position = position.add(xRel, yRel);
+	  position = position.add(xRel, yRel);
 	}
     }
 
