@@ -15,12 +15,12 @@ package
     [Test]
     public function shouldDrawPixelsAtCorrectPosition():void
     {
-      var sprite:Sprite = new Sprite(2, 2);
-      var data:Array = [1,0,
-			0,1];
+      var sprite:Sprite = new PixelSprite(2, 2);
       var color:int = 0xffffff;
+      var data:Array = [1,0,
+			0,1,
+			color];
       sprite.setData(data);
-      sprite.setColor(color);
 
       var instance:SpriteInstance = new SpriteInstance(sprite);
       instance.setPosition(new Point(3, 5));

@@ -21,7 +21,7 @@ package
     {
       for(var j:int = p.getY() - size;j <= p.getY() + size;j++)
 	for(var i:int = p.getX() - size;i <= p.getX() + size;i++)
-	  field.setTile(i, j, Tile.EMPTY);
+	  field.setTile(i, j, TileType.EMPTY);
     }
 
     public function createPool(numberGenerator:NumberGenerator):void
@@ -35,7 +35,7 @@ package
 	{
 	  for(var x:int = xOffset;x <= xOffset + width;x++)
 	    {
-	      field.setTile(x, y, Tile.WATER);
+	      field.setTile(x, y, TileType.WATER);
 	    }
 	  width += numberGenerator.getIntInRange(-1, 1);
 	  xOffset += numberGenerator.getIntInRange(-1, 1);
@@ -86,7 +86,7 @@ package
 	{
 	  if(width == 1)
 	    {
-	      field.setTile(x, y, Tile.EMPTY);
+	      field.setTile(x, y, TileType.EMPTY);
 	    }
 	  else
 	    {
@@ -115,7 +115,7 @@ package
 	{
 	  if(width == 1)
 	    {
-	      field.setTile(x, y, Tile.EMPTY);
+	      field.setTile(x, y, TileType.EMPTY);
 	    }
 	  else
 	    {

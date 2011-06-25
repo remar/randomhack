@@ -15,15 +15,14 @@ package
     [Test]
     public function shouldDrawPixels():void
     {
-      var sprite:Sprite = new Sprite(2, 2);
-      var data:Array = [1,0,
-			0,1];
+      var sprite:Sprite = new PixelSprite(2, 2);
       var color:int = 0xffffff;
-
+      var data:Array = [1,0,
+			0,1,
+			color];
       sprite.setData(data);
-      sprite.setColor(color);
 
-      sprite.draw(pixelDrawable, new Point(0, 0));
+      pixelDrawable.drawSprite(sprite, new Point(0, 0));
 
       Assert.assertEquals(color, pixelDrawable.getPixel(0, 0));
       Assert.assertEquals(0x000000, pixelDrawable.getPixel(1, 0));

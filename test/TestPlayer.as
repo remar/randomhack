@@ -10,7 +10,7 @@ package
     public function setUp():void
     {
       field = new Field(32, 24);
-      field.clearField(Tile.EMPTY);
+      field.clearField(TileType.EMPTY);
     }
 
     [After]

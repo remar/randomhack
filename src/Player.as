@@ -10,7 +10,7 @@ package
     public function Player(field:Field, position:Point):void
     {
       this.field = field;
-      sprite = new Sprite(8, 8);
+      sprite = new PixelSprite(8, 8);
       sprite.setData([0,0,0,1,1,1,0,0,
 		      0,0,0,1,1,1,0,1,
 		      1,1,1,0,1,0,0,1,
@@ -18,8 +18,8 @@ package
 		      1,1,1,0,1,0,0,1,
 		      0,1,0,0,1,0,0,0,
 		      0,0,0,1,0,1,0,0,
-		      0,0,1,1,0,1,1,0]);
-      sprite.setColor(0xcccccc);
+		      0,0,1,1,0,1,1,0,
+		      0xcccccc]);
       super(sprite);
       this.position = position;
     }
@@ -56,16 +56,16 @@ package
 
     public function moveRelative(xRel:int, yRel:int):void
     {
-      if(field.getTile(position.getX() + xRel, position.getY() + yRel).getType() == Tile.EMPTY)
+      if(field.getTile(position.getX() + xRel, position.getY() + yRel).getType() == TileType.EMPTY)
 	{
-	  position = position.add(xRel, yRel);
+	  position = position.add(new Point(xRel, yRel));
 	}
     }
 
     public function moveAbsolute(position:Point):void
     {
       if(field.getTile(position.getX(), position.getY()).getType()
-	 == Tile.EMPTY)
+	 == TileType.EMPTY)
 	{
 	  super.position = position;
 	}

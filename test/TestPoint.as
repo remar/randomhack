@@ -8,7 +8,7 @@ package
     public function canBeMoved():void
     {
       var p:Point = new Point(5, 8);
-      var p2:Point = p.add(3, 4);
+      var p2:Point = p.add(new Point(3, 4));
       Assert.assertEquals(8, p2.getX());
       Assert.assertEquals(12, p2.getY());
     }

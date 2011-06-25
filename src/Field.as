@@ -1,7 +1,5 @@
 package
 {
-  import org.flixel.FlxSprite;
-
   public class Field
   {
     private var width:int;
@@ -13,7 +11,7 @@ package
     {
       this.width = width;
       this.height = height;
-      clearField(Tile.BLOCK);
+      clearField(TileType.BLOCK);
     }
 
     public function getWidth():int
@@ -42,43 +40,52 @@ package
     public function setTile(x:int, y:int, type:int):void
     {
       if ((x < 0 || x >= width || y < 0 || y >= width) ||
-	  (type == Tile.EMPTY && (x == 0 || x == width - 1 ||
+	  (type == TileType.EMPTY && (x == 0 || x == width - 1 ||
 				  y == 0 || y == height - 1)))
 	{
 	  return;
 	}
 
-      field[x][y] = new Tile(type);
+      field[x][y] = [new TileType(type), null];
     }
 
-    public function getTile(x:int, y:int):Tile
+    public function getTile(x:int, y:int):TileType
       {
-	return field[x][y];
+	return field[x][y][0];
       }
 
-    public function draw(drawable:PixelDrawable):void
+    public function renderBackgroundTiles(graphicsFactory:GraphicsFactory):void
     {
       for(var y:int = 0;y < height;y++)
 	{
 	  for(var x:int = 0;x < width;x++)
 	    {
-	      drawBlock(drawable, x, y, field[x][y].getColor());
+	      field[x][y][1] = graphicsFactory.getTile(field[x][y][0],
+						       getSurrounding(x, y));
+	    }
+	}      
+    }
+
+    public function draw(drawable:Drawable):void
+    {
+      for(var y:int = 0;y < height;y++)
+	{
+	  for(var x:int = 0;x < width;x++)
+	    {
+	      var tile:Tile = field[x][y][1];
+	      drawable.drawTile(tile, new Point(x * tile.getWidth(),
+						y * tile.getHeight()));
 	    }
 	}
     }
 
-    private function drawBlock(drawable:PixelDrawable,
-			       blockX:int, blockY:int, color:int):void
+    private function getSurrounding(x:int, y:int):Surrounding
     {
-      for(var y:int = 0;y < 8;y++)
-	{
-	  for(var x:int = 0;x < 8;x++)
-	    {
-	      drawable.setPixel(blockX * 8 + x,
-				blockY * 8 + y,
-				color);
-	    }
-	}
+      var east:TileType = x + 1 < width ? field[x + 1][y][0] : new TileType(TileType.BLOCK);
+      var north:TileType = y - 1 >= 0 ? field[x][y - 1][0] : new TileType(TileType.BLOCK);
+      var west:TileType = x - 1 >= 0 ? field[x - 1][y][0] : new TileType(TileType.BLOCK);
+      var south:TileType = y + 1 < height ? field[x][y + 1][0] : new TileType(TileType.BLOCK);
+      return new Surrounding([east, north, west, south]);
     }
   }
 }

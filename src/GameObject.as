@@ -25,7 +25,7 @@ package
       return pos;
     }
 
-    public function draw(drawable:PixelDrawable):void
+    public function draw(drawable:Drawable):void
     {
       spriteInstance.draw(drawable);
     }

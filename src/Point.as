@@ -21,9 +21,9 @@ package
       return y;
     }
 
-    public function add(x:int, y:int):Point
+    public function add(p:Point):Point
     {
-      return new Point(this.x + x, this.y + y);
+      return new Point(this.x + p.getX(), this.y + p.getY());
     }
 
     public function multiple(multiplier:int):Point
