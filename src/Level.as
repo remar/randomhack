@@ -63,8 +63,8 @@ package
       var positions:StartPositions = fieldBuilder.generate(field);
       field.renderBackgroundTiles(graphicsFactory);
 
-      player = new Player(field, positions.start);
-      goal = new Goal(positions.goal);
+      player = new Player(graphicsFactory, field, positions.start);
+      goal = new Goal(graphicsFactory, positions.goal);
     }
   }
 }

@@ -4,12 +4,14 @@ package
 
   public class TestSpriteInstance
   {
-    private var drawable:PixelDrawable;
+    private var fakeScreen:PixelScreen;
+    private var drawable:Drawable;
 
     [Before]
     public function setUp():void
     {
-      drawable = new FakePixelDrawable(16, 16);
+      fakeScreen = new FakePixelScreen(256, 384);
+      drawable = new FlixelPixelGraphicsFactory(fakeScreen).getDrawable();
     }
 
     [Test]
@@ -26,10 +28,10 @@ package
       instance.setPosition(new Point(3, 5));
       instance.draw(drawable);
 
-      Assert.assertEquals(color, drawable.getPixel(3, 5));
-      Assert.assertEquals(0x000000, drawable.getPixel(4, 5));
-      Assert.assertEquals(color, drawable.getPixel(4, 6));
-      Assert.assertEquals(0x000000, drawable.getPixel(3, 6));
+      Assert.assertEquals(color, fakeScreen.getPixel(3, 5));
+      Assert.assertEquals(0x000000, fakeScreen.getPixel(4, 5));
+      Assert.assertEquals(color, fakeScreen.getPixel(4, 6));
+      Assert.assertEquals(0x000000, fakeScreen.getPixel(3, 6));
     }
   }
 }

@@ -7,20 +7,10 @@ package
     private var field:Field;
     private var sprite:Sprite;
 
-    public function Player(field:Field, position:Point):void
+    public function Player(gf:GraphicsFactory, field:Field, position:Point):void
     {
       this.field = field;
-      sprite = new PixelSprite(8, 8);
-      sprite.setData([0,0,0,1,1,1,0,0,
-		      0,0,0,1,1,1,0,1,
-		      1,1,1,0,1,0,0,1,
-		      1,1,1,1,1,1,1,1,
-		      1,1,1,0,1,0,0,1,
-		      0,1,0,0,1,0,0,0,
-		      0,0,0,1,0,1,0,0,
-		      0,0,1,1,0,1,1,0,
-		      0xcccccc]);
-      super(sprite);
+      super(gf, SpriteType.PLAYER);
       this.position = position;
     }
 

@@ -5,9 +5,9 @@ package
     private var pos:Point;
     private var spriteInstance:SpriteInstance;
 
-    public function GameObject(sprite:Sprite):void
+    public function GameObject(gf:GraphicsFactory, spriteType:int):void
     {
-      spriteInstance = new SpriteInstance(sprite);
+      spriteInstance = new SpriteInstance(gf.getSprite(spriteType));
     }
 
     public function update():void

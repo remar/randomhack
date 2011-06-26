@@ -4,12 +4,14 @@ package
 
   public class TestSprite
   {
-    private var pixelDrawable:PixelDrawable;
+    private var fakeScreen:PixelScreen;
+    private var pixelDrawable:Drawable;
 
     [Before]
     public function setUp():void
     {
-      pixelDrawable = new FakePixelDrawable(16, 16);
+      fakeScreen = new FakePixelScreen(256, 384);
+      pixelDrawable = new FlixelPixelGraphicsFactory(fakeScreen).getDrawable();
     }
 
     [Test]
@@ -24,10 +26,10 @@ package
 
       pixelDrawable.drawSprite(sprite, new Point(0, 0));
 
-      Assert.assertEquals(color, pixelDrawable.getPixel(0, 0));
-      Assert.assertEquals(0x000000, pixelDrawable.getPixel(1, 0));
-      Assert.assertEquals(color, pixelDrawable.getPixel(1, 1));
-      Assert.assertEquals(0x000000, pixelDrawable.getPixel(0, 1));
+      Assert.assertEquals(color, fakeScreen.getPixel(0, 0));
+      Assert.assertEquals(0x000000, fakeScreen.getPixel(1, 0));
+      Assert.assertEquals(color, fakeScreen.getPixel(1, 1));
+      Assert.assertEquals(0x000000, fakeScreen.getPixel(0, 1));
     }
   }
 }

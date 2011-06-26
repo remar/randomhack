@@ -12,6 +12,39 @@ package
     private static const BLOCK_COLOR:int = 0xff5050;
     private static const WATER_COLOR:int = 0x0000ff;
 
+    private static const SPRITE_DATA:Array =
+      [
+       [0,0,0,0,0,0,0,0, // EMPTY
+	0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,
+	0,0,0,0,0,0,0,0,
+	0],
+       [0,0,0,1,1,1,0,0, // PLAYER
+	0,0,0,1,1,1,0,1,
+	1,1,1,0,1,0,0,1,
+	1,1,1,1,1,1,1,1,
+	1,1,1,0,1,0,0,1,
+	0,1,0,0,1,0,0,0,
+	0,0,0,1,0,1,0,0,
+	0,0,1,1,0,1,1,0,
+	0xcccccc],
+       [0,0,0,0,1,1,1,1, // GOAL
+	0,0,0,0,1,1,1,1,
+	0,0,1,1,1,0,0,1,
+	0,0,1,1,1,0,0,1,
+	1,1,1,0,0,0,0,1,
+	1,1,1,0,0,0,0,1,
+	1,0,0,0,0,0,0,1,
+	1,1,1,1,1,1,1,1,
+	0xcccccc]
+      ];
+
+    private var sprites:Array = [];
+
     public function FlixelPixelGraphicsFactory(screen:PixelScreen):void
     {
       this.screen = screen;
@@ -22,9 +55,16 @@ package
       return new FlixelPixelDrawable(screen);
     }
 
-    public function getSprite(type:SpriteType):Sprite
+    public function getSprite(spriteType:int):Sprite
     {
-      return null;
+      if (!sprites[spriteType])
+	{
+	  var sprite:Sprite = new PixelSprite(8, 8);
+	  sprite.setData(SPRITE_DATA[spriteType]);
+	  sprites[spriteType] = sprite;
+	}
+
+      return sprites[spriteType];
     }
 
     public function getTile(type:TileType, surrounding:Surrounding):Tile

@@ -22,7 +22,9 @@ package
     [Test]
     public function shouldBeAbleToMove():void
     {
-      var player:Player = new Player(field, new Point(3, 3));
+      var fakeScreen:PixelScreen = new FakePixelScreen(256, 384);
+      var gf:GraphicsFactory = new FlixelPixelGraphicsFactory(fakeScreen);
+      var player:Player = new Player(gf, field, new Point(3, 3));
       player.moveRelative(1, 0);
       Assert.assertEquals(4, player.x);
       Assert.assertEquals(3, player.y);
