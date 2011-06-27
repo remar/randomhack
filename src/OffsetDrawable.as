@@ -3,17 +3,12 @@ package
   public class OffsetDrawable implements Drawable
   {
     private var parentDrawable:Drawable;
-    private var xOffset:int;
-    private var yOffset:int;
     private var offset:Point;
 
-    public function OffsetDrawable(parentDrawable:Drawable,
-				   xOffset:int, yOffset:int):void
+    public function OffsetDrawable(parentDrawable:Drawable, offset:Point):void
     {
       this.parentDrawable = parentDrawable;
-      this.xOffset = xOffset;
-      this.yOffset = yOffset;
-      this.offset = new Point(xOffset, yOffset);
+      this.offset = offset;
     }
 
     public function drawSprite(sprite:Sprite, position:Point):void

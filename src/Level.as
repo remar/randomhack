@@ -5,8 +5,15 @@ package
   public class Level extends FlxState
   {
     // Offset when drawing on the screen
-    public static const X_OFFSET:int = 0;
-    public static const Y_OFFSET:int = 192;
+    private static const FIELD_OFFSET:Point = new Point(0, 192);
+
+    private static const FIELD_WIDTH:int = 32;
+    private static const FIELD_HEIGHT:int = 24;
+    private static const TILE_WIDTH:int = 8;
+    private static const TILE_HEIGHT:int = 8;
+
+    private static const FIELD_SIZE:Point = new Point(FIELD_WIDTH * TILE_WIDTH,
+						      FIELD_HEIGHT * TILE_HEIGHT);
 
     private var field:Field;
     private var drawable:Drawable;
@@ -14,19 +21,24 @@ package
     private var numberGenerator:NumberGenerator;
 
     private var graphicsFactory:GraphicsFactory;
+    private var inputReader:InputReader;
+    private var fieldInputHandler:FieldInputHandler;
 
     private var player:Player;
     private var goal:Goal;
 
     override public function create():void
     {
+      inputReader = new FlixelInputReader();
+      fieldInputHandler = new FieldInputHandler(TILE_WIDTH, TILE_HEIGHT);
+
       graphicsFactory = new FlixelPixelGraphicsFactory(new FlixelPixelScreen(screen));
 
       drawable = graphicsFactory.getDrawable();
-      fieldDrawable = new OffsetDrawable(drawable, X_OFFSET, Y_OFFSET);
+      fieldDrawable = new OffsetDrawable(drawable, FIELD_OFFSET);
 	    
       numberGenerator = new RandomNumberGenerator();
-      field = new Field(32, 24);
+      field = new Field(FIELD_WIDTH, FIELD_HEIGHT);
 
       generateLevel();
 
@@ -35,6 +47,8 @@ package
 
     override public function update():void
     {
+      handleInput();
+
       player.update();
 
       if(goal.position.equals(player.position))
@@ -54,6 +68,20 @@ package
       goal.draw(fieldDrawable);
     }
 
+    private function handleInput():void
+    {
+      if(inputReader.mousePressed())
+	{
+	  var mousePos:Point = inputReader.mousePosition();
+	  if(mousePos.withinBounds(FIELD_OFFSET, FIELD_OFFSET.add(FIELD_SIZE)))
+	    {
+	      mousePos = mousePos.subtract(FIELD_OFFSET);
+	      var delta:Point = fieldInputHandler.mousePressRelativeToPlayer(mousePos, player.position);
+	      player.moveRelative(delta.getX(), delta.getY());
+	    }
+	}
+    }
+    
     private function generateLevel():void
     {
       field.clearField(TileType.BLOCK);

@@ -16,22 +16,6 @@ package
 
     override public function update():void
     {
-      if(FlxG.keys.justPressed("LEFT"))
-	{
-	  moveRelative(-1, 0);
-	}
-      else if(FlxG.keys.justPressed("RIGHT"))
-	{
-	  moveRelative(+1, 0);
-	}      
-      if(FlxG.keys.justPressed("UP"))
-	{
-	  moveRelative(0, -1);
-	}
-      else if(FlxG.keys.justPressed("DOWN"))
-	{
-	  moveRelative(0, +1);
-	}      
     }
 
     public function get x():int

@@ -26,6 +26,11 @@ package
       return new Point(this.x + p.getX(), this.y + p.getY());
     }
 
+    public function subtract(p:Point):Point
+    {
+      return new Point(this.x - p.getX(), this.y - p.getY());
+    }
+
     public function multiple(multiplier:int):Point
     {
       return new Point(x * multiplier, y * multiplier);
@@ -34,6 +39,17 @@ package
     public function equals(other:Point):Boolean
     {
       return x == other.getX() && y == other.getY();
+    }
+
+    public function withinBounds(upperLeft:Point, lowerRight:Point):Boolean
+    {
+      return x >= upperLeft.getX() && y >= upperLeft.getY() &&
+	x < lowerRight.getX() && y < lowerRight.getY();
+    }
+
+    public function toString():String
+    {
+      return "(" + x + "," + y + ")";
     }
   }
 }

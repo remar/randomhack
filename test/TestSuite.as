@@ -12,5 +12,6 @@ package
       public var testPoint:TestPoint;
       public var testSpriteInstance:TestSpriteInstance;
       public var testTile:TestTile;
+      public var testFieldInputHandler:TestFieldInputHandler;
     }
 }
