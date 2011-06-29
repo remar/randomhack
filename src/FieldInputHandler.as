@@ -4,6 +4,7 @@ package
   {
     private var tileWidth:int;
     private var tileHeight:int;
+
     public function FieldInputHandler(tileWidth:int, tileHeight:int):void
     {
       this.tileWidth = tileWidth;
@@ -16,8 +17,8 @@ package
       if(mousePos.getX() < 0 || mousePos.getY() < 0)
 	return new Point(0, 0);
 
-      var xdiff:int = mousePos.getX()/tileWidth - playerPos.getX();
-      var ydiff:int = mousePos.getY()/tileHeight - playerPos.getY();
+      var xdiff:int = int(mousePos.getX()/tileWidth) - playerPos.getX();
+      var ydiff:int = int(mousePos.getY()/tileHeight) - playerPos.getY();
 
       var angle:Number = Math.atan(-ydiff/Math.abs(xdiff));
 
