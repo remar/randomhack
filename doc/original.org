@@ -1,0 +1,16 @@
+* Original randomhack source
+** main.cpp
+   Includes all the global definitions, item and creature structs, and
+   the main game loop. Also #includes all the other files with source
+   definitions.
+*** int main(void)
+    Very simple game loop with these function calls:
+    getInput()
+    gameLogic()
+    draw()
+** sprites.h
+** draw.h
+** gamelogic.h
+** newlevel.h
+** move.h
+** getinput.h
