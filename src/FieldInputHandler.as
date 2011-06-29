@@ -4,7 +4,6 @@ package
   {
     private var tileWidth:int;
     private var tileHeight:int;
-
     public function FieldInputHandler(tileWidth:int, tileHeight:int):void
     {
       this.tileWidth = tileWidth;
@@ -17,20 +16,33 @@ package
       if(mousePos.getX() < 0 || mousePos.getY() < 0)
 	return new Point(0, 0);
 
-      // if it's further along one axis than the other, move in that
-      // direcion, otherwise the other
-
       var xdiff:int = mousePos.getX()/tileWidth - playerPos.getX();
       var ydiff:int = mousePos.getY()/tileHeight - playerPos.getY();
 
-      if(Math.abs(xdiff) > Math.abs(ydiff))
+      var angle:Number = Math.atan(-ydiff/Math.abs(xdiff));
+
+      var xComponent:int = 0;
+      var yComponent:int = 0;
+
+      if(angle > -Math.PI/3 && angle < Math.PI/3)
 	{
-	  return new Point(xdiff / Math.abs(xdiff), 0);
+	  xComponent = sign(xdiff);
 	}
+ 
+      if(angle > Math.PI/6 || angle < -Math.PI/6)
+	{
+	  yComponent = sign(ydiff);
+	}
+
+      return new Point(xComponent, yComponent);
+    }
+
+    public function sign(x:int):int
+    {
+      if (x < 0)
+	return -1;
       else
-	{
-	  return new Point(0, ydiff / Math.abs(ydiff));	  
-	}
+	return 1;
     }
   }
 }

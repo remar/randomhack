@@ -20,7 +20,7 @@ package
       var mousePos:Point = new Point(6*8 + 4, 5*8);
       var p:Point = fieldInputHandler.mousePressRelativeToPlayer(mousePos,
 								 playerPos);
-      Assert.assertTrue(p.equals(new Point(1, 0)));
+      assertCorrectValue(p, new Point(1, 0));
     }
 
     [Test]
@@ -29,7 +29,7 @@ package
       var mousePos:Point = new Point(2*8, 5*8);
       var p:Point = fieldInputHandler.mousePressRelativeToPlayer(mousePos,
 								 playerPos);
-      Assert.assertTrue("Result: " + p.toString(), p.equals(new Point(-1, 0)));
+      assertCorrectValue(p, new Point(-1, 0));
     }
 
     [Test]
@@ -38,7 +38,7 @@ package
       var mousePos:Point = new Point(5*8, 2*8);
       var p:Point = fieldInputHandler.mousePressRelativeToPlayer(mousePos,
 								 playerPos);
-      Assert.assertTrue(p.equals(new Point(0, -1)));
+      assertCorrectValue(p, new Point(0, -1));
     }
 
     [Test]
@@ -47,7 +47,23 @@ package
       var mousePos:Point = new Point(5*8, 8*8);
       var p:Point = fieldInputHandler.mousePressRelativeToPlayer(mousePos,
 								 playerPos);
-      Assert.assertTrue(p.equals(new Point(0, 1)));
+      assertCorrectValue(p, new Point(0, 1));
+    }
+
+    [Test]
+    public function shouldReturnNorthEastWhenPressingAboveAndToTheRightOfPlayer():void
+    {
+      var mousePos:Point = new Point(8*8, 2*8);
+      var p:Point = fieldInputHandler.mousePressRelativeToPlayer(mousePos,
+								 playerPos);
+      assertCorrectValue(p, new Point(1, -1));
+    }
+
+    private function assertCorrectValue(result:Point, expected:Point):void
+    {
+      var s:String = "Got " + result.toString() +
+	", expected " + expected.toString();
+      Assert.assertTrue(s, result.equals(expected));
     }
   }
 }
