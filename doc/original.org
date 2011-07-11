@@ -20,10 +20,29 @@
     Utility function to set a value in VRAM_A. Doesn't seem to be used
     in the code. Guards against addresses >= 49152.
 *** void drawLevel(int type, int color, int expand, int wobbley) (22)
-*** void drawSprite(short int sprite[], short int xpos, short int ypos)
-*** void drawThings()
-*** void draw()
-** gamelogic.h
+    Draws blocks in the level, with some flags for exanding and
+    wobblying randomly.
+*** void drawSprite(short int sprite[], short int xpos, short int ypos) (17)
+    Loops through the 8x8 sprite, drawing the color found at index 64
+    if a pixel should be set, otherwise color 0.
+*** void drawThings() (102)
+    Draws items, creatures, and the player. Has special code for
+    hardcore mode (for line-of-sight and FOW). Draws player sprite
+    last, so I assume that it's drawn over any other object.
+*** void draw() (73)
+    Calls drawThings if redraw is true. Redraws the console.
+** gamelogic.h (2123)
+*** void pushText(const char *pushstring)
+*** void createCreature(int expos, int eypos, int specific)
+*** void createSword(short int expos, short int eypos)
+*** void createItem(short int expos, short int eypos, short int type)
+*** void createNpc(short int expos, short int eypos)
+*** void createPlayerName()
+*** void resetGame()
+*** void gameLogic()
+*** void killCreature(short int expos, short int eypos)
+*** void crushItem(short int expos, short int eypos)
+*** void scrollQuotes()
 ** newlevel.h
 ** move.h
 ** getinput.h
