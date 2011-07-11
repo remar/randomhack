@@ -1,15 +1,28 @@
-* Original randomhack source
-** main.cpp
+* Original randomhack source (6471)
+** main.c (182)
    Includes all the global definitions, item and creature structs, and
    the main game loop. Also #includes all the other files with source
    definitions.
-*** int main(void)
+*** int main(void) (23)
     Very simple game loop with these function calls:
     getInput()
     gameLogic()
     draw()
-** sprites.h
-** draw.h
+** sprites.h (813)
+   Holds the data for all the sprites used in the game. Represented as
+   arrays of short int, each sprite consists of 64 (8*8) pixels and
+   one color. No functions are defined in this file.
+** draw.h (347)
+*** bool lineOfSight(int x1, int y1, int x2, int y2) (95)
+    Bresenhams used to determine line of sight. Returns false if there
+    are any intervening block(s), true otherwise.
+*** inline void drawPixel(int position,int color) (7)
+    Utility function to set a value in VRAM_A. Doesn't seem to be used
+    in the code. Guards against addresses >= 49152.
+*** void drawLevel(int type, int color, int expand, int wobbley) (22)
+*** void drawSprite(short int sprite[], short int xpos, short int ypos)
+*** void drawThings()
+*** void draw()
 ** gamelogic.h
 ** newlevel.h
 ** move.h
