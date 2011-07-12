@@ -43,10 +43,16 @@
     Puts a random sword at expos, eypos. Sword power is determined by
     level.
 *** void createItem(short int expos, short int eypos, short int type) (554)
-*** void createNpc(short int expos, short int eypos)
-*** void createPlayerName()
-*** void resetGame()
-*** void gameLogic()
+    Creates specified item at expos, eypos. Modifies itemmatrix.
+*** void createNpc(short int expos, short int eypos) (50)
+    Creates a shop keeper at expos, eypos. Modifes creaturematrix.
+*** void createPlayerName() (48)
+    Sets playername, playergender, and playerattract.
+*** void resetGame() (53)
+    Nullifies values and displays starting message in the console.
+*** void gameLogic() (57)
+    Check for player hp limit and player death. Revive if player has
+    found an ankh.
 *** void killCreature(short int expos, short int eypos)
 *** void crushItem(short int expos, short int eypos)
 *** void scrollQuotes()
