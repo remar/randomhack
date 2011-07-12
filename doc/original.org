@@ -32,10 +32,17 @@
 *** void draw() (73)
     Calls drawThings if redraw is true. Redraws the console.
 ** gamelogic.h (2123)
-*** void pushText(const char *pushstring)
-*** void createCreature(int expos, int eypos, int specific)
-*** void createSword(short int expos, short int eypos)
-*** void createItem(short int expos, short int eypos, short int type)
+*** void pushText(const char *pushstring) (16)
+    Adds a line of text to the console, and moves the previous lines
+    upward. There are 10 lines of text, and each line has 32
+    characters.
+*** void createCreature(int expos, int eypos, int specific) (771)
+    Creates a random creature at expos, eypos. If specific is > 0, the
+    creature type is specified by specific instead.
+*** void createSword(short int expos, short int eypos) (42)
+    Puts a random sword at expos, eypos. Sword power is determined by
+    level.
+*** void createItem(short int expos, short int eypos, short int type) (554)
 *** void createNpc(short int expos, short int eypos)
 *** void createPlayerName()
 *** void resetGame()
