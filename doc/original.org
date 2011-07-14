@@ -100,4 +100,89 @@
     effects of poison and burn. Douse flame and ember items. Change
     sprite depending on if player is burning, poisoned, or critically
     low health.
-** getinput.h
+** getinput.h (1393)
+*** void useItem() (992)
+    Use item that is lying on the ground or found in inventory. All
+    the code for using various items. After item is used, perform warp.
+**** Rubble
+     Crush item below player
+**** Sweet berries
+     Recover hp and weaken poison.
+**** Sweet jam
+     Seems to be identical to using sweet berries, except that it says
+     "You eat the sweet jam" instead of "You eat the sweet berries".
+**** Bitter berries
+     Increase max hp.
+**** Bitter jam
+     Increase player power and cure player poison.
+**** Empty bottle
+     Scoop up various things, SWEETJAM, BITTERJAM, WATERPOOL, DUST,
+     BLOOD, surrounding WATER tile, SWEETBERRIES, BITTERBERRIES.
+**** Sweet berry bottle
+     Essentially the same as using sweet berries. If charges becomes
+     0, the bottle turns into an empty bottle again.
+**** Sweet jam bottle
+     See sweet berry bottle.
+**** Bitter berry bottle
+     See sweet berry bottle.
+**** Bitter jam bottle
+     See sweet berry bottle.
+**** Water bottle
+     Douse flames and harm waterweak creatures.
+**** Dust bottle
+     Douse flames.
+**** Blood bottle
+     Poor blood on the ground.
+**** Torch
+     Swing the torch around. Evaporate water tiles. Harm fireweak
+     creatures. Light sticks all around and in inventory. See if the
+     torch goes out (charges == 0).
+**** Stick
+     Use while staying on top of a torch to light the stick.
+**** Pick
+     Remove BLOCK tiles, turning them into rubble items (or maybe gold
+     if we're in the secret level). Check if the pick wears out.
+**** Amulet
+***** Warp amulet
+      Sets usewarp to true. A big block of outcommented code.
+***** Thunder amulet
+      Give damage to enemies all around.
+***** Phase amulet
+      Warp to next level.
+***** Life amulet
+      Recover maxhp/2 hp.
+**** Bluefly
+     Convert shopkeepers and items. Crush walls and create embers,
+     dust, and rubble. Evaporate waters. Create flames. Damage all
+     enemies.
+
+     So I guess that this is some kind of bomb? :)
+**** Scroll
+     Simply calls scrollQuotes() and displays a quote.
+**** Key
+     Use on top of a chest to open it, revealing its contents.
+**** Chest
+     Explain that a key is needed.
+**** Incendiary device
+     Explain that this device should be dropped so enemies can walk
+     over it.
+**** Identifier
+     Reveal details about things in the inventory.
+**** Store item
+     Explain that you need to buy it first.
+*** void getInput() (392)
+    Checks for input and contains alot of game logic code.
+**** Start game
+**** Show control info
+**** Select item (up, down)
+**** Pick up item / swap weapon
+     Modify store item into real item if player can afford it.
+**** Drop item
+**** Use item
+**** Move
+**** Look
+     Check that it is within lookdistance.
+***** Look at player
+***** Look at a creature
+***** Look at an item
+***** Look at level
