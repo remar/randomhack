@@ -72,5 +72,32 @@
     layout, placing all items and creatures, and also special code for
     final level and NPC (shop keeper) level. Contains code for
     rendering the level as well.
-** move.h
+** move.h (848)
+*** void moveCreature(short int expos, short int eypos, bool action) (439)
+    Move a creature that is positioned at expos, eypos. Action
+    determines what the creature can do, action == false: move, action
+    == true: attack. Makes ranged attacks when moving. When moving,
+    check where the player is, if he is within a specified range, move
+    towards the player. There's a check for LOS here as
+    well. Essentially uses the same code as when clicking in the field
+    and determining where the player should move/perform action, so
+    should be able to reuse that code here. Some special code for
+    wallclinging creatures. If flaming, light things and spawn flame
+    items. Crush items if big. Tread on incendiary devices (GO
+    BOOM). Crush environment when walking.
+*** void moveCreatures(bool action) (11)
+    Goes through the 32x24 creaturematrix and calls moveCreature on
+    each.  Called from movePlayer, first with action == true (attack)
+    and then with action == false (move).
+*** void movePlayer(int xdif, int ydif) (385)
+    Take action in the xdif, ydif direction. If an enemy is at
+    playerx+xdif, playery+ydif, then attack, else move. If creature at
+    position moving to is NPC, talk to the NPC. Check for fear,
+    terror, insanity. When moving, automatically pick up gold when
+    stepped over. If moving into a flame, player catches on fire (and
+    sticks). Check for reaching goal and secretgoal. Perform
+    attack. Unfreeze creatures before calling moveCreatures. Apply
+    effects of poison and burn. Douse flame and ember items. Change
+    sprite depending on if player is burning, poisoned, or critically
+    low health.
 ** getinput.h
