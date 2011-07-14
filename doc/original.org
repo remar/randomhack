@@ -53,9 +53,17 @@
 *** void gameLogic() (57)
     Check for player hp limit and player death. Revive if player has
     found an ankh.
-*** void killCreature(short int expos, short int eypos)
-*** void crushItem(short int expos, short int eypos)
-*** void scrollQuotes()
+*** void killCreature(short int expos, short int eypos) (91)
+    Remove creature and create blood (much blood if gib and
+    playeroption is set to true). Also contains code for killing the
+    final boss.
+*** void crushItem(short int expos, short int eypos) (78)
+    Code for crushing various things; shop items, sweet berries,
+    bitter berries, HID. Other items can be crushed to dust. Contains
+    code for summoning create #42 (?).
+*** void scrollQuotes() (319)
+    Contains quotes found on all the scrolls. If we're on the final
+    level, display quote #23.
 ** newlevel.h
 ** move.h
 ** getinput.h
