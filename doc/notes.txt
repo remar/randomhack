@@ -28,3 +28,11 @@ Base class for objects in the game. Provides methods for updating the
 objects state (update()), for setting and getting its position, and
 for drawing the object in a Drawable.
 
+. Enemy
+Needs to know about the playing field, player position, and other
+creatures to be able to perform move and attack. Probably provide
+these in the update method. Or... have one attack method and one move
+method, because that's how it works in the original code. So first,
+all enemies attack, and then all enemies move. To perform attack, only
+player position has to be known. To perform move, we need to know
+about the other stuff as well.

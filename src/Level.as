@@ -26,6 +26,7 @@ package
 
     private var player:Player;
     private var goal:Goal;
+    private var enemy:Enemy;
 
     override public function create():void
     {
@@ -46,10 +47,16 @@ package
     }
 
     override public function update():void
+
     {
       handleInput();
 
       player.update();
+
+      if(player.hasPerformedAction())
+	  {
+	      enemy.move(field, player.position, []);
+	  }
 
       if(goal.position.equals(player.position))
 	{
@@ -66,6 +73,7 @@ package
       field.draw(fieldDrawable);
       player.draw(fieldDrawable);
       goal.draw(fieldDrawable);
+      enemy.draw(fieldDrawable);
     }
 
     private function handleInput():void
@@ -92,7 +100,9 @@ package
       field.renderBackgroundTiles(graphicsFactory);
 
       player = new Player(graphicsFactory, field, positions.start);
-      goal = new Goal(graphicsFactory, positions.goal);
+      goal = new Goal(graphicsFactory, positions.goal);	
+      enemy = new Bat(graphicsFactory, numberGenerator);
+      enemy.position = new Point(3, 4);
     }
   }
 }
