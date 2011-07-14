@@ -64,7 +64,7 @@
 *** void scrollQuotes() (319)
     Contains quotes found on all the scrolls. If we're on the final
     level, display quote #23.
-** newlevel.h /771)
+** newlevel.h (771)
 *** void cutLine(int x1, int y1, int x2, int y2, int tunnelsize) (55)
     Uses Bresenhams to cut a line with the given width in the level.
 *** void newLevel() (707)
