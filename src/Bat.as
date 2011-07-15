@@ -7,11 +7,7 @@ package
 	    super(gf, SpriteType.BAT, numberGenerator);
 
 	    lookDistance = 4;
-	}
-
-	override public function attack(player:Player):void
-	{
-	    
+	    speed = 5;
 	}
     }
 }

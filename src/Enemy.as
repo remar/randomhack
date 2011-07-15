@@ -3,7 +3,9 @@ package
     public class Enemy extends GameObject
     {
 	private var numberGenerator:NumberGenerator;
+
 	protected var lookDistance:int;
+	protected var speed:int;
 
 	public function Enemy(gf:GraphicsFactory, spriteType:int,
 			      numberGenerator:NumberGenerator):void
@@ -12,13 +14,14 @@ package
 	    this.numberGenerator = numberGenerator;
 
 	    lookDistance = 5;
+	    speed = 5;
 	}
 
 	public function move(field:Field, playerPos:Point, creatures:Array):void
 	{
 	    var distance:int = position.distanceTo(playerPos);
 
-	    if(distance == 1)
+	    if(distance == 1 || numberGenerator.getIntInRange(1, 10) > speed)
 		return;
 
 	    if(distance <= lookDistance)

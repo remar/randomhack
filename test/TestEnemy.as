@@ -19,13 +19,12 @@ package
 
 	    field = new Field(32, 24);
 	    field.clearField(TileType.EMPTY);
-
-	    ng.addInts([-1, -1]);
 	}
 
 	[Test]
 	public function shouldRoamIfPlayerIsTooFarAway():void
 	{
+	    ng.addInts([1, -1, -1]);
 	    enemy.position = new Point(3, 3);
 	    enemy.move(field, new Point(25, 15), []);
 
@@ -35,6 +34,7 @@ package
 	[Test]
 	public function shouldMoveTowardsPlayerWhenWithinLookRange():void
 	{
+	    ng.addInts([1, -1, -1]);
 	    enemy.position = new Point(3, 3);
 	    enemy.move(field, new Point(5, 3), []);
 
@@ -44,8 +44,20 @@ package
 	[Test]
 	public function shouldNotMoveIfAdjacentToPlayer():void
 	{
+	    ng.addInts([1, -1, -1]);
 	    enemy.position = new Point(3, 3);
 	    enemy.move(field, new Point(4, 3), []);
+
+	    assertCorrectPosition(new Point(3, 3), enemy.position);
+	}
+
+	[Test]
+	public function shouldNotMoveIfDieRollIsHighterThanSpeed():void
+	{
+	    ng.addInts([10, -1, -1]);
+
+	    enemy.position = new Point(3, 3);
+	    enemy.move(field, new Point(5, 3), []);
 
 	    assertCorrectPosition(new Point(3, 3), enemy.position);
 	}
