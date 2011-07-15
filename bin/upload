@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd src
+make
+scp Randomhack.swf remar@ftp.scorpionshops.com:~/remar.se/www/andreas/.
+cd ..
