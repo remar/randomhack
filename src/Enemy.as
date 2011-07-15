@@ -16,7 +16,12 @@ package
 
 	public function move(field:Field, playerPos:Point, creatures:Array):void
 	{
-	    if(position.distanceTo(playerPos) <= lookDistance)
+	    var distance:int = position.distanceTo(playerPos);
+
+	    if(distance == 1)
+		return;
+
+	    if(distance <= lookDistance)
 		moveRelative(field.getDirection(position, playerPos), field);
 	    else
 		roam(field);

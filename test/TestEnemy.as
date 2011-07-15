@@ -19,13 +19,13 @@ package
 
 	    field = new Field(32, 24);
 	    field.clearField(TileType.EMPTY);
+
+	    ng.addInts([-1, -1]);
 	}
 
 	[Test]
 	public function shouldRoamIfPlayerIsTooFarAway():void
 	{
-	    ng.addInts([-1, -1]);
-
 	    enemy.position = new Point(3, 3);
 	    enemy.move(field, new Point(25, 15), []);
 
@@ -35,15 +35,20 @@ package
 	[Test]
 	public function shouldMoveTowardsPlayerWhenWithinLookRange():void
 	{
-	    ng.addInts([-1, -1]);
-
 	    enemy.position = new Point(3, 3);
 	    enemy.move(field, new Point(5, 3), []);
 
 	    assertCorrectPosition(new Point(4, 3), enemy.position);
 	}
 
-	// should not move if player is next to me
+	[Test]
+	public function shouldNotMoveIfAdjacentToPlayer():void
+	{
+	    enemy.position = new Point(3, 3);
+	    enemy.move(field, new Point(4, 3), []);
+
+	    assertCorrectPosition(new Point(3, 3), enemy.position);
+	}
 
 	private function assertCorrectPosition(expected:Point, actual:Point):void
 	{
