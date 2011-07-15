@@ -49,7 +49,7 @@ package
       
     public function distanceTo(other:Point):int
     {
-	return Math.abs(x - other.getX()) + Math.abs(y - other.getY());
+	return Math.max(Math.abs(x - other.getX()), Math.abs(y - other.getY()));
     }
 
     public function toString():String
