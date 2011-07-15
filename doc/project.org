@@ -1,0 +1,33 @@
+* Randomhack
+** TODO Field
+*** TODO Tile rendering
+    Should randomly make jagged edges in cave levels.
+*** TODO Ruins
+** TODO Player
+*** TODO Attacking
+*** TODO Talking
+*** TODO Picking up stuff
+*** TODO Dropping stuff
+** TODO Items
+*** TODO Sword
+    Kind of special. Can only carry one sword. No other weapons are
+    available.
+*** TODO Stick
+*** TODO Torch
+*** TODO Rubble
+*** TODO Bottle
+** TODO General enemy stuff
+*** TODO Movement
+    Right now an enemy moves every time that it is its turn, but
+    originally it only moves if it's lucky (d10 <= speed).
+*** TODO Attacking
+*** TODO Line of sight
+** TODO Enemies
+*** TODO Bat
+** TODO Info screen
+   In the original, all info and items where displayed as text in a
+   console view. This should be made more general so that how the
+   information is displayed can be changed at a later point. I'll
+   implement a console anyway to display the stuff, to make this
+   reimplementation look just like the "old school" original.
+*** TODO Console
