@@ -79,6 +79,37 @@ package
 	}
     }
 
+    public function getDirection(p1:Point, p2:Point):Point
+    {
+	var xdiff:int = p2.getX() - p1.getX();
+	var ydiff:int = p2.getY() - p1.getY();
+
+	var angle:Number = Math.atan(-ydiff/Math.abs(xdiff));
+
+	var xComponent:int = 0;
+	var yComponent:int = 0;
+
+	if(angle > -Math.PI/3 && angle < Math.PI/3)
+	    {
+		xComponent = sign(xdiff);
+	    }
+ 
+	if(angle > Math.PI/6 || angle < -Math.PI/6)
+	    {
+		yComponent = sign(ydiff);
+	    }
+
+	return new Point(xComponent, yComponent);
+    }
+
+    private function sign(x:int):int
+    {
+      if (x < 0)
+	return -1;
+      else
+	return 1;
+    }
+
     private function getSurrounding(x:int, y:int):Surrounding
     {
       var east:TileType = x + 1 < width ? field[x + 1][y][0] : new TileType(TileType.BLOCK);

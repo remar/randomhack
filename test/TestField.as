@@ -108,5 +108,12 @@ package
       field.setTile(0, 5, TileType.WATER);
       Assert.assertEquals(TileType.WATER, field.getTile(0, 5).getType());
     }
+
+    [Test]
+    public function shouldGiveCorrectDeltaWhenPointIsToTheLeft():void
+      {
+	  var direction:Point = field.getDirection(new Point(6, 8), new Point(3, 8));
+	  Assert.assertTrue(direction.equals(new Point(-1, 0)));
+      }
   }
 }

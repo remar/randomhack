@@ -22,7 +22,6 @@ package
 
     private var graphicsFactory:GraphicsFactory;
     private var inputReader:InputReader;
-    private var fieldInputHandler:FieldInputHandler;
 
     private var player:Player;
     private var goal:Goal;
@@ -31,7 +30,6 @@ package
     override public function create():void
     {
       inputReader = new FlixelInputReader();
-      fieldInputHandler = new FieldInputHandler(TILE_WIDTH, TILE_HEIGHT);
 
       graphicsFactory = new FlixelPixelGraphicsFactory(new FlixelPixelScreen(screen));
 
@@ -83,8 +81,7 @@ package
 	  var mousePos:Point = inputReader.mousePosition();
 	  if(mousePos.withinBounds(FIELD_OFFSET, FIELD_OFFSET.add(FIELD_SIZE)))
 	    {
-	      mousePos = mousePos.subtract(FIELD_OFFSET);
-	      var delta:Point = fieldInputHandler.mousePressRelativeToPlayer(mousePos, player.position);
+	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
 	      player.moveRelative(delta.getX(), delta.getY());
 	    }
 	}
@@ -103,6 +100,13 @@ package
       goal = new Goal(graphicsFactory, positions.goal);	
       enemy = new Bat(graphicsFactory, numberGenerator);
       enemy.position = new Point(3, 4);
+    }
+
+    private function getClickedTile(mousePosition:Point):Point
+    {
+	mousePosition = mousePosition.subtract(FIELD_OFFSET);
+	return new Point(int(mousePosition.getX()/TILE_WIDTH),
+			 int(mousePosition.getY()/TILE_HEIGHT));	
     }
   }
 }

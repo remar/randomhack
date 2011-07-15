@@ -32,5 +32,14 @@ package
       Assert.assertFalse(p1.equals(p2));
       Assert.assertTrue(p1.equals(p3));
     }
+
+    [Test]
+    public function distanceBetweenTwoAdjacentPointsIsOne():void
+      {
+	  var p1:Point = new Point(4, 7);
+	  var p2:Point = new Point(5, 7);
+
+	  Assert.assertEquals(1, p1.distanceTo(p2));
+      }
   }
 }

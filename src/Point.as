@@ -46,6 +46,11 @@ package
       return x >= upperLeft.getX() && y >= upperLeft.getY() &&
 	x < lowerRight.getX() && y < lowerRight.getY();
     }
+      
+    public function distanceTo(other:Point):int
+    {
+	return Math.abs(x - other.getX()) + Math.abs(y - other.getY());
+    }
 
     public function toString():String
     {
