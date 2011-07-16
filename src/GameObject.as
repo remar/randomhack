@@ -29,5 +29,14 @@ package
     {
       spriteInstance.draw(drawable);
     }
+
+    public function moveRelative(field:Field, delta:Point):void
+      {
+	  if(field.getTile(position.getX() + delta.getX(),
+			   position.getY() + delta.getY()).getType() == TileType.EMPTY)
+	      {
+		  position = position.add(delta);
+	      }
+      }
   }
 }

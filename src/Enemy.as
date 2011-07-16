@@ -25,7 +25,7 @@ package
 		return;
 
 	    if(distance <= lookDistance)
-		moveRelative(field.getDirection(position, playerPos), field);
+		moveRelative(field, field.getDirection(position, playerPos));
 	    else
 		roam(field);
 	}
@@ -40,14 +40,7 @@ package
 	    var xdiff:int = numberGenerator.getIntInRange(-1, 1);
 	    var ydiff:int = numberGenerator.getIntInRange(-1, 1);
 	    
-	    moveRelative(new Point(xdiff, ydiff), field);
-	}
-
-	private function moveRelative(delta:Point, field:Field):void
-	{
-	    if(field.getTile(position.getX() + delta.getX(),
-			     position.getY() + delta.getY()).getType() == TileType.EMPTY)
-		position = position.add(delta);
+	    moveRelative(field, new Point(xdiff, ydiff));
 	}
     }
 }

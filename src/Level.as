@@ -24,6 +24,8 @@ package
     private var inputReader:InputReader;
 
     private var player:Player;
+    private var actionPerformed:Boolean;
+
     private var goal:Goal;
     private var enemy:Enemy;
 
@@ -45,15 +47,15 @@ package
     }
 
     override public function update():void
-
     {
       handleInput();
 
       player.update();
 
-      if(player.hasPerformedAction())
+      if(actionPerformed)
 	  {
 	      enemy.move(field, player.position, []);
+	      actionPerformed = false;
 	  }
 
       if(goal.position.equals(player.position))
@@ -82,7 +84,8 @@ package
 	  if(mousePos.withinBounds(FIELD_OFFSET, FIELD_OFFSET.add(FIELD_SIZE)))
 	    {
 	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
-	      player.moveRelative(delta.getX(), delta.getY());
+	      player.moveRelative(field, delta);
+	      actionPerformed = true;
 	    }
 	}
     }
@@ -100,6 +103,8 @@ package
       goal = new Goal(graphicsFactory, positions.goal);	
       enemy = new Bat(graphicsFactory, numberGenerator);
       enemy.position = new Point(3, 4);
+
+      actionPerformed = false;
     }
 
     private function getClickedTile(mousePosition:Point):Point

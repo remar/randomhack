@@ -25,9 +25,8 @@ package
       var fakeScreen:PixelScreen = new FakePixelScreen(256, 384);
       var gf:GraphicsFactory = new FlixelPixelGraphicsFactory(fakeScreen);
       var player:Player = new Player(gf, field, new Point(3, 3));
-      player.moveRelative(1, 0);
-      Assert.assertEquals(4, player.x);
-      Assert.assertEquals(3, player.y);
+      player.moveRelative(field, new Point(1, 0));
+      Assert.assertTrue(player.position.equals(new Point(4, 3)));
     }
   }
 }
