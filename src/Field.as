@@ -102,6 +102,32 @@ package
 	return new Point(xComponent, yComponent);
     }
 
+    public function getEmptyPositionsInRandomOrder(numberGenerator:NumberGenerator):Array
+      {
+	  var positions:Array = [];
+
+	  for(var y:int = 0;y < height;y++)
+	      for(var x:int = 0;x < width;x++)
+		  {
+		      if(getTile(x, y).getType() == TileType.EMPTY)
+			  positions.push(new Point(x, y));
+		  }
+
+	  for(var i:int = 0;i < positions.length - 1;i++)
+	      {
+		  var elem:int = numberGenerator.getIntInRange(i, positions.length - 1);
+
+		  if(elem === i)
+		      continue;
+
+		  var temp:Point = positions[elem];
+		  positions[elem] = positions[i];
+		  positions[i] = temp;
+	      }
+
+	  return positions;
+      }
+
     private function sign(x:int):int
     {
       if (x < 0)

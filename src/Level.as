@@ -103,13 +103,17 @@ package
       player = new Player(graphicsFactory, field, positions.start);
       goal = new Goal(graphicsFactory, positions.goal);	
 
+      var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator);
+
       enemies = [];
 
-      var enemy:Enemy = new Bat(graphicsFactory, numberGenerator);
-      enemy.position = positions.goal;
-
-      enemies.push(enemy);
-
+      var numEnemies:int = numberGenerator.getIntInRange(3, 8);
+      for(var i:int = 0;i < numEnemies;i++)
+	  {
+	      var enemy:Enemy = new Bat(graphicsFactory, numberGenerator);
+	      enemy.position = randomPositions.pop();
+	      enemies.push(enemy);
+	  }
       actionPerformed = false;
     }
 

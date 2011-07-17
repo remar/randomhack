@@ -2,6 +2,7 @@
 ** Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 ** TODO Field
+*** DONE Get a randomized list of empty tile positions
 *** TODO Tile rendering
     Should randomly make jagged edges in cave levels.
 *** TODO Ruins
