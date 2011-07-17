@@ -26,8 +26,9 @@ package
     private var player:Player;
     private var actionPerformed:Boolean;
 
+    private var enemies:Array;
+
     private var goal:Goal;
-    private var enemy:Enemy;
 
     override public function create():void
     {
@@ -54,7 +55,7 @@ package
 
       if(actionPerformed)
 	  {
-	      enemy.move(field, player.position, []);
+	      moveEnemies();
 	      actionPerformed = false;
 	  }
 
@@ -71,9 +72,9 @@ package
     {
       super.render();
       field.draw(fieldDrawable);
-      player.draw(fieldDrawable);
       goal.draw(fieldDrawable);
-      enemy.draw(fieldDrawable);
+      drawEnemies();
+      player.draw(fieldDrawable);
     }
 
     private function handleInput():void
@@ -101,8 +102,13 @@ package
 
       player = new Player(graphicsFactory, field, positions.start);
       goal = new Goal(graphicsFactory, positions.goal);	
-      enemy = new Bat(graphicsFactory, numberGenerator);
-      enemy.position = new Point(3, 4);
+
+      enemies = [];
+
+      var enemy:Enemy = new Bat(graphicsFactory, numberGenerator);
+      enemy.position = positions.goal;
+
+      enemies.push(enemy);
 
       actionPerformed = false;
     }
@@ -113,5 +119,20 @@ package
 	return new Point(int(mousePosition.getX()/TILE_WIDTH),
 			 int(mousePosition.getY()/TILE_HEIGHT));	
     }
+
+    private function drawEnemies():void
+      {
+	  forEachEnemy(function (enemy:Enemy):void {enemy.draw(fieldDrawable);});
+      }
+
+    private function moveEnemies():void
+      {
+	  forEachEnemy(function (enemy:Enemy):void {enemy.move(field, player.position, []);});
+      }
+
+    private function forEachEnemy(fun:Function):void
+      {
+	  enemies.forEach(function (enemy:Enemy, i:int, a:Array):void {fun(enemy);});
+      }
   }
 }

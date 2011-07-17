@@ -27,6 +27,7 @@
 *** TODO Attacking
 *** TODO Line of sight
 ** TODO Enemies
+*** DONE Array of enemies in Level
 *** TODO Enemy factory
 *** TODO Bat
 ** TODO Info screen
