@@ -85,7 +85,7 @@ package
 	  if(mousePos.withinBounds(FIELD_OFFSET, FIELD_OFFSET.add(FIELD_SIZE)))
 	    {
 	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
-	      player.moveRelative(field, delta);
+	      player.move(delta, enemies);
 	      actionPerformed = true;
 	    }
 	}

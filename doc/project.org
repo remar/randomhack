@@ -7,7 +7,7 @@
     Should randomly make jagged edges in cave levels.
 *** TODO Ruins
 ** TODO Player
-*** TODO Movement
+*** DONE Movement
     Shouldn't walk right over enemies.
 *** TODO Attacking
 *** TODO Talking
