@@ -85,7 +85,7 @@ package
 	  if(mousePos.withinBounds(FIELD_OFFSET, FIELD_OFFSET.add(FIELD_SIZE)))
 	    {
 	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
-	      player.move(delta, enemies);
+	      player.moveRelative(field, delta, enemies);
 	      actionPerformed = true;
 	    }
 	}
@@ -100,7 +100,7 @@ package
       var positions:StartPositions = fieldBuilder.generate(field);
       field.renderBackgroundTiles(graphicsFactory);
 
-      player = new Player(graphicsFactory, field, positions.start);
+      player = new Player(graphicsFactory, positions.start);
       goal = new Goal(graphicsFactory, positions.goal);	
 
       var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator);
@@ -131,7 +131,7 @@ package
 
     private function moveEnemies():void
       {
-	  forEachEnemy(function (enemy:Enemy):void {enemy.move(field, player.position, []);});
+	  forEachEnemy(function (enemy:Enemy):void {enemy.move(field, player.position, enemies);});
       }
 
     private function forEachEnemy(fun:Function):void
