@@ -39,3 +39,5 @@
    implement a console anyway to display the stuff, to make this
    reimplementation look just like the "old school" original.
 *** TODO Console
+**** TODO Simple font engine
+     Use sprite graphics factory to provide characters.

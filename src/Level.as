@@ -30,6 +30,8 @@ package
 
     private var goal:Goal;
 
+    private var console:Console;
+
     override public function create():void
     {
       inputReader = new FlixelInputReader();
@@ -45,6 +47,9 @@ package
       generateLevel();
 
       super.create();
+
+      console = new Console(graphicsFactory);
+      console.print(3, "ABBA BA BA");
     }
 
     override public function update():void
@@ -75,6 +80,7 @@ package
       goal.draw(fieldDrawable);
       drawEnemies();
       player.draw(fieldDrawable);
+      console.draw(drawable);
     }
 
     private function handleInput():void
