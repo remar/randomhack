@@ -26,19 +26,19 @@ package
     [Test]
     public function shouldBeAbleToMove():void
     {
-      var player:Player = new Player(gf, field, new Point(3, 3));
-      player.moveRelative(field, new Point(1, 0));
+      var player:Player = new Player(gf, new Point(3, 3));
+      player.moveRelative(field, new Point(1, 0), []);
       Assert.assertTrue(player.position.equals(new Point(4, 3)));
     }
 
     [Test]
     public function shouldNotWalkOverEnemies():void
       {
-	  var player:Player = new Player(gf, field, new Point(3, 3));
+	  var player:Player = new Player(gf, new Point(3, 3));
 	  var ng:NumberGenerator = new DeterministicNumberGenerator();
 	  var enemy:Enemy = new Enemy(gf, SpriteType.BAT, ng);
 	  enemy.position = new Point(4, 3);
-	  player.move(new Point(1, 0), [enemy]);
+	  player.moveRelative(field, new Point(1, 0), [enemy]);
 	  Assert.assertTrue(player.position.equals(new Point(3, 3)));
       }
   }

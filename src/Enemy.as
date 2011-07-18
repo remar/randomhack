@@ -25,9 +25,9 @@ package
 		return;
 
 	    if(distance <= lookDistance)
-		moveRelative(field, field.getDirection(position, playerPos));
+		moveRelative(field, field.getDirection(position, playerPos), creatures);
 	    else
-		roam(field);
+		roam(field, creatures);
 	}
 
 	public function attack(player:Player):void
@@ -35,12 +35,12 @@ package
 
 	}
 
-	private function roam(field:Field):void
+	private function roam(field:Field, creatures:Array):void
 	{
 	    var xdiff:int = numberGenerator.getIntInRange(-1, 1);
 	    var ydiff:int = numberGenerator.getIntInRange(-1, 1);
 	    
-	    moveRelative(field, new Point(xdiff, ydiff));
+	    moveRelative(field, new Point(xdiff, ydiff), creatures);
 	}
     }
 }

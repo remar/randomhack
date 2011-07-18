@@ -1,6 +1,7 @@
 * Randomhack
 ** Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
+*** DONE Push up checking for obstacles when moving to GameObject
 ** TODO Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Tile rendering
