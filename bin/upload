@@ -2,5 +2,8 @@
 
 cd src
 make
-scp Randomhack.swf remar@ftp.scorpionshops.com:~/remar.se/www/andreas/.
+mv Randomhack.swf ../www
+cd ../www
+scp * remar@ftp.scorpionshops.com:~/remar.se/www/andreas/randomhack/.
+rm Randomhack.swf
 cd ..

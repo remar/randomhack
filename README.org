@@ -13,4 +13,4 @@
    direction. Shortcut keys will also be available.
 ** Current version
    To get a glimpse of the current version, point your browser at
-   http://remar.se/andreas/Randomhack.swf.
+   http://remar.se/andreas/randomhack
