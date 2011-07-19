@@ -49,7 +49,7 @@ package
       super.create();
 
       console = new Console(graphicsFactory);
-      console.print(3, "ABBA BA BA");
+      console.print(12, "          Randomhack!");
     }
 
     override public function update():void
