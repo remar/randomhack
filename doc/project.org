@@ -32,12 +32,24 @@
 *** DONE Array of enemies in Level
 *** TODO Enemy factory
 *** TODO Bat
-** TODO Info screen
+** DONE Info screen
    In the original, all info and items where displayed as text in a
    console view. This should be made more general so that how the
    information is displayed can be changed at a later point. I'll
    implement a console anyway to display the stuff, to make this
    reimplementation look just like the "old school" original.
-*** TODO Console
-**** TODO Simple font engine
+*** DONE Keep track of status
+    Some kind of object that keeps track of status that should be
+    displayed. HP/maxHP, inventory, power, gold, level, hiscore,
+    poison, burn, weapon, player prefix and name, console strings.
+
+    Done means it exists... not that it keeps track of all above.
+*** DONE InfoView interface
+    Interface for views that display information in a ScoreKeeper
+    object.
+*** DONE ConsoleInfoView
+    And InfoView that displays the info as text in a console. Done for
+    now means that it's started.
+*** DONE Console
+**** DONE Simple font engine
      Use sprite graphics factory to provide characters.

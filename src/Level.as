@@ -30,7 +30,8 @@ package
 
     private var goal:Goal;
 
-    private var console:Console;
+    private var displayableStatus:DisplayableStatus;
+    private var consoleInfoView:ConsoleInfoView;
 
     override public function create():void
     {
@@ -48,8 +49,11 @@ package
 
       super.create();
 
-      console = new Console(graphicsFactory);
-      console.print(12, "          Randomhack!");
+      displayableStatus = new DisplayableStatus();
+      consoleInfoView = new ConsoleInfoView(graphicsFactory);
+      displayableStatus.registerListener(consoleInfoView);
+
+      displayableStatus.hp = 10;
     }
 
     override public function update():void
@@ -80,7 +84,7 @@ package
       goal.draw(fieldDrawable);
       drawEnemies();
       player.draw(fieldDrawable);
-      console.draw(drawable);
+      consoleInfoView.draw(drawable);
     }
 
     private function handleInput():void
