@@ -24,7 +24,7 @@ package
 	{
 	    var distance:int = position.distanceTo(playerPos);
 
-	    if(distance == 1 || numberGenerator.getIntInRange(1, 10) > speed)
+	    if(isDead() || distance == 1 || numberGenerator.getIntInRange(1, 10) > speed)
 		return;
 
 	    if(distance <= lookDistance)

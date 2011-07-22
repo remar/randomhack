@@ -27,6 +27,7 @@ package
     private var actionPerformed:Boolean;
 
     private var enemies:Array;
+    private var objects:Array;
 
     private var goal:Goal;
 
@@ -64,6 +65,7 @@ package
 
       if(actionPerformed)
 	  {
+	      removeDeadEnemies();
 	      moveEnemies();
 	      actionPerformed = false;
 	  }
@@ -82,6 +84,7 @@ package
       super.render();
       field.draw(fieldDrawable);
       goal.draw(fieldDrawable);
+      drawObjects();
       drawEnemies();
       player.draw(fieldDrawable);
       consoleInfoView.draw(drawable);
@@ -95,7 +98,17 @@ package
 	  if(mousePos.withinBounds(FIELD_OFFSET, FIELD_OFFSET.add(FIELD_SIZE)))
 	    {
 	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
-	      player.moveRelative(field, delta, enemies);
+
+		var enemy:Enemy = getEnemyAtPosition(player.position.add(delta));
+
+		if(enemy != null)
+		    {
+			player.attack(enemy);
+		    }
+		else
+		    {
+			player.moveRelative(field, delta, enemies);
+		    }
 	      actionPerformed = true;
 	    }
 	}
@@ -116,6 +129,7 @@ package
       var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator);
 
       enemies = [];
+      objects = [];
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
       for(var i:int = 0;i < numEnemies;i++)
@@ -134,14 +148,43 @@ package
 			 int(mousePosition.getY()/TILE_HEIGHT));	
     }
 
+    private function drawObjects():void
+      {
+	  objects.forEach(function (object:GameObject, i:int, a:Array):void
+			  {
+			      object.draw(fieldDrawable);
+			  });
+      }
+
     private function drawEnemies():void
       {
 	  forEachEnemy(function (enemy:Enemy):void {enemy.draw(fieldDrawable);});
       }
 
+    private function removeDeadEnemies():void
+      {
+	  enemies = enemies.filter(function (enemy:Enemy, i:int, a:Array):Boolean
+				   {
+				       if(enemy.isDead())
+					   objects.push(new Blood(graphicsFactory, enemy.position));
+				       return enemy.isDead() === false;
+				   });
+      }
+
     private function moveEnemies():void
       {
 	  forEachEnemy(function (enemy:Enemy):void {enemy.move(field, player.position, enemies);});
+      }
+
+    private function getEnemyAtPosition(position:Point):Enemy
+      {
+	  var enemy:Enemy = null;
+
+	  var fun:Function = function (e:Enemy):void { if(e.position.equals(position)) enemy = e;};
+
+	  forEachEnemy(fun);
+
+	  return enemy;
       }
 
     private function forEachEnemy(fun:Function):void
