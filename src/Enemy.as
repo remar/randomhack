@@ -6,6 +6,8 @@ package
 
 	protected var lookDistance:int;
 	protected var speed:int;
+	protected var maxHP:int;
+	protected var hp:int;
 
 	public function Enemy(gf:GraphicsFactory, spriteType:int,
 			      numberGenerator:NumberGenerator):void
@@ -15,6 +17,7 @@ package
 
 	    lookDistance = 5;
 	    speed = 5;
+	    maxhp = 5;
 	}
 
 	public function move(field:Field, playerPos:Point, creatures:Array):void
@@ -33,6 +36,22 @@ package
 	public function attack(player:Player):void
 	{
 
+	}
+
+	public function hit(hurt:int):void
+	{
+	    hp -= hurt;
+	}
+
+	public function isDead():Boolean
+	{
+	    return hp <= 0;
+	}
+
+	protected function set maxhp(maxHP:int):void
+	{
+	    this.maxHP = maxHP;
+	    hp = maxHP;
 	}
 
 	private function roam(field:Field, creatures:Array):void

@@ -23,6 +23,7 @@
 *** TODO Rubble
 *** TODO Bottle
 ** TODO General enemy stuff
+*** DONE Keep track of hp and max hp
 *** DONE Movement
     Right now an enemy moves every time that it is its turn, but
     originally it only moves if it's lucky (d10 <= speed).

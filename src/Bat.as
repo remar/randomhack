@@ -8,6 +8,7 @@ package
 
 	    lookDistance = 4;
 	    speed = 5;
+	    maxhp = 2;
 	}
     }
 }

@@ -62,6 +62,20 @@ package
 	    assertCorrectPosition(new Point(3, 3), enemy.position);
 	}
 
+	[Test]
+	public function shouldDieWhenTakingTooMuchDamage():void
+	{
+	    enemy.hit(5);
+	    Assert.assertTrue(enemy.isDead());
+	}
+
+	[Test]
+	public function shouldNotDieWhenTakingTooLittleDamage():void
+	{
+	    enemy.hit(4);
+	    Assert.assertFalse(enemy.isDead());
+	}
+
 	private function assertCorrectPosition(expected:Point, actual:Point):void
 	{
 	    Assert.assertTrue("Got " + actual.toString() + ", expected " + expected.toString(),
