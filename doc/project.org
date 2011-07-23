@@ -2,6 +2,8 @@
 ** Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 *** DONE Push up checking for obstacles when moving to GameObject
+*** TODO Create class CreatureController, move methods from Level to it
+*** TODO Add getters and setters for Point x and y
 ** TODO Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Tile rendering
