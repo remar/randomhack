@@ -1,14 +1,14 @@
 package
 {
-    public class Bat extends Enemy
+  public class Bat extends Enemy
+  {
+    public function Bat(gf:GraphicsFactory, numberGenerator:NumberGenerator):void
     {
-	public function Bat(gf:GraphicsFactory, numberGenerator:NumberGenerator):void
-	{
-	    super(gf, SpriteType.BAT, numberGenerator);
+      super(gf, SpriteType.BAT, numberGenerator);
 
-	    lookDistance = 4;
-	    speed = 5;
-	    maxhp = 2;
-	}
+      lookDistance = 4;
+      speed = 5;
+      maxhp = 2;
     }
+  }
 }

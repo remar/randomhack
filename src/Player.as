@@ -2,7 +2,7 @@ package
 {
   public class Player extends GameObject
   {
-      private var playerpower:int;
+    private var playerpower:int;
 
     public function Player(gf:GraphicsFactory, position:Point):void
     {
@@ -12,9 +12,9 @@ package
       playerpower = 5;
     }
 
-      public function attack(enemy:Enemy):void
-      {
-	  enemy.hit(playerpower);
-      }
+    public function attack(enemy:Enemy):void
+    {
+      enemy.hit(playerpower);
+    }
   }
 }

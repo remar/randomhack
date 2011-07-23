@@ -35,29 +35,29 @@ package
 
     [Test]
     public function distanceBetweenTwoAdjacentPointsIsOne():void
-      {
-	  var p1:Point = new Point(4, 7);
-	  var p2:Point = new Point(5, 7);
+    {
+      var p1:Point = new Point(4, 7);
+      var p2:Point = new Point(5, 7);
 
-	  Assert.assertEquals(1, p1.distanceTo(p2));
-      }
+      Assert.assertEquals(1, p1.distanceTo(p2));
+    }
 
     [Test]
     public function distanceBetweenTwoDiagonallyAdjactentPointsIsOne():void
-      {
-	  var p1:Point = new Point(4, 7);
-	  var p2:Point = new Point(5, 8);
+    {
+      var p1:Point = new Point(4, 7);
+      var p2:Point = new Point(5, 8);
 
-	  Assert.assertEquals(1, p1.distanceTo(p2));
-      }
+      Assert.assertEquals(1, p1.distanceTo(p2));
+    }
 
     [Test]
     public function distanceBetweenPoint11AndPoint64Is5():void
-      {
-	  var p1:Point = new Point(1, 1);
-	  var p2:Point = new Point(6, 4);
+    {
+      var p1:Point = new Point(1, 1);
+      var p2:Point = new Point(6, 4);
 
-	  Assert.assertEquals(5, p1.distanceTo(p2));
-      }
+      Assert.assertEquals(5, p1.distanceTo(p2));
+    }
   }
 }

@@ -3,9 +3,9 @@ package
   public class RandomNumberGenerator implements NumberGenerator
   {
     public function getNumber():Number
-      {
-	return Math.random();
-      }
+    {
+      return Math.random();
+    }
 
     public function getIntInRange(start:int, end:int):int
     {

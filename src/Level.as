@@ -64,11 +64,11 @@ package
       player.update();
 
       if(actionPerformed)
-	  {
-	      removeDeadEnemies();
-	      moveEnemies();
-	      actionPerformed = false;
-	  }
+	{
+	  removeDeadEnemies();
+	  moveEnemies();
+	  actionPerformed = false;
+	}
 
       if(goal.position.equals(player.position))
 	{
@@ -99,16 +99,16 @@ package
 	    {
 	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
 
-		var enemy:Enemy = getEnemyAtPosition(player.position.add(delta));
+	      var enemy:Enemy = getEnemyAtPosition(player.position.add(delta));
 
-		if(enemy != null)
-		    {
-			player.attack(enemy);
-		    }
-		else
-		    {
-			player.moveRelative(field, delta, enemies);
-		    }
+	      if(enemy != null)
+		{
+		  player.attack(enemy);
+		}
+	      else
+		{
+		  player.moveRelative(field, delta, enemies);
+		}
 	      actionPerformed = true;
 	    }
 	}
@@ -133,63 +133,63 @@ package
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
       for(var i:int = 0;i < numEnemies;i++)
-	  {
-	      var enemy:Enemy = new Bat(graphicsFactory, numberGenerator);
-	      enemy.position = randomPositions.pop();
-	      enemies.push(enemy);
-	  }
+	{
+	  var enemy:Enemy = new Bat(graphicsFactory, numberGenerator);
+	  enemy.position = randomPositions.pop();
+	  enemies.push(enemy);
+	}
       actionPerformed = false;
     }
 
     private function getClickedTile(mousePosition:Point):Point
     {
-	mousePosition = mousePosition.subtract(FIELD_OFFSET);
-	return new Point(int(mousePosition.getX()/TILE_WIDTH),
-			 int(mousePosition.getY()/TILE_HEIGHT));	
+      mousePosition = mousePosition.subtract(FIELD_OFFSET);
+      return new Point(int(mousePosition.getX()/TILE_WIDTH),
+		       int(mousePosition.getY()/TILE_HEIGHT));
     }
 
     private function drawObjects():void
-      {
-	  objects.forEach(function (object:GameObject, i:int, a:Array):void
-			  {
-			      object.draw(fieldDrawable);
-			  });
-      }
+    {
+      objects.forEach(function (object:GameObject, i:int, a:Array):void
+		      {
+			object.draw(fieldDrawable);
+		      });
+    }
 
     private function drawEnemies():void
-      {
-	  forEachEnemy(function (enemy:Enemy):void {enemy.draw(fieldDrawable);});
-      }
+    {
+      forEachEnemy(function (enemy:Enemy):void {enemy.draw(fieldDrawable);});
+    }
 
     private function removeDeadEnemies():void
-      {
-	  enemies = enemies.filter(function (enemy:Enemy, i:int, a:Array):Boolean
-				   {
-				       if(enemy.isDead())
-					   objects.push(new Blood(graphicsFactory, enemy.position));
-				       return enemy.isDead() === false;
-				   });
-      }
+    {
+      enemies = enemies.filter(function (enemy:Enemy, i:int, a:Array):Boolean
+			       {
+				 if(enemy.isDead())
+				   objects.push(new Blood(graphicsFactory, enemy.position));
+				 return enemy.isDead() === false;
+			       });
+    }
 
     private function moveEnemies():void
-      {
-	  forEachEnemy(function (enemy:Enemy):void {enemy.move(field, player.position, enemies);});
-      }
+    {
+      forEachEnemy(function (enemy:Enemy):void {enemy.move(field, player.position, enemies);});
+    }
 
     private function getEnemyAtPosition(position:Point):Enemy
-      {
-	  var enemy:Enemy = null;
+    {
+      var enemy:Enemy = null;
 
-	  var fun:Function = function (e:Enemy):void { if(e.position.equals(position)) enemy = e;};
+      var fun:Function = function (e:Enemy):void { if(e.position.equals(position)) enemy = e;};
 
-	  forEachEnemy(fun);
+      forEachEnemy(fun);
 
-	  return enemy;
-      }
+      return enemy;
+    }
 
     private function forEachEnemy(fun:Function):void
-      {
-	  enemies.forEach(function (enemy:Enemy, i:int, a:Array):void {fun(enemy);});
-      }
+    {
+      enemies.forEach(function (enemy:Enemy, i:int, a:Array):void {fun(enemy);});
+    }
   }
 }

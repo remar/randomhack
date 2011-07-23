@@ -77,7 +77,7 @@ package
     }
 
     private function carveSimplePath(startPoint:Point, direction:Array,
-					 length:int, width:int):void
+				     length:int, width:int):void
     {
       var x:int = startPoint.getX();
       var y:int = startPoint.getY();

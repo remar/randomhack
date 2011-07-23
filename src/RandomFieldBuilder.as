@@ -44,10 +44,10 @@ package
       for(i = 0;i < secondaryRooms.length;i++)
 	{
 	  fieldCarver.carveHole(secondaryRooms[i],
-				   numberGenerator.getIntInRange(0, maxHoleSize));
+				numberGenerator.getIntInRange(0, maxHoleSize));
 	  fieldCarver.carvePath(secondaryRooms[i],
-				   primaryRooms[numberGenerator.getIntInRange(0, numPrimaryRooms - 2)],
-				   numberGenerator.getIntInRange(2, 3));
+				primaryRooms[numberGenerator.getIntInRange(0, numPrimaryRooms - 2)],
+				numberGenerator.getIntInRange(2, 3));
 	}
 
       // Return proposed start and goal positions

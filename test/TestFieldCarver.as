@@ -46,6 +46,7 @@ package
       for(var i:int = 1;i <= 8;i++)
 	Assert.assertEquals(TileType.EMPTY, field.getTile(i, 1).getType());
     }
+
     [Test]
     public function testCarveVerticalPath():void
     {

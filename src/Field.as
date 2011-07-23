@@ -41,7 +41,7 @@ package
     {
       if ((x < 0 || x >= width || y < 0 || y >= width) ||
 	  (type == TileType.EMPTY && (x == 0 || x == width - 1 ||
-				  y == 0 || y == height - 1)))
+				      y == 0 || y == height - 1)))
 	{
 	  return;
 	}
@@ -50,9 +50,9 @@ package
     }
 
     public function getTile(x:int, y:int):TileType
-      {
-	return field[x][y][0];
-      }
+    {
+      return field[x][y][0];
+    }
 
     public function renderBackgroundTiles(graphicsFactory:GraphicsFactory):void
     {
@@ -81,52 +81,52 @@ package
 
     public function getDirection(p1:Point, p2:Point):Point
     {
-	var xdiff:int = p2.getX() - p1.getX();
-	var ydiff:int = p2.getY() - p1.getY();
+      var xdiff:int = p2.getX() - p1.getX();
+      var ydiff:int = p2.getY() - p1.getY();
 
-	var angle:Number = Math.atan(-ydiff/Math.abs(xdiff));
+      var angle:Number = Math.atan(-ydiff/Math.abs(xdiff));
 
-	var xComponent:int = 0;
-	var yComponent:int = 0;
+      var xComponent:int = 0;
+      var yComponent:int = 0;
 
-	if(angle > -Math.PI/3 && angle < Math.PI/3)
-	    {
-		xComponent = sign(xdiff);
-	    }
+      if(angle > -Math.PI/3 && angle < Math.PI/3)
+	{
+	  xComponent = sign(xdiff);
+	}
  
-	if(angle > Math.PI/6 || angle < -Math.PI/6)
-	    {
-		yComponent = sign(ydiff);
-	    }
+      if(angle > Math.PI/6 || angle < -Math.PI/6)
+	{
+	  yComponent = sign(ydiff);
+	}
 
-	return new Point(xComponent, yComponent);
+      return new Point(xComponent, yComponent);
     }
 
     public function getEmptyPositionsInRandomOrder(numberGenerator:NumberGenerator):Array
-      {
-	  var positions:Array = [];
+    {
+      var positions:Array = [];
 
-	  for(var y:int = 0;y < height;y++)
-	      for(var x:int = 0;x < width;x++)
-		  {
-		      if(getTile(x, y).getType() == TileType.EMPTY)
-			  positions.push(new Point(x, y));
-		  }
+      for(var y:int = 0;y < height;y++)
+	for(var x:int = 0;x < width;x++)
+	  {
+	    if(getTile(x, y).getType() == TileType.EMPTY)
+	      positions.push(new Point(x, y));
+	  }
 
-	  for(var i:int = 0;i < positions.length - 1;i++)
-	      {
-		  var elem:int = numberGenerator.getIntInRange(i, positions.length - 1);
+      for(var i:int = 0;i < positions.length - 1;i++)
+	{
+	  var elem:int = numberGenerator.getIntInRange(i, positions.length - 1);
 
-		  if(elem === i)
-		      continue;
+	  if(elem === i)
+	    continue;
 
-		  var temp:Point = positions[elem];
-		  positions[elem] = positions[i];
-		  positions[i] = temp;
-	      }
+	  var temp:Point = positions[elem];
+	  positions[elem] = positions[i];
+	  positions[i] = temp;
+	}
 
-	  return positions;
-      }
+      return positions;
+    }
 
     private function sign(x:int):int
     {
