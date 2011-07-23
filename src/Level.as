@@ -46,15 +46,15 @@ package
       numberGenerator = new RandomNumberGenerator();
       field = new Field(FIELD_WIDTH, FIELD_HEIGHT);
 
-      generateLevel();
-
-      super.create();
-
       displayableStatus = new DisplayableStatus();
       consoleInfoView = new ConsoleInfoView(graphicsFactory);
       displayableStatus.registerListener(consoleInfoView);
 
       displayableStatus.hp = 10;
+
+      generateLevel();
+
+      super.create();
     }
 
     override public function update():void
@@ -103,10 +103,12 @@ package
 
 	      if(enemy != null)
 		{
+		  displayableStatus.print("Attack enemy!");
 		  player.attack(enemy);
 		}
 	      else
 		{
+		  displayableStatus.print("Player moves to " + player.position.add(delta));
 		  player.moveRelative(field, delta, enemies);
 		}
 	      actionPerformed = true;
@@ -139,6 +141,8 @@ package
 	  enemies.push(enemy);
 	}
       actionPerformed = false;
+
+      displayableStatus.print("Create level");
     }
 
     private function getClickedTile(mousePosition:Point):Point

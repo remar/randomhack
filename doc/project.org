@@ -13,9 +13,11 @@
 *** DONE Movement
     Shouldn't walk right over enemies.
 *** TODO Attacking
+    Made a bare bones implementation of this so far.
 *** TODO Talking
 *** TODO Picking up stuff
 *** TODO Dropping stuff
+*** TODO Should have a reference to DisplayableStatus, and update it
 ** TODO Items
 *** TODO Sword
     Kind of special. Can only carry one sword. No other weapons are
@@ -53,6 +55,8 @@
 *** DONE ConsoleInfoView
     And InfoView that displays the info as text in a console. Done for
     now means that it's started.
+*** DONE Flesh out ConsoleInfoView to look like original
+*** TODO Add scrolling to Console and ConsoleInfoView
 *** DONE Console
 **** DONE Simple font engine
      Use sprite graphics factory to provide characters.
