@@ -50,7 +50,8 @@ package
       consoleInfoView = new ConsoleInfoView(graphicsFactory);
       displayableStatus.registerListener(consoleInfoView);
 
-      displayableStatus.hp = 10;
+      player = new Player(graphicsFactory, displayableStatus);
+      player.generateCharacter(numberGenerator);
 
       generateLevel();
 
@@ -125,7 +126,7 @@ package
       var positions:StartPositions = fieldBuilder.generate(field);
       field.renderBackgroundTiles(graphicsFactory);
 
-      player = new Player(graphicsFactory, positions.start);
+      player.position = positions.start;
       goal = new Goal(graphicsFactory, positions.goal);	
 
       var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator);

@@ -4,21 +4,22 @@
 *** DONE Push up checking for obstacles when moving to GameObject
 *** TODO Create class CreatureController, move methods from Level to it
 *** TODO Add getters and setters for Point x and y
-** TODO Field
+** Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Tile rendering
     Should randomly make jagged edges in cave levels.
 *** TODO Ruins
-** TODO Player
+** Player
 *** DONE Movement
     Shouldn't walk right over enemies.
+*** DONE HP / max HP
 *** TODO Attacking
     Made a bare bones implementation of this so far.
 *** TODO Talking
 *** TODO Picking up stuff
 *** TODO Dropping stuff
-*** TODO Should have a reference to DisplayableStatus, and update it
-** TODO Items
+*** DONE Should have a reference to DisplayableStatus, and update it
+** Items
 *** TODO Sword
     Kind of special. Can only carry one sword. No other weapons are
     available.
@@ -26,18 +27,19 @@
 *** TODO Torch
 *** TODO Rubble
 *** TODO Bottle
-** TODO General enemy stuff
+** General enemy stuff
 *** DONE Keep track of hp and max hp
 *** DONE Movement
     Right now an enemy moves every time that it is its turn, but
     originally it only moves if it's lucky (d10 <= speed).
+*** TODO Should get list of available spots and select one randomly when moving
 *** TODO Attacking
 *** TODO Line of sight
-** TODO Enemies
+** Enemies
 *** DONE Array of enemies in Level
 *** TODO Enemy factory
 *** TODO Bat
-** DONE Info screen
+** Info screen
    In the original, all info and items where displayed as text in a
    console view. This should be made more general so that how the
    information is displayed can be changed at a later point. I'll
@@ -47,8 +49,7 @@
     Some kind of object that keeps track of status that should be
     displayed. HP/maxHP, inventory, power, gold, level, hiscore,
     poison, burn, weapon, player prefix and name, console strings.
-
-    Done means it exists... not that it keeps track of all above.
+*** TODO Keep track of and display poison and burn
 *** DONE InfoView interface
     Interface for views that display information in a ScoreKeeper
     object.
