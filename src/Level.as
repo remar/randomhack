@@ -26,13 +26,14 @@ package
     private var player:Player;
     private var actionPerformed:Boolean;
 
-    private var enemies:Array;
     private var objects:Array;
 
     private var goal:Goal;
 
     private var displayableStatus:DisplayableStatus;
     private var consoleInfoView:ConsoleInfoView;
+
+    private var creatureController:CreatureController;
 
     override public function create():void
     {
@@ -53,6 +54,8 @@ package
       player = new Player(graphicsFactory, displayableStatus);
       player.generateCharacter(numberGenerator);
 
+      creatureController = new CreatureController();
+
       generateLevel();
 
       super.create();
@@ -66,8 +69,8 @@ package
 
       if(actionPerformed)
 	{
-	  removeDeadEnemies();
-	  moveEnemies();
+	  creatureController.removeDeadEnemies(objects, graphicsFactory);
+	  creatureController.moveEnemies(field, player.position);
 	  actionPerformed = false;
 	}
 
@@ -86,7 +89,7 @@ package
       field.draw(fieldDrawable);
       goal.draw(fieldDrawable);
       drawObjects();
-      drawEnemies();
+      creatureController.drawEnemies(fieldDrawable);
       player.draw(fieldDrawable);
       consoleInfoView.draw(drawable);
     }
@@ -100,7 +103,7 @@ package
 	    {
 	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
 
-	      var enemy:Enemy = getEnemyAtPosition(player.position.add(delta));
+	      var enemy:Enemy = creatureController.getEnemyAtPosition(player.position.add(delta));
 
 	      if(enemy != null)
 		{
@@ -110,7 +113,7 @@ package
 	      else
 		{
 		  displayableStatus.print("Player moves to " + player.position.add(delta));
-		  player.moveRelative(field, delta, enemies);
+		  player.moveRelative(field, delta, creatureController.getEnemies());
 		}
 	      actionPerformed = true;
 	    }
@@ -131,7 +134,6 @@ package
 
       var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator);
 
-      enemies = [];
       objects = [];
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
@@ -139,7 +141,7 @@ package
 	{
 	  var enemy:Enemy = new Bat(graphicsFactory, numberGenerator);
 	  enemy.position = randomPositions.pop();
-	  enemies.push(enemy);
+	  creatureController.addEnemy(enemy);
 	}
       actionPerformed = false;
 
@@ -159,42 +161,6 @@ package
 		      {
 			object.draw(fieldDrawable);
 		      });
-    }
-
-    private function drawEnemies():void
-    {
-      forEachEnemy(function (enemy:Enemy):void {enemy.draw(fieldDrawable);});
-    }
-
-    private function removeDeadEnemies():void
-    {
-      enemies = enemies.filter(function (enemy:Enemy, i:int, a:Array):Boolean
-			       {
-				 if(enemy.isDead())
-				   objects.push(new Blood(graphicsFactory, enemy.position));
-				 return enemy.isDead() === false;
-			       });
-    }
-
-    private function moveEnemies():void
-    {
-      forEachEnemy(function (enemy:Enemy):void {enemy.move(field, player.position, enemies);});
-    }
-
-    private function getEnemyAtPosition(position:Point):Enemy
-    {
-      var enemy:Enemy = null;
-
-      var fun:Function = function (e:Enemy):void { if(e.position.equals(position)) enemy = e;};
-
-      forEachEnemy(fun);
-
-      return enemy;
-    }
-
-    private function forEachEnemy(fun:Function):void
-    {
-      enemies.forEach(function (enemy:Enemy, i:int, a:Array):void {fun(enemy);});
     }
   }
 }
