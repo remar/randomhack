@@ -16,8 +16,8 @@ package
       var data:Array = sprite.getData();
       var color:int = data[width*height];
 
-      var xOffset:int = position.getX();
-      var yOffset:int = position.getY();
+      var xOffset:int = position.x;
+      var yOffset:int = position.y;
 
       for(var y:int = 0;y < height;y++)
 	{
@@ -37,8 +37,8 @@ package
       var height:int = tile.getHeight();
       var data:Array = tile.getData();
 
-      var xOffset:int = position.getX();
-      var yOffset:int = position.getY();
+      var xOffset:int = position.x;
+      var yOffset:int = position.y;
 
       for(var y:int = 0;y < height;y++)
 	{

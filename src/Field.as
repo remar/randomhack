@@ -81,8 +81,8 @@ package
 
     public function getDirection(p1:Point, p2:Point):Point
     {
-      var xdiff:int = p2.getX() - p1.getX();
-      var ydiff:int = p2.getY() - p1.getY();
+      var xdiff:int = p2.x - p1.x;
+      var ydiff:int = p2.y - p1.y;
 
       var angle:Number = Math.atan(-ydiff/Math.abs(xdiff));
 

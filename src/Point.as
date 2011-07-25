@@ -2,33 +2,33 @@ package
 {
   public class Point
   {
-    private var x:int;
-    private var y:int;
+    private var X:int;
+    private var Y:int;
 
-    public function Point(x:int, y:int):void
+    public function Point(X:int, Y:int):void
     {
-      this.x = x;
-      this.y = y;
+      this.X = X;
+      this.Y = Y;
     }
 
-    public function getX():int
+    public function get x():int
     {
-      return x;
+      return X;
     }
 
-    public function getY():int
+    public function get y():int
     {
-      return y;
+      return Y;
     }
 
     public function add(p:Point):Point
     {
-      return new Point(this.x + p.getX(), this.y + p.getY());
+      return new Point(this.x + p.x, this.y + p.y);
     }
 
     public function subtract(p:Point):Point
     {
-      return new Point(this.x - p.getX(), this.y - p.getY());
+      return new Point(this.x - p.x, this.y - p.y);
     }
 
     public function multiple(multiplier:int):Point
@@ -38,18 +38,18 @@ package
 
     public function equals(other:Point):Boolean
     {
-      return x == other.getX() && y == other.getY();
+      return x == other.x && y == other.y;
     }
 
     public function withinBounds(upperLeft:Point, lowerRight:Point):Boolean
     {
-      return x >= upperLeft.getX() && y >= upperLeft.getY() &&
-	x < lowerRight.getX() && y < lowerRight.getY();
+      return x >= upperLeft.x && y >= upperLeft.y &&
+	x < lowerRight.x && y < lowerRight.y;
     }
       
     public function distanceTo(other:Point):int
     {
-      return Math.max(Math.abs(x - other.getX()), Math.abs(y - other.getY()));
+      return Math.max(Math.abs(x - other.x), Math.abs(y - other.y));
     }
 
     public function toString():String

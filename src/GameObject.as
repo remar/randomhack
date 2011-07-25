@@ -32,8 +32,8 @@ package
 
     public function moveRelative(field:Field, delta:Point, objects:Array):void
     {
-      if(field.getTile(position.getX() + delta.getX(),
-		       position.getY() + delta.getY()).getType() != TileType.EMPTY)
+      if(field.getTile(position.x + delta.x,
+		       position.y + delta.y).getType() != TileType.EMPTY)
 	{
 	  return;
 	}

@@ -19,8 +19,8 @@ package
 
     public function carveHole(p:Point, size:int):void
     {
-      for(var j:int = p.getY() - size;j <= p.getY() + size;j++)
-	for(var i:int = p.getX() - size;i <= p.getX() + size;i++)
+      for(var j:int = p.y - size;j <= p.y + size;j++)
+	for(var i:int = p.x - size;i <= p.x + size;i++)
 	  field.setTile(i, j, TileType.EMPTY);
     }
 
@@ -45,28 +45,28 @@ package
     public function carvePath(p1:Point, p2:Point, width:int):void
     {
       // Carve horizontal path
-      if(p1.getY() == p2.getY())
+      if(p1.y == p2.y)
 	{
-	  carveSimplePath(p1, p1.getX() < p2.getX() ? [+1, 0] : [-1, 0],
-			  Math.abs(p1.getX() - p2.getX()) + 1, width);
+	  carveSimplePath(p1, p1.x < p2.x ? [+1, 0] : [-1, 0],
+			  Math.abs(p1.x - p2.x) + 1, width);
 	}
 
       // Carve vertical path
-      else if(p1.getX() == p2.getX())
+      else if(p1.x == p2.x)
 	{
-	  carveSimplePath(p1, p1.getY() < p2.getY() ? [0, +1] : [0, -1],
-			  Math.abs(p1.getY() - p2.getY()) + 1, width);
+	  carveSimplePath(p1, p1.y < p2.y ? [0, +1] : [0, -1],
+			  Math.abs(p1.y - p2.y) + 1, width);
 	}
 
       // Carve diagonal path
-      else if(Math.abs(p1.getX() - p2.getX())
-	      == Math.abs(p1.getY() - p2.getY()))
+      else if(Math.abs(p1.x - p2.x)
+	      == Math.abs(p1.y - p2.y))
 	{
-	  carveSimplePath(p1, [(p2.getX() - p1.getX())
-			       /Math.abs(p1.getX() - p2.getX()),
-			       (p2.getY() - p1.getY())
-			       /Math.abs(p1.getY() - p2.getY())],
-			  Math.abs(p1.getX() - p2.getX()) + 1, width);
+	  carveSimplePath(p1, [(p2.x - p1.x)
+			       /Math.abs(p1.x - p2.x),
+			       (p2.y - p1.y)
+			       /Math.abs(p1.y - p2.y)],
+			  Math.abs(p1.x - p2.x) + 1, width);
 	}
 
       // Bresenhams
@@ -79,8 +79,8 @@ package
     private function carveSimplePath(startPoint:Point, direction:Array,
 				     length:int, width:int):void
     {
-      var x:int = startPoint.getX();
-      var y:int = startPoint.getY();
+      var x:int = startPoint.x;
+      var y:int = startPoint.y;
 
       for(var i:int = 0;i < length;i++)
 	{
@@ -103,12 +103,12 @@ package
     private function carveBresenhamPath(startPoint:Point, endPoint:Point,
 					width:int):void
     {
-      var x:int = startPoint.getX();
-      var y:int = startPoint.getY();
-      var dx:int = Math.abs(endPoint.getX() - startPoint.getX());
-      var dy:int = Math.abs(endPoint.getY() - startPoint.getY());
-      var sx:int = startPoint.getX() < endPoint.getX() ? 1 : -1;
-      var sy:int = startPoint.getY() < endPoint.getY() ? 1 : -1;
+      var x:int = startPoint.x;
+      var y:int = startPoint.y;
+      var dx:int = Math.abs(endPoint.x - startPoint.x);
+      var dy:int = Math.abs(endPoint.y - startPoint.y);
+      var sx:int = startPoint.x < endPoint.x ? 1 : -1;
+      var sy:int = startPoint.y < endPoint.y ? 1 : -1;
       var err:int = dx - dy;
       var dir:Array = err > 0 ? [0, -1] : [-1, 0];
       while(true)
@@ -122,7 +122,7 @@ package
 	      carveSimplePath(new Point(x, y), dir, width, 1);
 	    }
 
-	  if(x == endPoint.getX() && y == endPoint.getY())
+	  if(x == endPoint.x && y == endPoint.y)
 	    {
 	      break;
 	    }

@@ -3,9 +3,11 @@
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 *** DONE Push up checking for obstacles when moving to GameObject
 *** DONE Create class CreatureController, move methods from Level to it
-*** TODO Add getters and setters for Point x and y
+*** DONE Add getters and setters for Point x and y
+*** TODO Field.getTile should take a Point instead of x and y
 ** Field
 *** DONE Get a randomized list of empty tile positions
+*** TODO Better distance between player start and goal
 *** TODO Tile rendering
     Should randomly make jagged edges in cave levels.
 *** TODO Ruins

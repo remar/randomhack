@@ -151,8 +151,8 @@ package
     private function getClickedTile(mousePosition:Point):Point
     {
       mousePosition = mousePosition.subtract(FIELD_OFFSET);
-      return new Point(int(mousePosition.getX()/TILE_WIDTH),
-		       int(mousePosition.getY()/TILE_HEIGHT));
+      return new Point(int(mousePosition.x/TILE_WIDTH),
+		       int(mousePosition.y/TILE_HEIGHT));
     }
 
     private function drawObjects():void

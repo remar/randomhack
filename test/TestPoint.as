@@ -9,8 +9,8 @@ package
     {
       var p:Point = new Point(5, 8);
       var p2:Point = p.add(new Point(3, 4));
-      Assert.assertEquals(8, p2.getX());
-      Assert.assertEquals(12, p2.getY());
+      Assert.assertEquals(8, p2.x);
+      Assert.assertEquals(12, p2.y);
     }
 
     [Test]
@@ -18,8 +18,8 @@ package
     {
       var p:Point = new Point(2, 3);
       var p2:Point = p.multiple(5);
-      Assert.assertEquals(10, p2.getX());
-      Assert.assertEquals(15, p2.getY());
+      Assert.assertEquals(10, p2.x);
+      Assert.assertEquals(15, p2.y);
     }
 
     [Test]
@@ -58,6 +58,15 @@ package
       var p2:Point = new Point(6, 4);
 
       Assert.assertEquals(5, p1.distanceTo(p2));
+    }
+
+    [Test]
+    public function distanceBetweenTwoEqualPointsIsZero():void
+    {
+      var p1:Point = new Point(3, 5);
+      var p2:Point = new Point(3, 5);
+
+      Assert.assertEquals(0, p1.distanceTo(p2));
     }
   }
 }

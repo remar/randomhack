@@ -80,7 +80,7 @@ package
       // TODO: Make this better reflect how it works in the original
       var x1:int, x2:int, y1:int, y2:int;
 
-      if(firstPosition.getX() < field.getWidth() / 2)
+      if(firstPosition.x < field.getWidth() / 2)
 	{
 	  x1 = field.getWidth() / 2;
 	  x2 = field.getWidth() - 2;
@@ -91,7 +91,7 @@ package
 	  x2 = field.getWidth() / 2;
 	}
 
-      if(firstPosition.getY() < field.getHeight() / 2)
+      if(firstPosition.y < field.getHeight() / 2)
 	{
 	  y1 = field.getHeight() / 2;
 	  y2 = field.getHeight() - 2;
