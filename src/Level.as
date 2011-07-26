@@ -54,8 +54,6 @@ package
       player = new Player(graphicsFactory, displayableStatus);
       player.generateCharacter(numberGenerator);
 
-      creatureController = new CreatureController();
-
       generateLevel();
 
       super.create();
@@ -135,6 +133,7 @@ package
       var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator);
 
       objects = [];
+      creatureController = new CreatureController();
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
       for(var i:int = 0;i < numEnemies;i++)
