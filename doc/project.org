@@ -14,7 +14,8 @@
     Should randomly make jagged edges in cave levels.
 *** TODO Ruins
 ** Player
-*** TODO Generate name and prefix
+*** DONE Generate gender and attractive gender
+*** DONE Generate name and prefix
 *** TODO Generate playerpower
 *** DONE Movement
     Shouldn't walk right over enemies.
