@@ -49,9 +49,9 @@ package
       field[x][y] = [new TileType(type), null];
     }
 
-    public function getTile(x:int, y:int):TileType
+    public function getTile(p:Point):TileType
     {
-      return field[x][y][0];
+      return field[p.x][p.y][0];
     }
 
     public function renderBackgroundTiles(graphicsFactory:GraphicsFactory):void
@@ -109,7 +109,7 @@ package
       for(var y:int = 0;y < height;y++)
 	for(var x:int = 0;x < width;x++)
 	  {
-	    if(getTile(x, y).getType() == TileType.EMPTY)
+	    if(getTile(new Point(x, y)).getType() == TileType.EMPTY)
 	      positions.push(new Point(x, y));
 	  }
 

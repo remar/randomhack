@@ -26,7 +26,7 @@ package
 	  for(var x:int;x < 32;x++)
 	    {
 	      Assert.assertEquals(TileType.BLOCK,
-				  field.getTile(x, y).getType());
+				  field.getTile(new Point(x, y)).getType());
 	    }
 	}
     }
@@ -35,7 +35,7 @@ package
     public function getPosition00():void
     {
       field.setTile(0, 0, TileType.BLOCK);
-      var tile:TileType = field.getTile(0, 0);
+      var tile:TileType = field.getTile(new Point(0, 0));
       Assert.assertEquals(TileType.BLOCK, tile.getType());
     }
 
@@ -43,7 +43,7 @@ package
     public function getPosition11():void
     {
       field.setTile(1, 1, TileType.EMPTY);
-      var tile:TileType = field.getTile(1, 1);
+      var tile:TileType = field.getTile(new Point(1, 1));
       Assert.assertEquals(TileType.EMPTY, tile.getType());
     }
 
@@ -70,21 +70,20 @@ package
     {
       field.clearField(TileType.EMPTY);
       field.setTile(3, 4, TileType.BLOCK);
-      Assert.assertEquals(TileType.BLOCK, field.getTile(3, 4).getType());
+      Assert.assertEquals(TileType.BLOCK, field.getTile(new Point(3, 4)).getType());
     }
 
     [Test]
     public function testSetBorderTileToEmpty():void
     {
-      var points:Array = [[5, 0], [0, 3],
-			  [5, 23], [31, 7]];
+      var points:Array = [new Point(5, 0), new Point(0, 3),
+			  new Point(5, 23), new Point(31, 7)];
 
       for(var i:int = 0;i < points.length;i++)
 	{
-	  field.setTile(points[i][0], points[i][1], TileType.EMPTY);
+	  field.setTile(points[i].x, points[i].y, TileType.EMPTY);
 	  Assert.assertEquals(TileType.BLOCK,
-			      field.getTile(points[i][0],
-					    points[i][1]).getType());
+			      field.getTile(points[i]).getType());
 	}
     }
 
@@ -98,7 +97,7 @@ package
     public function testSetWaterTile():void
     {
       field.setTile(1, 1, TileType.WATER);
-      Assert.assertEquals(TileType.WATER, field.getTile(1, 1).getType());
+      Assert.assertEquals(TileType.WATER, field.getTile(new Point(1, 1)).getType());
     }
 
 
@@ -106,7 +105,7 @@ package
     public function testSettingWaterTileOnLevelEdgeShouldBeAllowed():void
     {
       field.setTile(0, 5, TileType.WATER);
-      Assert.assertEquals(TileType.WATER, field.getTile(0, 5).getType());
+      Assert.assertEquals(TileType.WATER, field.getTile(new Point(0, 5)).getType());
     }
 
     [Test]
