@@ -33,9 +33,13 @@ package
 	roam(field, creatures);
     }
 
-    public function attack(player:Player):void
+    public function attack(player:Player, displayableStatus:DisplayableStatus):void
     {
-
+      if(player.position.distanceTo(position) == 1)
+	{
+	  player.hp = player.hp - 1;
+	  displayableStatus.print("Attacked! 1 HP damage");
+	}
     }
 
     public function hit(hurt:int):void

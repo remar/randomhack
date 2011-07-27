@@ -68,6 +68,7 @@ package
       if(actionPerformed)
 	{
 	  creatureController.removeDeadEnemies(objects, graphicsFactory);
+	  creatureController.attack(player, displayableStatus);
 	  creatureController.moveEnemies(field, player.position);
 	  actionPerformed = false;
 	}

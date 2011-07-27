@@ -8,6 +8,7 @@ package
     private var ng:DeterministicNumberGenerator;
     private var enemy:Enemy;
     private var field:Field;
+    private var player:Player;
 
     [Before]
     public function setUp():void
@@ -19,6 +20,8 @@ package
 
       field = new Field(32, 24);
       field.clearField(TileType.EMPTY);
+
+      player = new Player(gf, new DisplayableStatus());
     }
 
     [Test]
@@ -74,6 +77,36 @@ package
     {
       enemy.hit(4);
       Assert.assertFalse(enemy.isDead());
+    }
+
+    [Test]
+    public function shouldHurtPlayerIfDistanceToPlayerIsOne():void
+    {
+      player.position = new Point(3, 3);
+      player.hp = 10;
+      enemy.position = new Point(4, 3);
+      enemy.attack(player, new DisplayableStatus());
+      Assert.assertEquals(9, player.hp);
+    }
+
+    [Test]
+    public function shouldHurtPlayerIfDistanceToPlayerIsOneDiagonally():void
+    {
+      player.position = new Point(3, 3);
+      player.hp = 10;
+      enemy.position = new Point(4, 4);
+      enemy.attack(player, new DisplayableStatus());
+      Assert.assertEquals(9, player.hp);
+    }
+
+    [Test]
+    public function shouldNotHurtPlayerIfDistanceToPlayerIsNotOne():void
+    {
+      player.position = new Point(2, 3);
+      player.hp = 10;
+      enemy.position = new Point(4, 3);
+      enemy.attack(player, new DisplayableStatus());
+      Assert.assertEquals(10, player.hp);
     }
 
     private function assertCorrectPosition(expected:Point, actual:Point):void

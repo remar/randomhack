@@ -95,14 +95,19 @@ package
     public function set maxhp(maxHP:int):void
     {
       this.maxHP = maxHP;
-      HP = maxHP;
+      hp = maxHP;
       displayableStatus.maxhp = maxhp;
-      displayableStatus.hp = hp;
     }
 
     public function get maxhp():int
     {
       return maxHP;
+    }
+
+    public function set hp(HP:int):void
+    {
+      this.HP = HP;
+      displayableStatus.hp = hp;
     }
 
     public function get hp():int

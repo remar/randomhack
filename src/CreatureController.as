@@ -24,6 +24,11 @@ package
       forEachEnemy(function (enemy:Enemy):void {enemy.draw(drawable);});
     }
 
+    public function attack(player:Player, displayableStatus:DisplayableStatus):void
+    {
+      forEachEnemy(function (enemy:Enemy):void {enemy.attack(player, displayableStatus);});
+    }
+
     public function removeDeadEnemies(objects:Array, graphicsFactory:GraphicsFactory):void
     {
       enemies = enemies.filter(function (enemy:Enemy, i:int, a:Array):Boolean
