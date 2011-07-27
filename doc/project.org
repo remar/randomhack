@@ -22,7 +22,7 @@
 ** Player
 *** DONE Generate gender and attractive gender
 *** DONE Generate name and prefix
-*** TODO Generate playerpower
+*** DONE Generate playerpower
 *** DONE Movement
     Shouldn't walk right over enemies.
 *** DONE HP / max HP

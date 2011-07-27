@@ -10,7 +10,7 @@ package
 
     private var HP:int;
     private var maxHP:int;
-    private var playerpower:int;
+    private var playerPower:int;
     private var displayableStatus:DisplayableStatus;
 
     public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
@@ -29,7 +29,7 @@ package
 
       maxhp = 14 - roll * 2;
 
-      playerpower = 5;
+      playerpower = 1 + roll;
     }
 
     private function generateGender(numberGenerator:NumberGenerator):void
@@ -89,7 +89,7 @@ package
 
     public function attack(enemy:Enemy):void
     {
-      enemy.hit(playerpower);
+      enemy.hit(playerPower);
     }
 
     public function set maxhp(maxHP:int):void
@@ -108,6 +108,12 @@ package
     public function get hp():int
     {
       return HP;
+    }
+
+    public function set playerpower(playerPower:int):void
+    {
+      this.playerPower = playerPower;
+      displayableStatus.playerpower = playerPower;
     }
   }
 }
