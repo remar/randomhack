@@ -21,7 +21,7 @@ package
     {
       for(var j:int = p.y - size;j <= p.y + size;j++)
 	for(var i:int = p.x - size;i <= p.x + size;i++)
-	  field.setTile(i, j, TileType.EMPTY);
+	  field.setTile(new Point(i, j), TileType.EMPTY);
     }
 
     public function createPool(numberGenerator:NumberGenerator):void
@@ -35,7 +35,7 @@ package
 	{
 	  for(var x:int = xOffset;x <= xOffset + width;x++)
 	    {
-	      field.setTile(x, y, TileType.WATER);
+	      field.setTile(new Point(x, y), TileType.WATER);
 	    }
 	  width += numberGenerator.getIntInRange(-1, 1);
 	  xOffset += numberGenerator.getIntInRange(-1, 1);
@@ -86,7 +86,7 @@ package
 	{
 	  if(width == 1)
 	    {
-	      field.setTile(x, y, TileType.EMPTY);
+	      field.setTile(new Point(x, y), TileType.EMPTY);
 	    }
 	  else
 	    {
@@ -103,26 +103,25 @@ package
     private function carveBresenhamPath(startPoint:Point, endPoint:Point,
 					width:int):void
     {
-      var x:int = startPoint.x;
-      var y:int = startPoint.y;
+      var current:Point = startPoint;
       var dx:int = Math.abs(endPoint.x - startPoint.x);
       var dy:int = Math.abs(endPoint.y - startPoint.y);
-      var sx:int = startPoint.x < endPoint.x ? 1 : -1;
-      var sy:int = startPoint.y < endPoint.y ? 1 : -1;
+      var sx:Point = startPoint.x < endPoint.x ? new Point(1, 0) : new Point(-1, 0);
+      var sy:Point = startPoint.y < endPoint.y ? new Point(0, 1) : new Point(0, -1);
       var err:int = dx - dy;
       var dir:Array = err > 0 ? [0, -1] : [-1, 0];
       while(true)
 	{
 	  if(width == 1)
 	    {
-	      field.setTile(x, y, TileType.EMPTY);
+	      field.setTile(current, TileType.EMPTY);
 	    }
 	  else
 	    {
-	      carveSimplePath(new Point(x, y), dir, width, 1);
+	      carveSimplePath(current, dir, width, 1);
 	    }
 
-	  if(x == endPoint.x && y == endPoint.y)
+	  if(current.x == endPoint.x && current.y == endPoint.y)
 	    {
 	      break;
 	    }
@@ -131,12 +130,12 @@ package
 	  if(e2 > -dy)
 	    {
 	      err -= dy;
-	      x += sx;
+	      current = current.add(sx);
 	    }
 	  if(e2 < dx)
 	    {
 	      err += dx;
-	      y += sy;
+	      current = current.add(sy);
 	    }
 	}
     }

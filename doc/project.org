@@ -7,7 +7,7 @@
 *** DONE Create class CreatureController, move methods from Level to it
 *** DONE Add getters and setters for Point x and y
 *** DONE Field.getTile should take a Point instead of x and y
-*** TODO Field.setTile should take a Point instead of x and y
+*** DONE Field.setTile should take a Point instead of x and y
 *** TODO Convert the enums to stronger typed ones
 **** TODO Add Enum.as to project 
      See http://scottbilas.com/blog/ultimate-as3-fake-enums/ for code.

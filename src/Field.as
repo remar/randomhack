@@ -32,21 +32,21 @@ package
 	  field[x] = new Array(height);
 	  for(var y:int = 0;y < height;y++)
 	    {
-	      setTile(x, y, type);
+	      setTile(new Point(x, y), type);
 	    }
 	}
     }
 
-    public function setTile(x:int, y:int, type:int):void
+    public function setTile(p:Point, type:int):void
     {
-      if ((x < 0 || x >= width || y < 0 || y >= width) ||
-	  (type == TileType.EMPTY && (x == 0 || x == width - 1 ||
-				      y == 0 || y == height - 1)))
+      if ((p.x < 0 || p.x >= width || p.y < 0 || p.y >= width) ||
+	  (type == TileType.EMPTY && (p.x == 0 || p.x == width - 1 ||
+				      p.y == 0 || p.y == height - 1)))
 	{
 	  return;
 	}
 
-      field[x][y] = [new TileType(type), null];
+      field[p.x][p.y] = [new TileType(type), null];
     }
 
     public function getTile(p:Point):TileType
