@@ -32,6 +32,11 @@ package
       playerpower = 1 + roll;
     }
 
+    public function hit(hurt:int):void
+    {
+      hp = Math.max(hp - hurt, 0);
+    }
+
     private function generateGender(numberGenerator:NumberGenerator):void
     {
       if(numberGenerator.getIntInRange(0, 1) === 0)

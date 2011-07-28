@@ -15,6 +15,9 @@
      See http://scottbilas.com/blog/ultimate-as3-fake-enums/ for code.
 **** TODO Convert SpriteType to new enum style
 **** TODO Convert TileType to new enum style
+*** TODO Player and Enemy should have superclass Creature
+** Level
+*** TODO Check if player is dead
 ** Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Better distance between player start and goal
@@ -44,13 +47,16 @@
 *** TODO Rubble
 *** TODO Bottle
 ** General enemy stuff
+*** DONE Enemy name
+*** TODO Enemy prefix (and additional modifications)
 *** DONE Keep track of hp and max hp
 *** DONE Movement
     Right now an enemy moves every time that it is its turn, but
     originally it only moves if it's lucky (d10 <= speed).
 *** TODO Should get list of available spots and select one randomly when moving
 *** DONE Attacking
-    Very simple attacking for now, just subtracts 1 hp...
+**** DONE Add accuracy
+**** DONE Add power
 *** DONE Print to the console when attacking
 *** TODO Line of sight
 ** Enemies

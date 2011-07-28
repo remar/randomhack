@@ -6,9 +6,12 @@ package
     {
       super(gf, SpriteType.BAT, numberGenerator);
 
+      name = "Bat";
       lookDistance = 4;
       speed = 5;
       maxhp = 2;
+      power=2;
+      accuracy=3;      
     }
   }
 }

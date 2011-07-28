@@ -106,12 +106,10 @@ package
 
 	      if(enemy != null)
 		{
-		  displayableStatus.print("Attack enemy!");
 		  player.attack(enemy);
 		}
 	      else
 		{
-		  displayableStatus.print("Player moves to " + player.position.add(delta));
 		  player.moveRelative(field, delta, creatureController.getEnemies());
 		}
 	      actionPerformed = true;
