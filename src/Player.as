@@ -13,6 +13,8 @@ package
     private var playerPower:int;
     private var displayableStatus:DisplayableStatus;
 
+    private var weapon:Weapon;
+
     public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
     {
       super(gf, SpriteType.PLAYER);
@@ -30,6 +32,8 @@ package
       maxhp = 14 - roll * 2;
 
       playerpower = 1 + roll;
+
+      weapon = new BareHands();
     }
 
     public function hit(hurt:int):void
@@ -92,9 +96,21 @@ package
       displayableStatus.playerprefix = prefix;
     }
 
-    public function attack(enemy:Enemy):void
+    public function attack(enemy:Enemy, numberGenerator:NumberGenerator):void
     {
-      enemy.hit(playerPower);
+      var damage:int = Math.min(numberGenerator.getIntInRange(0, playerPower + weapon.power),
+				999);
+
+      displayableStatus.print("");
+
+      if(damage == 0)
+	{
+	  displayableStatus.print("You missed");
+	  return;
+	}
+
+      enemy.hit(damage);
+      displayableStatus.print("You deal " + damage + " dmg");
     }
 
     public function set maxhp(maxHP:int):void

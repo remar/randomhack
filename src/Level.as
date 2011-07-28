@@ -106,7 +106,7 @@ package
 
 	      if(enemy != null)
 		{
-		  player.attack(enemy);
+		  player.attack(enemy, numberGenerator);
 		}
 	      else
 		{

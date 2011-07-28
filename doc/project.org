@@ -31,17 +31,18 @@
 *** DONE Movement
     Shouldn't walk right over enemies.
 *** DONE HP / max HP
-*** TODO Attacking
-    Made a bare bones implementation of this so far.
+*** DONE Attacking
 *** TODO Print to the console when attacking
 *** TODO Talking
 *** TODO Picking up stuff
 *** TODO Dropping stuff
 *** DONE Should have a reference to DisplayableStatus, and update it
 ** Items
-*** TODO Sword
-    Kind of special. Can only carry one sword. No other weapons are
-    available.
+*** TODO Weapons
+**** DONE Bare hands
+**** TODO Sword(s)
+     Kind of special. Can only carry one sword. No other kinds of
+     weapons are available (except bare hands).
 *** TODO Stick
 *** TODO Torch
 *** TODO Rubble
