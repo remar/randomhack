@@ -127,6 +127,9 @@ package
 
       lines[row] = [];
 
+      if(string.length == 0)
+	return;
+
       var char:SpriteInstance;
       var i:int = 0;
       for each(var character:String in string.split(""))
