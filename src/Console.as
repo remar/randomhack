@@ -142,5 +142,33 @@ package
 		}
 
     }
+
+    /**
+       Scroll lines up. Will scroll lines starting at firstRow and
+       ending at lastRow (inclusive), and scroll offset lines.
+     */
+    public function scroll(firstRow:int, lastRow:int, offset:int = 1):void
+    {
+      for(var i:int = firstRow;i <= lastRow;i++)
+	{
+	  moveLine(i, i - offset);
+	}
+    }
+
+    private function moveLine(originalPos:int, newPos:int):void
+    {
+      if(originalPos < 0 || originalPos >= lines.length || newPos < 0 || newPos >= lines.length)
+	return;
+
+      lines[newPos] = lines[originalPos];
+
+      // Go through characters, updating positions
+      var i:int = 0;
+      for each(var char:SpriteInstance in lines[newPos])
+	{
+	  char.setPosition(new Point(i*8, newPos*8));
+	  i++;
+	}
+    }
   }
 }

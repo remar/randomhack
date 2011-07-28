@@ -52,10 +52,8 @@ package
       displayableStatus.registerListener(consoleInfoView);
 
       player = new Player(graphicsFactory, displayableStatus);
-      player.generateCharacter(numberGenerator);
 
-      generateLevel();
-
+      startGame();
       super.create();
     }
 
@@ -69,6 +67,12 @@ package
 	{
 	  creatureController.removeDeadEnemies(objects, graphicsFactory);
 	  creatureController.attack(player, displayableStatus);
+
+	  if(player.isDead())
+	    {
+	      printDeathMessage();
+	    }
+
 	  creatureController.moveEnemies(field, player.position);
 	  actionPerformed = false;
 	}
@@ -91,6 +95,13 @@ package
       creatureController.drawEnemies(fieldDrawable);
       player.draw(fieldDrawable);
       consoleInfoView.draw(drawable);
+    }
+
+    private function startGame():void
+    {
+      player.generateCharacter(numberGenerator);
+      generateLevel();
+      printStartingMessage();
     }
 
     private function handleInput():void
@@ -142,8 +153,6 @@ package
 	  creatureController.addEnemy(enemy);
 	}
       actionPerformed = false;
-
-      displayableStatus.print("Create level");
     }
 
     private function getClickedTile(mousePosition:Point):Point
@@ -159,6 +168,34 @@ package
 		      {
 			object.draw(fieldDrawable);
 		      });
+    }
+
+    private function printStartingMessage():void
+    {
+      printMessage(["WELCOME TO RANDOMHACK 0.1",
+		    "PUSH <button> FOR CONTROLS",
+		    "",
+		    "Your beloved is being offered",
+		    "as a sacrifice deep below this",
+		    "dungeon. Only you can brave its",
+		    "depths, " + player.prefix + " " + player.name]);
+    }
+
+    private function printDeathMessage():void
+    {
+      printMessage(["You suffer the mortal blow",
+		    "",
+		    "!!!YOU ARE DEAD!!!",
+		    "SCORE: " + 0,
+		    "PUSH START FOR NEW GAME"]);
+    }
+
+    private function printMessage(message:Array):void
+    {
+      for each(var str:String in message)
+	{
+	  displayableStatus.print(str);
+	}
     }
   }
 }

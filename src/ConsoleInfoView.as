@@ -41,9 +41,14 @@ package
     public function print(string:String):void
     {
       if(currentLine >= MAX_LINES)
-	currentLine = 0; // TODO: Scroll console lines instead
-
-      console.print(16 + currentLine++, string);
+	{
+	  console.scroll(17, 23, 1);
+	  console.print(23, string);
+	}
+      else
+	{
+	  console.print(16 + currentLine++, string);
+	}
     }
 
     public function draw(drawable:Drawable):void

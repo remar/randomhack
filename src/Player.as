@@ -5,8 +5,8 @@ package
     private var gender:int;
     private var attract:int;
 
-    private var name:String;
-    private var prefix:String;
+    private var _name:String;
+    private var _prefix:String;
 
     private var HP:int;
     private var maxHP:int;
@@ -80,9 +80,9 @@ package
 			       "Marina", "Nameless", "Fuzzy"];
 
       if(gender === Gender.MALE)
-	name = maleNames[numberGenerator.getIntInRange(0, maleNames.length - 1)];
+	_name = maleNames[numberGenerator.getIntInRange(0, maleNames.length - 1)];
       else
-	name = femaleNames[numberGenerator.getIntInRange(0, femaleNames.length - 1)];
+	_name = femaleNames[numberGenerator.getIntInRange(0, femaleNames.length - 1)];
 
       var prefixes:Array = ["Careful", "Dire", "Fat", "Slim", "Old", "Mighty", "Swift",
 			    "Stray", "Wimpy", "Hasty", "Lucky", "Dread", "Sharp", "Heavy",
@@ -90,10 +90,10 @@ package
 			    "Crazy", "Odd", "Little", "Mad", "Silent", "Sneaky", "One-eyed",
 			    "Fearless", "Pajama"];
 
-      prefix = prefixes[numberGenerator.getIntInRange(0, prefixes.length - 1)];
+      _prefix = prefixes[numberGenerator.getIntInRange(0, prefixes.length - 1)];
 
-      displayableStatus.playername = name;
-      displayableStatus.playerprefix = prefix;
+      displayableStatus.playername = _name;
+      displayableStatus.playerprefix = _prefix;
     }
 
     public function attack(enemy:Enemy, numberGenerator:NumberGenerator):void
@@ -111,6 +111,21 @@ package
 
       enemy.hit(damage);
       displayableStatus.print("You deal " + damage + " dmg");
+    }
+
+    public function isDead():Boolean
+    {
+      return HP <= 0;
+    }
+
+    public function get name():String
+    {
+      return _name;
+    }
+
+    public function get prefix():String
+    {
+      return _prefix;
     }
 
     public function set maxhp(maxHP:int):void

@@ -17,7 +17,10 @@
 **** TODO Convert TileType to new enum style
 *** TODO Player and Enemy should have superclass Creature
 ** Level
-*** TODO Check if player is dead
+*** TODO Listen for "start button" (whatever that is)
+*** DONE Check if player is dead
+*** DONE Print out starting message
+    Will do this as part of a startGame method.
 ** Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Better distance between player start and goal
@@ -32,7 +35,7 @@
     Shouldn't walk right over enemies.
 *** DONE HP / max HP
 *** DONE Attacking
-*** TODO Print to the console when attacking
+*** DONE Print to the console when attacking
 *** TODO Talking
 *** TODO Picking up stuff
 *** TODO Dropping stuff
@@ -82,7 +85,7 @@
     And InfoView that displays the info as text in a console. Done for
     now means that it's started.
 *** DONE Flesh out ConsoleInfoView to look like original
-*** TODO Add scrolling to Console and ConsoleInfoView
+*** DONE Add scrolling to Console and ConsoleInfoView
 *** DONE Console
 **** DONE Simple font engine
      Use sprite graphics factory to provide characters.
