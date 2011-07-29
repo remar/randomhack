@@ -140,7 +140,8 @@ package
       player.position = positions.start;
       goal = new Goal(graphicsFactory, positions.goal);	
 
-      var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator);
+      var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator,
+								       positions);
 
       objects = [];
       creatureController = new CreatureController();
@@ -172,7 +173,9 @@ package
 
     private function printStartingMessage():void
     {
-      printMessage(["WELCOME TO RANDOMHACK 0.1",
+      printMessage(["",
+		    "",
+		    "WELCOME TO RANDOMHACK 0.1",
 		    "PUSH <button> FOR CONTROLS",
 		    "",
 		    "Your beloved is being offered",

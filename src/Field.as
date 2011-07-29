@@ -7,6 +7,8 @@ package
 
     private var field:Array;
 
+    private static const MIN_DISTANCE:int = 4;
+
     public function Field(width:int, height:int):void
     {
       this.width = width;
@@ -102,7 +104,8 @@ package
       return new Point(xComponent, yComponent);
     }
 
-    public function getEmptyPositionsInRandomOrder(numberGenerator:NumberGenerator):Array
+    public function getEmptyPositionsInRandomOrder(numberGenerator:NumberGenerator,
+						   startPositions:StartPositions):Array
     {
       var positions:Array = [];
 
@@ -112,6 +115,12 @@ package
 	    if(getTile(new Point(x, y)).getType() == TileType.EMPTY)
 	      positions.push(new Point(x, y));
 	  }
+
+      positions = positions.filter(function (p:Point, i:int, a:Array):Boolean
+				   {
+				     return p.distanceTo(startPositions.start) > MIN_DISTANCE &&
+				            p.distanceTo(startPositions.goal) > MIN_DISTANCE;
+				   });      
 
       for(var i:int = 0;i < positions.length - 1;i++)
 	{

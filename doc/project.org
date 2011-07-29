@@ -3,6 +3,10 @@
 *** TODO Look up mock frameworks for FlexUnit
 ** Bugs
 *** DONE Enemy array isn't cleared when generating a new level
+*** DONE There should only be 8 item slots (and 9 console lines)
+*** DONE Enemies shouldn't start on top of player or goal
+    Fixed by filtering out positions that are close to player or
+    goal.
 ** Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 *** DONE Push up checking for obstacles when moving to GameObject
