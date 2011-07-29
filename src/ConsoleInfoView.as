@@ -4,14 +4,12 @@ package
   {
     private var console:Console;
     private var ds:DisplayableStatus;
-    private var lines:Array;
     private var currentLine:int;
-    private static const MAX_LINES:int = 8;
+    private static const MAX_LINES:int = 9;
 	
     public function ConsoleInfoView(graphicsFactory:GraphicsFactory):void
     {
       console = new Console(graphicsFactory);
-      lines = new Array(MAX_LINES);
       currentLine = 0;
     }
 
@@ -31,7 +29,7 @@ package
       line++;
       console.print(line++, " WEAPON: " + ds.weapon);
 
-      for(var i:int = 0;i < 9;i++)
+      for(var i:int = 0;i < 8;i++)
 	{
 	  console.print(line++, "   ITEM" + (i+1) + ": ---");
 	}
@@ -42,12 +40,12 @@ package
     {
       if(currentLine >= MAX_LINES)
 	{
-	  console.scroll(17, 23, 1);
+	  console.scroll(16, 23, 1);
 	  console.print(23, string);
 	}
       else
 	{
-	  console.print(16 + currentLine++, string);
+	  console.print(15 + currentLine++, string);
 	}
     }
 
