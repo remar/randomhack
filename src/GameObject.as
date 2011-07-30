@@ -7,7 +7,10 @@ package
 
     public function GameObject(gf:GraphicsFactory, spriteType:int):void
     {
-      spriteInstance = new SpriteInstance(gf.getSprite(spriteType));
+      if(spriteType == SpriteType.EMPTY)
+	spriteInstance = null;
+      else
+	spriteInstance = new SpriteInstance(gf.getSprite(spriteType));
     }
 
     public function update():void
@@ -17,7 +20,8 @@ package
     public function set position(pos:Point):void
     {
       this.pos = pos;
-      spriteInstance.setFieldPosition(pos);
+      if(spriteInstance != null)
+	spriteInstance.setFieldPosition(pos);
     }
 
     public function get position():Point
@@ -27,7 +31,8 @@ package
 
     public function draw(drawable:Drawable):void
     {
-      spriteInstance.draw(drawable);
+      if(spriteInstance != null)
+	spriteInstance.draw(drawable);
     }
 
     public function moveRelative(field:Field, delta:Point, objects:Array):void
