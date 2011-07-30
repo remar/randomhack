@@ -100,6 +100,11 @@ package
     private function startGame():void
     {
       player.generateCharacter(numberGenerator);
+
+      var sword:Sword = new Sword(graphicsFactory, new Point(1, 1));
+      sword.generateNameAndPower(1, numberGenerator);
+      player.weapon = sword;
+
       generateLevel();
       printStartingMessage();
     }

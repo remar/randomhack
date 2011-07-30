@@ -7,6 +7,7 @@ package
     public static const GOAL:int = 2;
     public static const BAT:int = 3;
     public static const BLOOD:int = 4;
+    public static const SWORD:int = 5;
 
     // font
     public static const EXCLAMATION:int = 33;

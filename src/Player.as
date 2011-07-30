@@ -13,7 +13,7 @@ package
     private var playerPower:int;
     private var displayableStatus:DisplayableStatus;
 
-    private var weapon:Weapon;
+    private var _weapon:Weapon;
 
     public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
     {
@@ -98,7 +98,7 @@ package
 
     public function attack(enemy:Enemy, numberGenerator:NumberGenerator):void
     {
-      var damage:int = Math.min(numberGenerator.getIntInRange(0, playerPower + weapon.power),
+      var damage:int = Math.min(numberGenerator.getIntInRange(0, playerPower + _weapon.power),
 				999);
 
       displayableStatus.print("");
@@ -155,6 +155,12 @@ package
     {
       this.playerPower = playerPower;
       displayableStatus.playerpower = playerPower;
+    }
+
+    public function set weapon(_weapon:Weapon):void
+    {
+      this._weapon = _weapon;
+      displayableStatus.weapon = _weapon.name;
     }
   }
 }

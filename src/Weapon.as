@@ -1,14 +1,13 @@
 package
 {
-  public class Weapon
+  public class Weapon extends Item
   {
     protected var _power:int;
     protected var _name:String;
 
-    public function Weapon(_name:String, _power:int):void
+    public function Weapon(gf:GraphicsFactory, spriteType:int):void
     {
-      this._name = _name;
-      this._power = _power;
+      super(gf, spriteType);
     }
 
     public function get name():String

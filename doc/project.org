@@ -22,9 +22,11 @@
 *** TODO Player and Enemy should have superclass Creature
 ** Level
 *** TODO Listen for "start button" (whatever that is)
+    Perhaps a "click to restart" instead.
 *** DONE Check if player is dead
 *** DONE Print out starting message
     Will do this as part of a startGame method.
+*** TODO Keep track of items in level
 ** Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Better distance between player start and goal
@@ -45,9 +47,10 @@
 *** TODO Dropping stuff
 *** DONE Should have a reference to DisplayableStatus, and update it
 ** Items
-*** TODO Weapons
+*** DONE Item supertype
+*** DONE Weapons
 **** DONE Bare hands
-**** TODO Sword(s)
+**** DONE Sword(s)
      Kind of special. Can only carry one sword. No other kinds of
      weapons are available (except bare hands).
 *** TODO Stick

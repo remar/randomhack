@@ -4,7 +4,9 @@ package
   {
     public function BareHands():void
     {
-      super("Bare hands", 0);
+      super(null, SpriteType.EMPTY);
+      _name = "Bare hands";
+      _power = 0;
     }
   }
 }

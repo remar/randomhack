@@ -120,6 +120,16 @@ package
 				       1,0,0,0,0,0,0,0,
 				       0xD03030];
 
+      SPRITE_DATA[SpriteType.SWORD] = [0,0,0,0,0,0,1,1,
+				       0,0,0,0,0,1,1,1,
+				       0,0,0,0,1,1,1,0,
+				       0,1,0,1,1,1,0,0,
+				       0,1,1,1,1,0,0,0,
+				       0,0,1,1,0,0,0,0,
+				       0,1,0,1,1,0,0,0,
+				       1,0,0,0,0,0,0,0,
+				       RGB15(24,24,24)];
+
       // Font
       SPRITE_DATA[SpriteType.EXCLAMATION] = [0,0,0,0,1,0,0,0,
 					     0,0,0,0,1,0,0,0,
@@ -969,5 +979,9 @@ package
 				       0xffffff];
     }
 
+    private function RGB15(r:int, g:int, b:int):int
+    {
+      return (r << 19) + (g << 11) + (b << 3);
+    }
   }
 }
