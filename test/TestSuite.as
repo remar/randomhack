@@ -13,5 +13,6 @@ package
       public var testSpriteInstance:TestSpriteInstance;
       public var testTile:TestTile;
       public var testEnemy:TestEnemy;
+      public var testItem:TestItem;
     }
 }
