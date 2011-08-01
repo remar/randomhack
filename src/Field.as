@@ -56,14 +56,16 @@ package
       return field[p.x][p.y][0];
     }
 
-    public function renderBackgroundTiles(graphicsFactory:GraphicsFactory):void
+    public function renderBackgroundTiles(graphicsFactory:GraphicsFactory,
+					  numberGenerator:NumberGenerator):void
     {
       for(var y:int = 0;y < height;y++)
 	{
 	  for(var x:int = 0;x < width;x++)
 	    {
 	      field[x][y][1] = graphicsFactory.getTile(field[x][y][0],
-						       getSurrounding(x, y));
+						       getSurrounding(x, y),
+						       numberGenerator);
 	    }
 	}      
     }

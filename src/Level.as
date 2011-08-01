@@ -138,12 +138,14 @@ package
     
     private function generateLevel():void
     {
+      graphicsFactory.setLevelType(LevelType.CAVE);
+
       field.clearField(TileType.BLOCK);
 
       var fieldBuilder:FieldBuilder = new RandomFieldBuilder(numberGenerator);
 
       var positions:StartPositions = fieldBuilder.generate(field);
-      field.renderBackgroundTiles(graphicsFactory);
+      field.renderBackgroundTiles(graphicsFactory, numberGenerator);
 
       player.position = positions.start;
       goal = new Goal(graphicsFactory, positions.goal);	

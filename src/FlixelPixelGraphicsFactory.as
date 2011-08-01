@@ -15,12 +15,19 @@ package
     private static const SPRITE_DATA:Object = {};
 
     private var sprites:Array = [];
+    private var levelType:int;
 
     public function FlixelPixelGraphicsFactory(screen:PixelScreen):void
     {
       this.screen = screen;
+      setLevelType(LevelType.CAVE);
 
       initSpriteData();
+    }
+
+    public function setLevelType(levelType:int):void
+    {
+      this.levelType = levelType;
     }
 
     public function getDrawable():Drawable
@@ -40,7 +47,8 @@ package
       return sprites[spriteType];
     }
 
-    public function getTile(type:TileType, surrounding:Surrounding):Tile
+    public function getTile(type:TileType, surrounding:Surrounding,
+			    numberGenerator:NumberGenerator):Tile
     {
       var tile:Tile = new PixelTile(tileWidth, tileHeight);
       var data:Array = [];
@@ -66,9 +74,38 @@ package
 	  data[i] = color;
 	}
 
+      if(type.getType() == TileType.BLOCK)
+	{
+	  drawJaggedEdges(data, surrounding, numberGenerator);
+	}
+
       tile.setData(data);
 
       return tile;
+    }
+
+    private function drawJaggedEdges(data:Array, surrounding:Surrounding,
+				     numberGenerator:NumberGenerator):void
+    {
+      var w:int = [2, 0, 0, 0][levelType];
+
+      if(surrounding.east.getType() == TileType.EMPTY && numberGenerator.getIntInRange(0, w))
+	drawTileLine(data, 7, 8);
+      if(surrounding.north.getType() == TileType.EMPTY && numberGenerator.getIntInRange(0, w))
+	drawTileLine(data, 0, 1);
+      if(surrounding.west.getType() == TileType.EMPTY && numberGenerator.getIntInRange(0, w))
+	drawTileLine(data, 0, 8);
+      if(surrounding.south.getType() == TileType.EMPTY && numberGenerator.getIntInRange(0, w))
+	drawTileLine(data, 7*8, 1);
+    }
+
+    private function drawTileLine(data:Array, offset:int, jump:int):void
+    {
+      for(var i:int = 0;i < 8;i++)
+	{
+	  data[offset] = EMPTY_COLOR;
+	  offset += jump;
+	}
     }
 
     private function initSpriteData():void

@@ -26,13 +26,15 @@
 *** DONE Check if player is dead
 *** DONE Print out starting message
     Will do this as part of a startGame method.
-*** TODO Keep track of items in level
+*** DONE Keep track of items in level
 ** Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Better distance between player start and goal
-*** TODO Tile rendering
+*** DONE Tile rendering
     Should randomly make jagged edges in cave levels.
 *** TODO Ruins
+**** TODO Generate ruins
+**** TODO Draw ruins
 ** Player
 *** DONE Generate gender and attractive gender
 *** DONE Generate name and prefix

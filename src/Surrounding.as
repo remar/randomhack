@@ -2,37 +2,37 @@ package
 {
   public class Surrounding
   {
-    private var east:TileType;
-    private var north:TileType;
-    private var west:TileType;
-    private var south:TileType;
+    private var _east:TileType;
+    private var _north:TileType;
+    private var _west:TileType;
+    private var _south:TileType;
 
     public function Surrounding(tiles:Array)
     {
-      east = tiles[0];
-      north = tiles[1];
-      west = tiles[2];
-      south = tiles[3];
+      _east = tiles[0];
+      _north = tiles[1];
+      _west = tiles[2];
+      _south = tiles[3];
     }
 
-    public function getEast():TileType
+    public function get east():TileType
     {
-      return east;
+      return _east;
     }
 
-    public function getNorth():TileType
+    public function get north():TileType
     {
-      return north;
+      return _north;
     }
 
-    public function getWest():TileType
+    public function get west():TileType
     {
-      return west;
+      return _west;
     }
 
-    public function getSouth():TileType
+    public function get south():TileType
     {
-      return south;
+      return _south;
     }
   }
 }

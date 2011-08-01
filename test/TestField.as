@@ -52,9 +52,12 @@ package
     {
       var fakeScreen:PixelScreen = new FakePixelScreen(256, 384);
       var gf:GraphicsFactory = new FlixelPixelGraphicsFactory(fakeScreen);
+      var ng:DeterministicNumberGenerator = new DeterministicNumberGenerator();
+
+      ng.addInt(0);
 
       field.setTile(new Point(0, 0), TileType.BLOCK);
-      field.renderBackgroundTiles(gf);
+      field.renderBackgroundTiles(gf, ng);
       field.draw(gf.getDrawable());
 
       // Check that position 0,0 is filled
