@@ -29,12 +29,18 @@ package
       forEachEnemy(function (enemy:Enemy):void {enemy.attack(player, displayableStatus);});
     }
 
-    public function removeDeadEnemies(objects:Array, graphicsFactory:GraphicsFactory):void
+    public function removeDeadEnemies(itemController:ItemController,
+				      graphicsFactory:GraphicsFactory,
+				      displayableStatus:DisplayableStatus):void
     {
       enemies = enemies.filter(function (enemy:Enemy, i:int, a:Array):Boolean
 			       {
 				 if(enemy.isDead())
-				   objects.push(new Blood(graphicsFactory, enemy.position));
+				   {
+				     itemController.addItem(new Blood(graphicsFactory,
+								      enemy.position));
+				     displayableStatus.print(enemy.name + " dies");
+				   }
 				 return enemy.isDead() === false;
 			       });
     }

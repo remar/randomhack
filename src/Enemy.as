@@ -4,7 +4,7 @@ package
   {
     private var numberGenerator:NumberGenerator;
 
-    protected var name:String;
+    protected var _name:String;
     protected var lookDistance:int;
     protected var speed:int;
     protected var maxHP:int;
@@ -18,7 +18,7 @@ package
       super(gf, spriteType);
       this.numberGenerator = numberGenerator;
 
-      name = "Enemy";
+      _name = "Enemy";
       lookDistance = 5;
       speed = 5;
       maxhp = 5;
@@ -80,6 +80,11 @@ package
       {
 	return hp <= 0;
       }
+
+    public function get name():String
+    {
+      return _name;
+    }
 
     protected function set maxhp(maxHP:int):void
     {

@@ -6,7 +6,7 @@ package
     {
       super(gf, SpriteType.BAT, numberGenerator);
 
-      name = "Bat";
+      _name = "Bat";
       lookDistance = 4;
       speed = 5;
       maxhp = 2;

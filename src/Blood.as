@@ -1,6 +1,6 @@
 package
 {
-  public class Blood extends GameObject
+  public class Blood extends Item
   {
     public function Blood(gf:GraphicsFactory, position:Point)
     {

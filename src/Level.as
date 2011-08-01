@@ -34,6 +34,7 @@ package
     private var consoleInfoView:ConsoleInfoView;
 
     private var creatureController:CreatureController;
+    private var itemController:ItemController;
 
     override public function create():void
     {
@@ -65,7 +66,8 @@ package
 
       if(actionPerformed)
 	{
-	  creatureController.removeDeadEnemies(objects, graphicsFactory);
+	  creatureController.removeDeadEnemies(itemController, graphicsFactory,
+					       displayableStatus);
 	  creatureController.attack(player, displayableStatus);
 
 	  if(player.isDead())
@@ -92,6 +94,7 @@ package
       field.draw(fieldDrawable);
       goal.draw(fieldDrawable);
       drawObjects();
+      itemController.drawItems(fieldDrawable);
       creatureController.drawEnemies(fieldDrawable);
       player.draw(fieldDrawable);
       consoleInfoView.draw(drawable);
@@ -149,6 +152,7 @@ package
 								       positions);
 
       objects = [];
+      itemController = new ItemController();
       creatureController = new CreatureController();
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
@@ -158,6 +162,7 @@ package
 	  enemy.position = randomPositions.pop();
 	  creatureController.addEnemy(enemy);
 	}
+
       actionPerformed = false;
     }
 
