@@ -160,7 +160,11 @@ package
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
       for(var i:int = 0;i < numEnemies;i++)
 	{
-	  var enemy:Enemy = new Bat(graphicsFactory, numberGenerator);
+	  var enemy:Enemy;
+	  if(numberGenerator.getIntInRange(0, 1) == 0)
+	    enemy = new Bat(graphicsFactory, numberGenerator);
+	  else
+	    enemy = new Flea(graphicsFactory, numberGenerator);
 	  enemy.position = randomPositions.pop();
 	  creatureController.addEnemy(enemy);
 	}

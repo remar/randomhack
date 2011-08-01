@@ -8,6 +8,7 @@ package
     public static const BAT:int = 3;
     public static const BLOOD:int = 4;
     public static const SWORD:int = 5;
+    public static const FLEA:int = 6;
 
     // font
     public static const EXCLAMATION:int = 33;

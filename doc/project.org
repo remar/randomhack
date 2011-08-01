@@ -75,7 +75,8 @@
 ** Enemies
 *** DONE Array of enemies in Level
 *** TODO Enemy factory
-*** TODO Bat
+*** DONE Bat
+*** DONE Flea
 ** Info screen
    In the original, all info and items where displayed as text in a
    console view. This should be made more general so that how the
