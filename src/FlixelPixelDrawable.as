@@ -19,14 +19,13 @@ package
       var xOffset:int = position.x;
       var yOffset:int = position.y;
 
+      var pixelColor:int;
+
       for(var y:int = 0;y < height;y++)
 	{
 	  for(var x:int = 0;x < width;x++)
 	    {
-	      if (data[x + y * width] !== 0)
-		{
-		  pixelScreen.setPixel(x + xOffset, y + yOffset, color);
-		}
+	      pixelScreen.setPixel(x + xOffset, y + yOffset, data[x + y * width] ? color : 0);
 	    }
 	}
     }
