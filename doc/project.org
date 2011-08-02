@@ -45,6 +45,7 @@
 *** DONE Attacking
 *** DONE Print to the console when attacking
 *** TODO Talking
+*** TODO Inventory
 *** TODO Picking up stuff
 *** TODO Dropping stuff
 *** DONE Poison
@@ -79,6 +80,34 @@
 *** DONE Bat
 *** DONE Flea
 *** DONE Snake
+*** DONE Goblin
+*** TODO Mingbat
+*** TODO Undead
+*** TODO Mimic
+*** TODO Watershade
+*** TODO Slime
+*** TODO Stoneworm
+*** TODO Flicker
+*** TODO Thirster
+*** TODO Troll
+*** TODO Unseen
+*** TODO Clutterfly
+*** TODO Mage
+*** TODO VenusPlant
+*** TODO WhirlImp
+*** TODO ArachnoRex
+*** TODO WallMaster
+*** TODO Succubus
+*** TODO FireWraith
+*** TODO Wizard
+*** TODO Dragon
+*** TODO Titan
+*** TODO Morpher
+*** TODO AbyssWorm
+*** TODO Baelrog
+*** TODO ZombieDrgn
+*** TODO DarkYoung
+*** TODO Zentraidon
 ** Info screen
    In the original, all info and items where displayed as text in a
    console view. This should be made more general so that how the
