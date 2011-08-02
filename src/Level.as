@@ -129,7 +129,7 @@ package
 		}
 	      else
 		{
-		  player.moveRelative(field, delta, creatureController.getEnemies());
+		  player.move(field, delta, creatureController.getEnemies());
 		}
 	      actionPerformed = true;
 	    }
@@ -158,13 +158,11 @@ package
       creatureController = new CreatureController();
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
+      var enemyClasses:Array = [Bat, Flea, Snake];
       for(var i:int = 0;i < numEnemies;i++)
 	{
-	  var enemy:Enemy;
-	  if(numberGenerator.getIntInRange(0, 1) == 0)
-	    enemy = new Bat(graphicsFactory, numberGenerator);
-	  else
-	    enemy = new Flea(graphicsFactory, numberGenerator);
+	  var randomEnemy:int = numberGenerator.getIntInRange(0, 2);
+	  var enemy:Enemy = new enemyClasses[randomEnemy](graphicsFactory, numberGenerator);
 	  enemy.position = randomPositions.pop();
 	  creatureController.addEnemy(enemy);
 	}

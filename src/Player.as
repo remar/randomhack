@@ -15,6 +15,8 @@ package
 
     private var _weapon:Weapon;
 
+    private var _poison:int;
+
     public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
     {
       super(gf, SpriteType.PLAYER);
@@ -39,6 +41,18 @@ package
     public function hit(hurt:int):void
     {
       hp = Math.max(hp - hurt, 0);
+    }
+
+    public function poison(strength:int):void
+    {
+      if(_poison != 0)
+	return;
+
+      if(strength == PoisonType.POISON)
+	{
+	  displayableStatus.print("You were poisoned!");
+	  _poison = strength * strength * 40;
+	}
     }
 
     private function generateGender(numberGenerator:NumberGenerator):void
@@ -113,6 +127,12 @@ package
       displayableStatus.print("You deal " + damage + " dmg");
     }
 
+    public function move(field:Field, delta:Point, objects:Array):void
+    {
+      moveRelative(field, delta, objects);
+      dealPoisonDamage();
+    }
+
     public function isDead():Boolean
     {
       return HP <= 0;
@@ -161,6 +181,25 @@ package
     {
       this._weapon = _weapon;
       displayableStatus.weapon = _weapon.name;
+    }
+
+    private function dealPoisonDamage():void
+    {
+      if(_poison == 0)
+	return;
+
+      if(_poison % 10 == 0)
+	{
+	  hit(1);
+	  displayableStatus.print("1 dmg by poison");
+	}
+
+      _poison--;
+
+      if(_poison == 0)
+	{
+	  displayableStatus.print("The poison wears out");
+	}
     }
   }
 }

@@ -47,6 +47,7 @@
 *** TODO Talking
 *** TODO Picking up stuff
 *** TODO Dropping stuff
+*** DONE Poison
 *** DONE Should have a reference to DisplayableStatus, and update it
 ** Items
 *** DONE Item supertype
@@ -77,6 +78,7 @@
 *** TODO Enemy factory
 *** DONE Bat
 *** DONE Flea
+*** DONE Snake
 ** Info screen
    In the original, all info and items where displayed as text in a
    console view. This should be made more general so that how the

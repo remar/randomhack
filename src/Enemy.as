@@ -2,7 +2,7 @@ package
 {
   public class Enemy extends GameObject
   {
-    private var numberGenerator:NumberGenerator;
+    protected var numberGenerator:NumberGenerator;
 
     protected var _name:String;
     protected var lookDistance:int;
@@ -11,6 +11,8 @@ package
     protected var hp:int;
     protected var power:int;
     protected var accuracy:int;
+
+    protected var playerHit:Boolean;
 
     public function Enemy(gf:GraphicsFactory, spriteType:int,
 			  numberGenerator:NumberGenerator):void
@@ -41,6 +43,28 @@ package
 
     public function attack(player:Player, displayableStatus:DisplayableStatus):void
     {
+      generalAttack(player, displayableStatus);
+    }
+
+    public function hit(hurt:int):void
+    {
+      hp -= hurt;
+    }
+
+    public function isDead():Boolean
+      {
+	return hp <= 0;
+      }
+
+    public function get name():String
+    {
+      return _name;
+    }
+
+    protected function generalAttack(player:Player, displayableStatus:DisplayableStatus):void
+    {
+      playerHit = false;
+
       if(player.position.distanceTo(position) != 1)
 	{
 	  return;
@@ -64,26 +88,12 @@ package
 
 	  player.hit(damage);
 	  displayableStatus.print(damage + " dmg by " + name);
+	  playerHit = true;
 	}
       else
 	{
 	  missed(displayableStatus);
-	}
-    }
-
-    public function hit(hurt:int):void
-    {
-      hp -= hurt;
-    }
-
-    public function isDead():Boolean
-      {
-	return hp <= 0;
-      }
-
-    public function get name():String
-    {
-      return _name;
+	}      
     }
 
     protected function set maxhp(maxHP:int):void
