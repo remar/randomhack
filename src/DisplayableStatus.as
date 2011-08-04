@@ -14,6 +14,7 @@ package
     private var hiScore:int;
     private var weaponName:String;
     private var _inventory:Array;
+    private var _selectedSlot:int;
 
     public function DisplayableStatus():void
     {
@@ -29,6 +30,7 @@ package
       hiScore = 0;
       weaponName = "Bare hands";
       _inventory = ["","","","","","","",""];
+      _selectedSlot = 0;
     }
 
     public function registerListener(infoView:InfoView):void
@@ -153,6 +155,17 @@ package
     public function get inventory():Array
     {
       return _inventory;
+    }
+
+    public function set selectedSlot(slot:int):void
+    {
+      _selectedSlot = slot;
+      notifyListeners();
+    }
+
+    public function get selectedSlot():int
+    {
+      return _selectedSlot;
     }
 
     private function notifyListeners():void

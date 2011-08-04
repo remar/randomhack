@@ -20,6 +20,7 @@
 **** TODO Convert SpriteType to new enum style
 **** TODO Convert TileType to new enum style
 *** TODO Player and Enemy should have superclass Creature
+*** TODO Player should keep track of that action is performed
 ** Level
 *** TODO Listen for "start button" (whatever that is)
     Perhaps a "click to restart" instead.
@@ -157,6 +158,7 @@
     poison, burn, weapon, player prefix and name, console strings.
 *** TODO Keep track of and display poison and burn
 *** DONE Keep track of and display inventory
+*** DONE Display selected item slot
 *** DONE InfoView interface
     Interface for views that display information in a ScoreKeeper
     object.

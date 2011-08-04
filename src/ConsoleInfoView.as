@@ -30,10 +30,12 @@ package
       console.print(line++, " WEAPON: " + ds.weapon);
 
       var inventory:Array = ds.inventory;
+      var selectedSlot:int = ds.selectedSlot;
 
       for(var i:int = 0;i < 8;i++)
 	{
-	  console.print(line++, "   ITEM" + (i+1) + ": " + (inventory[i] ? inventory[i] : "---"));
+	  var prefix:String = (i == selectedSlot ? "<>" : "  ");
+	  console.print(line++, " ITEM" + (i+1) + ":" + prefix + inventory[i]);
 	}
       console.print(line++, "--------------------------------");
     }

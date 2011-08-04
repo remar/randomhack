@@ -14,5 +14,12 @@ package
     {
       return _name;
     }
+
+    public function useItem(field:Field, itemController:ItemController,
+			    creatureController:CreatureController,
+			    displayableStatus:DisplayableStatus):void
+    {
+      displayableStatus.print("You can't use this here");      
+    }
   }
 }

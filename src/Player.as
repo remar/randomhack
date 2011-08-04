@@ -19,6 +19,7 @@ package
 
     private static const INVENTORY_SIZE:int = 8;
     private var _inventory:Array;
+    private var _selectedSlot:int;
 
     public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
     {
@@ -40,9 +41,7 @@ package
 
       weapon = new BareHands();
 
-      _inventory = new Array(INVENTORY_SIZE);
-
-      displayableStatus.inventory = ["","","","","","","",""];
+      clearInventory();
     }
 
     private function generateGender(numberGenerator:NumberGenerator):void
@@ -145,7 +144,10 @@ package
       var freeSpot:int = getFreeSpot();
 
       if(freeSpot === -1)
-	return false;
+	{
+	  displayableStatus.print("No room in inventory");
+	  return false;
+	}
 
       _inventory[freeSpot] = item;
       displayableStatus.print("Picked up " + item.name);
@@ -203,6 +205,34 @@ package
     {
       this._weapon = _weapon;
       displayableStatus.weapon = _weapon.name;
+    }
+
+    public function selectNextSlot():void
+    {
+      _selectedSlot++;
+
+      if(_selectedSlot == INVENTORY_SIZE)
+	_selectedSlot = 0;
+
+      displayableStatus.selectedSlot = _selectedSlot;
+    }
+
+    public function selectPreviousSlot():void
+    {
+      _selectedSlot--;
+
+      if(_selectedSlot == -1)
+	_selectedSlot = INVENTORY_SIZE - 1;
+
+      displayableStatus.selectedSlot = _selectedSlot;
+    }
+
+    private function clearInventory():void
+    {
+      _inventory = new Array(INVENTORY_SIZE);
+      updateInventoryDisplay();
+      _selectedSlot = 0;
+      displayableStatus.selectedSlot = _selectedSlot;
     }
 
     private function dealPoisonDamage():void

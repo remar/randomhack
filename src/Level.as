@@ -183,11 +183,10 @@ package
 	  creatureController.addEnemy(enemy);
 	}
 
-      var p:Point = randomPositions.pop();
-      while(p)
+      var numSticks:int = numberGenerator.getIntInRange(2, 5);
+      for(i = 0;i < numSticks;i++)
 	{
-	  itemController.addItem(new Stick(graphicsFactory, p));
-	  p = randomPositions.pop();
+	  itemController.addItem(new Stick(graphicsFactory, randomPositions.pop()));
 	}
 
       actionPerformed = false;
