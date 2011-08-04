@@ -16,7 +16,7 @@ package
     [Test]
     public function createItem():void
     {
-      var item:Item = new Item(gf, SpriteType.EMPTY);
+      var item:Item = new Item(gf, SpriteType.EMPTY, "Item");
     }
   }
 }

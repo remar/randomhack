@@ -29,9 +29,11 @@ package
       line++;
       console.print(line++, " WEAPON: " + ds.weapon);
 
+      var inventory:Array = ds.inventory;
+
       for(var i:int = 0;i < 8;i++)
 	{
-	  console.print(line++, "   ITEM" + (i+1) + ": ---");
+	  console.print(line++, "   ITEM" + (i+1) + ": " + (inventory[i] ? inventory[i] : "---"));
 	}
       console.print(line++, "--------------------------------");
     }

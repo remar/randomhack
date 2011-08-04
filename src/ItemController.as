@@ -14,6 +14,11 @@ package
       items.push(item);
     }
 
+    public function removeItem(item:Item):void
+    {
+      items.splice(items.indexOf(item), 1);
+    }
+
     public function getItems():Array
     {
       return items;

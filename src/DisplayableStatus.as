@@ -13,6 +13,7 @@ package
     private var currentLevel:int;
     private var hiScore:int;
     private var weaponName:String;
+    private var _inventory:Array;
 
     public function DisplayableStatus():void
     {
@@ -27,6 +28,7 @@ package
       currentLevel = 1;
       hiScore = 0;
       weaponName = "Bare hands";
+      _inventory = ["","","","","","","",""];
     }
 
     public function registerListener(infoView:InfoView):void
@@ -140,6 +142,17 @@ package
     public function get weapon():String
     {
       return weaponName;
+    }
+
+    public function set inventory(_inventory:Array):void
+    {
+      this._inventory = _inventory;
+      notifyListeners();
+    }
+
+    public function get inventory():Array
+    {
+      return _inventory;
     }
 
     private function notifyListeners():void

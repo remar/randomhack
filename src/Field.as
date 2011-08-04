@@ -85,6 +85,9 @@ package
 
     public function getDirection(p1:Point, p2:Point):Point
     {
+      if(p1.equals(p2))
+	return new Point(0, 0);
+
       var xdiff:int = p2.x - p1.x;
       var ydiff:int = p2.y - p1.y;
 

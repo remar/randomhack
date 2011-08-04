@@ -17,6 +17,9 @@ package
 
     private var _poison:int;
 
+    private static const INVENTORY_SIZE:int = 8;
+    private var _inventory:Array;
+
     public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
     {
       super(gf, SpriteType.PLAYER);
@@ -36,23 +39,10 @@ package
       playerpower = 1 + roll;
 
       weapon = new BareHands();
-    }
 
-    public function hit(hurt:int):void
-    {
-      hp = Math.max(hp - hurt, 0);
-    }
+      _inventory = new Array(INVENTORY_SIZE);
 
-    public function poison(strength:int):void
-    {
-      if(_poison != 0)
-	return;
-
-      if(strength == PoisonType.POISON)
-	{
-	  displayableStatus.print("You were poisoned!");
-	  _poison = strength * strength * 40;
-	}
+      displayableStatus.inventory = ["","","","","","","",""];
     }
 
     private function generateGender(numberGenerator:NumberGenerator):void
@@ -133,6 +123,38 @@ package
       dealPoisonDamage();
     }
 
+    public function hit(hurt:int):void
+    {
+      hp = Math.max(hp - hurt, 0);
+    }
+
+    public function poison(strength:int):void
+    {
+      if(_poison != 0)
+	return;
+
+      if(strength == PoisonType.POISON)
+	{
+	  displayableStatus.print("You were poisoned!");
+	  _poison = strength * strength * 40;
+	}
+    }
+
+    public function pickUp(item:Item):Boolean
+    {
+      var freeSpot:int = getFreeSpot();
+
+      if(freeSpot === -1)
+	return false;
+
+      _inventory[freeSpot] = item;
+      displayableStatus.print("Picked up " + item.name);
+
+      updateInventoryDisplay();
+
+      return true;
+    }
+
     public function isDead():Boolean
     {
       return HP <= 0;
@@ -201,5 +223,31 @@ package
 	  displayableStatus.print("The poison wears out");
 	}
     }
+
+    private function getFreeSpot():int
+    {
+      var freeSpot:int = -1;
+
+      for(var i:int = 0;i < INVENTORY_SIZE;i++)
+	{
+	  if(_inventory[i] === undefined)
+	    {
+	      freeSpot = i;
+	      break;
+	    }
+	}
+
+      return freeSpot;
+    }
+
+    private function updateInventoryDisplay():void
+    {
+      displayableStatus.inventory = _inventory.map(itemToString);
+    }
+
+    private function itemToString(item:Item, i:int, a:Array):String
+      {
+	return item ? item.name : "---";
+      } 
   }
 }

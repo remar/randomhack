@@ -15,6 +15,8 @@ package
     private static const FIELD_SIZE:Point = new Point(FIELD_WIDTH * TILE_WIDTH,
 						      FIELD_HEIGHT * TILE_HEIGHT);
 
+    private static const ZERO_POINT:Point = new Point(0, 0);
+
     private var field:Field;
     private var drawable:Drawable;
     private var fieldDrawable:OffsetDrawable;
@@ -25,8 +27,6 @@ package
 
     private var player:Player;
     private var actionPerformed:Boolean;
-
-    private var objects:Array;
 
     private var goal:Goal;
 
@@ -93,7 +93,6 @@ package
       super.render();
       field.draw(fieldDrawable);
       goal.draw(fieldDrawable);
-      drawObjects();
       itemController.drawItems(fieldDrawable);
       creatureController.drawEnemies(fieldDrawable);
       player.draw(fieldDrawable);
@@ -119,17 +118,35 @@ package
 	  var mousePos:Point = inputReader.mousePosition();
 	  if(mousePos.withinBounds(FIELD_OFFSET, FIELD_OFFSET.add(FIELD_SIZE)))
 	    {
-	      var delta:Point = field.getDirection(player.position, getClickedTile(mousePos));
+	      var clickedTile:Point = getClickedTile(mousePos);
+	      var delta:Point = field.getDirection(player.position, clickedTile);
 
-	      var enemy:Enemy = creatureController.getEnemyAtPosition(player.position.add(delta));
-
-	      if(enemy != null)
+	      if(delta.equals(ZERO_POINT))
 		{
-		  player.attack(enemy, numberGenerator);
+		  // See if we're on top of an item, in that case pick it up
+		  var item:Item = itemController.getItemAtPosition(clickedTile);
+		  if(item)
+		    {
+		      pickUpItem(item);
+		    }
+		  // Otherwise drop currently selected item in inventory
+		  else
+		    {
+		      // DROP
+		      displayableStatus.print("Dropping item");
+		    }
 		}
 	      else
 		{
-		  player.move(field, delta, creatureController.getEnemies());
+		  var enemy:Enemy = creatureController.getEnemyAtPosition(player.position.add(delta));
+		  if(enemy != null)
+		    {
+		      player.attack(enemy, numberGenerator);
+		    }
+		  else
+		    {
+		      player.move(field, delta, creatureController.getEnemies());
+		    }
 		}
 	      actionPerformed = true;
 	    }
@@ -153,7 +170,6 @@ package
       var randomPositions:Array = field.getEmptyPositionsInRandomOrder(numberGenerator,
 								       positions);
 
-      objects = [];
       itemController = new ItemController();
       creatureController = new CreatureController();
 
@@ -167,6 +183,13 @@ package
 	  creatureController.addEnemy(enemy);
 	}
 
+      var p:Point = randomPositions.pop();
+      while(p)
+	{
+	  itemController.addItem(new Stick(graphicsFactory, p));
+	  p = randomPositions.pop();
+	}
+
       actionPerformed = false;
     }
 
@@ -175,14 +198,6 @@ package
       mousePosition = mousePosition.subtract(FIELD_OFFSET);
       return new Point(int(mousePosition.x/TILE_WIDTH),
 		       int(mousePosition.y/TILE_HEIGHT));
-    }
-
-    private function drawObjects():void
-    {
-      objects.forEach(function (object:GameObject, i:int, a:Array):void
-		      {
-			object.draw(fieldDrawable);
-		      });
     }
 
     private function printStartingMessage():void
@@ -212,6 +227,14 @@ package
       for each(var str:String in message)
 	{
 	  displayableStatus.print(str);
+	}
+    }
+
+    private function pickUpItem(item:Item):void
+    {
+      if(player.pickUp(item))
+	{
+	  itemController.removeItem(item);
 	}
     }
   }

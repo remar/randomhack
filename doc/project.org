@@ -45,13 +45,18 @@
 *** DONE Attacking
 *** DONE Print to the console when attacking
 *** TODO Talking
-*** TODO Inventory
-*** TODO Picking up stuff
+*** DONE Inventory
+*** DONE Picking up stuff
 *** TODO Dropping stuff
+*** TODO Selecting stuff
+*** TODO Using stuff
 *** DONE Poison
 *** DONE Should have a reference to DisplayableStatus, and update it
 ** Items
 *** DONE Item supertype
+*** TODO ItemController
+**** TODO Check if position is taken when adding item
+*** TODO Item factory
 *** DONE Weapons
 **** DONE Bare hands
 **** DONE Sword(s)
@@ -61,6 +66,38 @@
 *** TODO Torch
 *** TODO Rubble
 *** TODO Bottle
+*** TODO GOLD
+*** TODO SWEETBERRIES
+*** TODO BLOOD
+*** TODO DUST
+*** TODO SWEETJAM
+*** TODO WATERPOOL
+*** TODO BITTERBERRIES
+*** TODO BITTERJAM
+*** TODO SWEETBOTTLE
+*** TODO BITTERBOTTLE
+*** TODO WATERBOTTLE
+*** TODO BLOODBOTTLE
+*** TODO DUSTBOTTLE
+*** TODO PICK
+*** TODO AMULET
+*** TODO SCROLL
+*** TODO SWEETBERRYBOTTLE
+*** TODO BITTERBERRYBOTTLE
+*** TODO BONES
+*** TODO GOALITEM
+*** TODO STOREITEM
+*** TODO KEY
+*** TODO CHEST
+*** TODO HID
+*** TODO BLACKCARD
+*** TODO ANKH
+*** TODO BLACKARMOR
+*** TODO BIGGOLD
+*** TODO BLUEFLY
+*** TODO IDENTIFIER
+*** TODO FLAME
+*** TODO EMBERS
 ** General enemy stuff
 *** DONE Enemy name
 *** TODO Enemy prefix (and additional modifications)
@@ -119,6 +156,7 @@
     displayed. HP/maxHP, inventory, power, gold, level, hiscore,
     poison, burn, weapon, player prefix and name, console strings.
 *** TODO Keep track of and display poison and burn
+*** DONE Keep track of and display inventory
 *** DONE InfoView interface
     Interface for views that display information in a ScoreKeeper
     object.
