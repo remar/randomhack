@@ -63,7 +63,7 @@
 **** DONE Sword(s)
      Kind of special. Can only carry one sword. No other kinds of
      weapons are available (except bare hands).
-*** TODO Stick
+*** DONE Stick
 *** TODO Torch
 *** TODO Rubble
 *** TODO Bottle
