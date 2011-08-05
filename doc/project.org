@@ -21,6 +21,9 @@
 **** TODO Convert TileType to new enum style
 *** TODO Player and Enemy should have superclass Creature
 *** TODO Player should keep track of that action is performed
+** Input
+*** TODO Interface for reading keys
+*** TODO Flixel implementation of reading keys
 ** Level
 *** TODO Listen for "start button" (whatever that is)
     Perhaps a "click to restart" instead.

@@ -183,10 +183,12 @@ package
 	  creatureController.addEnemy(enemy);
 	}
 
-      var numSticks:int = numberGenerator.getIntInRange(2, 5);
-      for(i = 0;i < numSticks;i++)
+      var numItems:int = numberGenerator.getIntInRange(2, 5);
+      var itemClasses:Array = [Stick, Torch];
+      for(i = 0;i < numItems;i++)
 	{
-	  itemController.addItem(new Stick(graphicsFactory, randomPositions.pop()));
+	  var rnd:int = numberGenerator.getIntInRange(0, itemClasses.length - 1);
+	  itemController.addItem(new itemClasses[rnd](graphicsFactory, randomPositions.pop()));
 	}
 
       actionPerformed = false;

@@ -12,6 +12,7 @@ package
     public static const SNAKE:int = 7;
     public static const GOBLIN:int = 8;
     public static const STICK:int = 9;
+    public static const TORCH:int = 10;
 
     // font
     public static const EXCLAMATION:int = 33;
