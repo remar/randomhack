@@ -17,9 +17,7 @@ package
 
     private var _poison:int;
 
-    private static const INVENTORY_SIZE:int = 8;
-    private var _inventory:Array;
-    private var _selectedSlot:int;
+    private var inventory:Inventory;
 
     public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
     {
@@ -41,7 +39,7 @@ package
 
       weapon = new BareHands();
 
-      clearInventory();
+      inventory = new Inventory(displayableStatus);
     }
 
     private function generateGender(numberGenerator:NumberGenerator):void
@@ -141,20 +139,78 @@ package
 
     public function pickUp(item:Item):Boolean
     {
-      var freeSpot:int = getFreeSpot();
+      if(item.needBottleToCarry())
+	{
+	  displayableStatus.print("Use a bottle to carry that");
+	  return false;	  
+	}
 
-      if(freeSpot === -1)
+      if(inventory.full())
 	{
 	  displayableStatus.print("No room in inventory");
 	  return false;
 	}
 
-      _inventory[freeSpot] = item;
-      displayableStatus.print("Picked up " + item.name);
-
-      updateInventoryDisplay();
+      inventory.addItem(item);
 
       return true;
+    }
+
+    public function drop(itemController:ItemController):Item
+    {
+      var itemUnder:Item = itemController.getItemAtPosition(position);
+      if(itemUnder && itemUnder.dropOnTopAllowed() == false)
+	{
+	  displayableStatus.print("There's no room to drop it");
+	  return undefined;
+	}
+
+      var item:Item = inventory.removeSelectedItem();
+
+      if(item)
+	{
+	  item.position = position;
+	}
+      else
+	{
+	  displayableStatus.print("Nothing to drop in this slot");
+	}
+
+      displayableStatus.print("Dropped " + item.name);
+      return item;
+    }
+
+    public function useItem(field:Field, itemController:ItemController,
+			    creatureController:CreatureController):void
+    {
+      var item:Item = inventory.getSelectedItem();
+      if(item)
+	{
+	  item.useItem(this, field, itemController, creatureController, displayableStatus);
+	  if(item.outOfCharges())
+	    {
+	      inventory.transformSelectedItem();
+	    }
+	}
+      else
+	{
+	  displayableStatus.print("No item to use in this slot");
+	}
+    }
+
+    public function selectNextSlot():void
+    {
+      inventory.selectNextSlot();
+    }
+
+    public function selectPreviousSlot():void
+    {
+      inventory.selectPreviousSlot();
+    }
+
+    public function transformItems(transformer:Function):void
+    {
+      inventory.transformItems(transformer);
     }
 
     public function isDead():Boolean
@@ -207,34 +263,6 @@ package
       displayableStatus.weapon = _weapon.name;
     }
 
-    public function selectNextSlot():void
-    {
-      _selectedSlot++;
-
-      if(_selectedSlot == INVENTORY_SIZE)
-	_selectedSlot = 0;
-
-      displayableStatus.selectedSlot = _selectedSlot;
-    }
-
-    public function selectPreviousSlot():void
-    {
-      _selectedSlot--;
-
-      if(_selectedSlot == -1)
-	_selectedSlot = INVENTORY_SIZE - 1;
-
-      displayableStatus.selectedSlot = _selectedSlot;
-    }
-
-    private function clearInventory():void
-    {
-      _inventory = new Array(INVENTORY_SIZE);
-      updateInventoryDisplay();
-      _selectedSlot = 0;
-      displayableStatus.selectedSlot = _selectedSlot;
-    }
-
     private function dealPoisonDamage():void
     {
       if(_poison == 0)
@@ -253,31 +281,5 @@ package
 	  displayableStatus.print("The poison wears out");
 	}
     }
-
-    private function getFreeSpot():int
-    {
-      var freeSpot:int = -1;
-
-      for(var i:int = 0;i < INVENTORY_SIZE;i++)
-	{
-	  if(_inventory[i] === undefined)
-	    {
-	      freeSpot = i;
-	      break;
-	    }
-	}
-
-      return freeSpot;
-    }
-
-    private function updateInventoryDisplay():void
-    {
-      displayableStatus.inventory = _inventory.map(itemToString);
-    }
-
-    private function itemToString(item:Item, i:int, a:Array):String
-      {
-	return item ? item.name : "---";
-      } 
   }
 }

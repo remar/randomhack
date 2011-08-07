@@ -38,8 +38,6 @@ package
 
     override public function create():void
     {
-      inputReader = new FlixelInputReader();
-
       graphicsFactory = new FlixelPixelGraphicsFactory(new FlixelPixelScreen(screen));
 
       drawable = graphicsFactory.getDrawable();
@@ -54,12 +52,16 @@ package
 
       player = new Player(graphicsFactory, displayableStatus);
 
+      inputReader = new FlixelInputReader();
+
       startGame();
       super.create();
     }
 
     override public function update():void
     {
+      super.update();
+
       handleInput();
 
       player.update();
@@ -84,8 +86,6 @@ package
 	  // WOOO!!!
 	  generateLevel();
 	}
-
-      super.update();
     }
 
     override public function render():void
@@ -121,35 +121,42 @@ package
 	      var clickedTile:Point = getClickedTile(mousePos);
 	      var delta:Point = field.getDirection(player.position, clickedTile);
 
-	      if(delta.equals(ZERO_POINT))
+	      var enemy:Enemy = creatureController.getEnemyAtPosition(player.position.add(delta));
+	      if(enemy != null)
 		{
-		  // See if we're on top of an item, in that case pick it up
-		  var item:Item = itemController.getItemAtPosition(clickedTile);
-		  if(item)
-		    {
-		      pickUpItem(item);
-		    }
-		  // Otherwise drop currently selected item in inventory
-		  else
-		    {
-		      // DROP
-		      displayableStatus.print("Dropping item");
-		    }
+		  player.attack(enemy, numberGenerator);
 		}
 	      else
 		{
-		  var enemy:Enemy = creatureController.getEnemyAtPosition(player.position.add(delta));
-		  if(enemy != null)
-		    {
-		      player.attack(enemy, numberGenerator);
-		    }
-		  else
-		    {
-		      player.move(field, delta, creatureController.getEnemies());
-		    }
+		  player.move(field, delta, creatureController.getEnemies());
 		}
 	      actionPerformed = true;
 	    }
+	}
+
+      if(inputReader.keyPressed(KeyType.RIGHT))
+	{
+	  var item:Item = itemController.getItemAtPosition(player.position);
+	  if(item)
+	    {
+	      pickUpItem(item);
+	    }
+	  else
+	    {
+	      dropItem();
+	    }
+	}
+      else if(inputReader.keyPressed(KeyType.LEFT))
+	{
+	  useItem();
+	}
+      if(inputReader.keyPressed(KeyType.UP))
+	{
+	  player.selectPreviousSlot();
+	}
+      else if(inputReader.keyPressed(KeyType.DOWN))
+	{
+	  player.selectNextSlot();
 	}
     }
     
@@ -211,7 +218,7 @@ package
 		    "Your beloved is being offered",
 		    "as a sacrifice deep below this",
 		    "dungeon. Only you can brave its",
-		    "depths, " + player.prefix + " " + player.name]);
+		    "depths, " + player.prefix + " " + player.name + "!"]);
     }
 
     private function printDeathMessage():void
@@ -235,8 +242,23 @@ package
     {
       if(player.pickUp(item))
 	{
+	  displayableStatus.print("Picked up " + item.name);
 	  itemController.removeItem(item);
 	}
+    }
+
+    private function dropItem():void
+    {
+      var item:Item = player.drop(itemController);
+      if(item)
+	{
+	  itemController.addItem(item);
+	}
+    }
+
+    private function useItem():void
+    {
+      player.useItem(field, itemController, creatureController);
     }
   }
 }
