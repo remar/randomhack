@@ -1,20 +1,11 @@
 package
 {
-  public class TileType
+  public final class TileType extends Enum
   {
-    public static const EMPTY:int = 0;
-    public static const BLOCK:int = 1;
-    public static const WATER:int = 2;
+    {initEnum(TileType);}
 
-    private var type:int;
-    public function TileType(type:int):void
-    {
-      this.type = type;
-    }
-
-    public function getType():int
-    {
-      return type;
-    }
+    public static const EMPTY:TileType = new TileType();
+    public static const BLOCK:TileType = new TileType();
+    public static const WATER:TileType = new TileType();
   }
 }

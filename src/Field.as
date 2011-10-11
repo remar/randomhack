@@ -26,7 +26,7 @@ package
       return height;
     }
 
-    public function clearField(type:int):void
+    public function clearField(type:TileType):void
     {
       field = new Array(width);
       for(var x:int = 0;x < width;x++)
@@ -39,7 +39,7 @@ package
 	}
     }
 
-    public function setTile(p:Point, type:int):void
+    public function setTile(p:Point, type:TileType):void
     {
       if ((p.x < 0 || p.x >= width || p.y < 0 || p.y >= width) ||
 	  (type == TileType.EMPTY && (p.x == 0 || p.x == width - 1 ||
@@ -48,7 +48,7 @@ package
 	  return;
 	}
 
-      field[p.x][p.y] = [new TileType(type), null];
+      field[p.x][p.y] = [type, null];
     }
 
     public function getTile(p:Point):TileType
@@ -117,7 +117,7 @@ package
       for(var y:int = 0;y < height;y++)
 	for(var x:int = 0;x < width;x++)
 	  {
-	    if(getTile(new Point(x, y)).getType() == TileType.EMPTY)
+	    if(getTile(new Point(x, y)) == TileType.EMPTY)
 	      positions.push(new Point(x, y));
 	  }
 
@@ -152,10 +152,10 @@ package
 
     private function getSurrounding(x:int, y:int):Surrounding
     {
-      var east:TileType = x + 1 < width ? field[x + 1][y][0] : new TileType(TileType.BLOCK);
-      var north:TileType = y - 1 >= 0 ? field[x][y - 1][0] : new TileType(TileType.BLOCK);
-      var west:TileType = x - 1 >= 0 ? field[x - 1][y][0] : new TileType(TileType.BLOCK);
-      var south:TileType = y + 1 < height ? field[x][y + 1][0] : new TileType(TileType.BLOCK);
+      var east:TileType = x + 1 < width ? field[x + 1][y][0] : TileType.BLOCK;
+      var north:TileType = y - 1 >= 0 ? field[x][y - 1][0] : TileType.BLOCK;
+      var west:TileType = x - 1 >= 0 ? field[x - 1][y][0] : TileType.BLOCK;
+      var south:TileType = y + 1 < height ? field[x][y + 1][0] : TileType.BLOCK;
       return new Surrounding([east, north, west, south]);
     }
   }

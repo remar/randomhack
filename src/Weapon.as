@@ -4,7 +4,7 @@ package
   {
     protected var _power:int;
 
-    public function Weapon(gf:GraphicsFactory, spriteType:int):void
+    public function Weapon(gf:GraphicsFactory, spriteType:SpriteType):void
     {
       super(gf, spriteType, "Weapon");
     }

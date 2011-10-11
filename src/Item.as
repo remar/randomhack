@@ -5,7 +5,7 @@ package
     protected var _name:String;
     protected var graphicsFactory:GraphicsFactory;
 
-    public function Item(gf:GraphicsFactory, spriteType:int, name:String):void
+    public function Item(gf:GraphicsFactory, spriteType:SpriteType, name:String):void
     {
       super(gf, spriteType);
       _name = name;

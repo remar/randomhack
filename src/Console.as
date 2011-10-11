@@ -134,7 +134,7 @@ package
       var i:int = 0;
       for each(var character:String in string.split(""))
 		{
-		  var type:int = charmap[character] === undefined ? SpriteType.PLAYER : charmap[character];
+		  var type:SpriteType = charmap[character] === undefined ? SpriteType.PLAYER : charmap[character];
 		  char = new SpriteInstance(graphicsFactory.getSprite(type));
 		  char.setPosition(new Point(i*8, row*8));
 		  i++;

@@ -28,14 +28,14 @@ package
 
       for(var y:int = 2;y <= 4;y++)
 	for(var x:int = 2;x <= 4;x++)
-	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(x, y)).getType());
+	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(x, y)));
     }
 
     [Test]
     public function testCarveVeryShortPath():void
     {
       generator.carvePath(new Point(1, 1), new Point(1, 1), 1);
-      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, 1)).getType());
+      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, 1)));
     }
 
     [Test]
@@ -44,7 +44,7 @@ package
       generator.carvePath(new Point(1, 1), new Point(8, 1), 1);
 
       for(var i:int = 1;i <= 8;i++)
-	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, 1)).getType());
+	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, 1)));
     }
 
     [Test]
@@ -53,7 +53,7 @@ package
       generator.carvePath(new Point(1, 1), new Point(1, 9), 1);
 
       for(var i:int = 1;i <= 9;i++)
-	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, i)).getType());
+	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, i)));
     }
 
     [Test]
@@ -62,7 +62,7 @@ package
       generator.carvePath(new Point(2, 2), new Point(5, 5), 1);
 
       for(var i:int = 2;i <= 5;i++)
-	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, i)).getType());
+	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, i)));
     }
 
     [Test]
@@ -71,7 +71,7 @@ package
       generator.carvePath(new Point(5, 5), new Point(2, 2), 1);
 
       for(var i:int = 2;i <= 5;i++)
-	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, i)).getType());
+	Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, i)));
     }
 
     [Test]
@@ -86,10 +86,10 @@ package
        */
       generator.carvePath(new Point(1, 1), new Point(4, 2), 1);
 
-      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, 1)).getType());
-      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(2, 1)).getType());
-      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(3, 2)).getType());
-      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(4, 2)).getType());
+      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, 1)));
+      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(2, 1)));
+      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(3, 2)));
+      Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(4, 2)));
     }
 
     [Test]
@@ -99,8 +99,8 @@ package
 
       for(var i:int = 1;i <= 5;i++)
 	{
-	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, 1)).getType());
-	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, 2)).getType());
+	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, 1)));
+	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, 2)));
 	}
     }
 
@@ -111,8 +111,8 @@ package
 
       for(var i:int = 1;i <= 5;i++)
 	{
-	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, i)).getType());
-	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(2, i)).getType());
+	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(1, i)));
+	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(2, i)));
 	}
     }
 
@@ -123,8 +123,8 @@ package
 
       for(var i:int = 3;i <= 7;i++)
 	{
-	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, i+1)).getType());
-	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i-1, i+1)).getType());
+	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i, i+1)));
+	  Assert.assertEquals(TileType.EMPTY, field.getTile(new Point(i-1, i+1)));
 	}
     }
 
@@ -139,9 +139,9 @@ package
       for(var i:int = 0;i < points.length;i++)
 	{
 	  Assert.assertEquals(TileType.EMPTY,
-			      field.getTile(points[i]).getType());
+			      field.getTile(points[i]));
 	  Assert.assertEquals(TileType.EMPTY,
-			      field.getTile(points[i].add(offset)).getType());
+			      field.getTile(points[i].add(offset)));
 	}
     }
 
@@ -166,9 +166,9 @@ package
       for(var i:int = 0;i < points.length;i++)
 	{
 	  Assert.assertEquals(TileType.EMPTY,
-			      field.getTile(points[i]).getType());
+			      field.getTile(points[i]));
 	  Assert.assertEquals(TileType.EMPTY,
-			      field.getTile(points[i].add(offset)).getType());
+			      field.getTile(points[i].add(offset)));
 	}
     }
 
@@ -194,7 +194,7 @@ package
 	  Assert.assertEquals("Test tile at x: " + water[i].x + 
 			      ", y: " + water[i].y,
 			      TileType.WATER,
-			      field.getTile(water[i]).getType());	
+			      field.getTile(water[i]));	
 	}
     }
 
@@ -231,7 +231,7 @@ package
 	  Assert.assertEquals("Test tile at x: " + water[i].x +
 			      ", y: " + water[i].y,
 			      TileType.WATER,
-			      field.getTile(water[i]).getType());	
+			      field.getTile(water[i]));	
 	}
     }
     /*

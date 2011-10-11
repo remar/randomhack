@@ -14,7 +14,7 @@ package
 
     protected var playerHit:Boolean;
 
-    public function Enemy(gf:GraphicsFactory, spriteType:int,
+    public function Enemy(gf:GraphicsFactory, spriteType:SpriteType,
 			  numberGenerator:NumberGenerator):void
     {
       super(gf, spriteType);

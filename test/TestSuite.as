@@ -6,7 +6,6 @@ package
     {
       public var testField:TestField;
       public var testFieldCarver:TestFieldCarver;
-      public var testTileType:TestTileType;
       public var testSprite:TestSprite;
       public var testPlayer:TestPlayer;
       public var testPoint:TestPoint;

@@ -14,11 +14,11 @@
 *** DONE Add getters and setters for Point x and y
 *** DONE Field.getTile should take a Point instead of x and y
 *** DONE Field.setTile should take a Point instead of x and y
-*** TODO Convert the enums to stronger typed ones
-**** TODO Add Enum.as to project 
+*** DONE Convert the enums to stronger typed ones
+**** DONE Add Enum.as to project 
      See http://scottbilas.com/blog/ultimate-as3-fake-enums/ for code.
-**** TODO Convert SpriteType to new enum style
-**** TODO Convert TileType to new enum style
+**** DONE Convert SpriteType to new enum style
+**** DONE Convert TileType to new enum style
 *** TODO Player and Enemy should have superclass Creature
 *** TODO Player should keep track of that action is performed
 ** Input
@@ -68,6 +68,8 @@
      weapons are available (except bare hands).
 *** DONE Stick
 *** TODO Torch
+    Should light sticks all around the player (including stick that
+    the player is standing on).
 *** TODO Rubble
 *** TODO Bottle
 *** TODO GOLD

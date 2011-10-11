@@ -5,7 +5,7 @@ package
     private var pos:Point;
     private var spriteInstance:SpriteInstance;
 
-    public function GameObject(gf:GraphicsFactory, spriteType:int):void
+    public function GameObject(gf:GraphicsFactory, spriteType:SpriteType):void
     {
       if(spriteType == SpriteType.EMPTY)
 	spriteInstance = null;
@@ -37,7 +37,7 @@ package
 
     public function moveRelative(field:Field, delta:Point, objects:Array):void
     {
-      if(field.getTile(position.add(delta)).getType() != TileType.EMPTY)
+      if(field.getTile(position.add(delta)) != TileType.EMPTY)
 	{
 	  return;
 	}

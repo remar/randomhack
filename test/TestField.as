@@ -26,7 +26,7 @@ package
 	  for(var x:int;x < 32;x++)
 	    {
 	      Assert.assertEquals(TileType.BLOCK,
-				  field.getTile(new Point(x, y)).getType());
+				  field.getTile(new Point(x, y)));
 	    }
 	}
     }
@@ -36,7 +36,7 @@ package
     {
       field.setTile(new Point(0, 0), TileType.BLOCK);
       var tile:TileType = field.getTile(new Point(0, 0));
-      Assert.assertEquals(TileType.BLOCK, tile.getType());
+      Assert.assertEquals(TileType.BLOCK, tile);
     }
 
     [Test]
@@ -44,7 +44,7 @@ package
     {
       field.setTile(new Point(1, 1), TileType.EMPTY);
       var tile:TileType = field.getTile(new Point(1, 1));
-      Assert.assertEquals(TileType.EMPTY, tile.getType());
+      Assert.assertEquals(TileType.EMPTY, tile);
     }
 
     [Test]
@@ -73,7 +73,7 @@ package
     {
       field.clearField(TileType.EMPTY);
       field.setTile(new Point(3, 4), TileType.BLOCK);
-      Assert.assertEquals(TileType.BLOCK, field.getTile(new Point(3, 4)).getType());
+      Assert.assertEquals(TileType.BLOCK, field.getTile(new Point(3, 4)));
     }
 
     [Test]
@@ -86,7 +86,7 @@ package
 	{
 	  field.setTile(points[i], TileType.EMPTY);
 	  Assert.assertEquals(TileType.BLOCK,
-			      field.getTile(points[i]).getType());
+			      field.getTile(points[i]));
 	}
     }
 
@@ -100,7 +100,7 @@ package
     public function testSetWaterTile():void
     {
       field.setTile(new Point(1, 1), TileType.WATER);
-      Assert.assertEquals(TileType.WATER, field.getTile(new Point(1, 1)).getType());
+      Assert.assertEquals(TileType.WATER, field.getTile(new Point(1, 1)));
     }
 
 
@@ -108,7 +108,7 @@ package
     public function testSettingWaterTileOnLevelEdgeShouldBeAllowed():void
     {
       field.setTile(new Point(0, 5), TileType.WATER);
-      Assert.assertEquals(TileType.WATER, field.getTile(new Point(0, 5)).getType());
+      Assert.assertEquals(TileType.WATER, field.getTile(new Point(0, 5)));
     }
 
     [Test]
