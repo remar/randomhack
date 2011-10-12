@@ -15,7 +15,7 @@ package
     private static const SPRITE_DATA:Object = {};
 
     private var sprites:Array = [];
-    private var levelType:int;
+    private var levelType:LevelType;
 
     public function FlixelPixelGraphicsFactory(screen:PixelScreen):void
     {
@@ -25,7 +25,7 @@ package
       initSpriteData();
     }
 
-    public function setLevelType(levelType:int):void
+    public function setLevelType(levelType:LevelType):void
     {
       this.levelType = levelType;
     }
@@ -87,7 +87,7 @@ package
     private function drawJaggedEdges(data:Array, surrounding:Surrounding,
 				     numberGenerator:NumberGenerator):void
     {
-      var w:int = [2, 0, 0, 0][levelType];
+      var w:int = [2, 0, 0, 0][levelType.Index];
 
       if(surrounding.east == TileType.EMPTY && numberGenerator.getIntInRange(0, w))
 	drawTileLine(data, 7, 8);

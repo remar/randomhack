@@ -2,7 +2,7 @@ package
 {
   public interface GraphicsFactory
   {
-    function setLevelType(levelType:int):void;
+    function setLevelType(levelType:LevelType):void;
     function getDrawable():Drawable;
     function getSprite(spriteType:SpriteType):Sprite;
     function getTile(type:TileType, surrounding:Surrounding,

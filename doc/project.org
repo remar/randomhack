@@ -20,8 +20,8 @@
 **** DONE Convert SpriteType to new enum style
 **** DONE Convert TileType to new enum style
 **** DONE Convert PoisonType to new enum style
-**** TODO Convert KeyType to new enum style
-**** TODO Convert LevelType to new enum style
+**** DONE Convert KeyType to new enum style
+**** DONE Convert LevelType to new enum style
 *** TODO Player and Enemy should have superclass Creature
 *** TODO Player should keep track of that action is performed
 ** Input

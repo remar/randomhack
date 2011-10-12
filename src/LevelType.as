@@ -1,10 +1,12 @@
 package
 {
-  public class LevelType
+  public final class LevelType extends Enum
   {
-    public static const CAVE:int = 0;
-    public static const RUINS:int = 1;
-    public static const SECRET:int = 2;
-    public static const FINAL:int = 3;
+    {initEnum(LevelType);}
+
+    public static const CAVE:LevelType = new LevelType();
+    public static const RUINS:LevelType = new LevelType();
+    public static const SECRET:LevelType = new LevelType();
+    public static const FINAL:LevelType = new LevelType();
   }
 }
