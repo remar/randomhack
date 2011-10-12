@@ -23,14 +23,14 @@ package
       return new Point(x, y);
     }
 
-    public function keyPressed(keyType:int):Boolean
+    public function keyPressed(keyType:KeyType):Boolean
     {
-      return FlxG.keys.justPressed(keyTypeToString[keyType]);
+      return FlxG.keys.justPressed(keyTypeToString[keyType.Index]);
     }
 
-    public function keyHeld(keyType:int):Boolean
+    public function keyHeld(keyType:KeyType):Boolean
     {
-      return FlxG.keys.pressed(keyTypeToString[keyType]);      
+      return FlxG.keys.pressed(keyTypeToString[keyType.Index]);
     }
   }
 }
