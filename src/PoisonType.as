@@ -1,9 +1,11 @@
 package
 {
-  public class PoisonType
+  public final class PoisonType extends Enum
   {
-    public static const POISON:int = 1;
-    public static const STRONG_POISON:int = 2;
-    public static const LETHAL_POISON:int = 3;
+    {initEnum(PoisonType);}
+
+    public static const POISON:PoisonType = new PoisonType();
+    public static const STRONG_POISON:PoisonType = new PoisonType();
+    public static const LETHAL_POISON:PoisonType = new PoisonType();
   }
 }

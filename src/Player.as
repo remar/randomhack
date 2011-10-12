@@ -125,12 +125,14 @@ package
       hp = Math.max(hp - hurt, 0);
     }
 
-    public function poison(strength:int):void
+    public function poison(poisonType:PoisonType):void
     {
       if(_poison != 0)
 	return;
 
-      if(strength == PoisonType.POISON)
+      var strength:int = [1, 2, 3][poisonType.Index];
+
+      if(poisonType == PoisonType.POISON)
 	{
 	  displayableStatus.print("You were poisoned!");
 	  _poison = strength * strength * 40;

@@ -43,5 +43,22 @@ package
       player.moveRelative(field, new Point(1, 0), [enemy]);
       Assert.assertTrue(player.position.equals(new Point(3, 3)));
     }
+
+    [Test]
+    public function shouldTake4HPDamageFromPoison():void
+    {
+      var player:Player = new Player(gf, new DisplayableStatus());
+      player.position = new Point(3, 3);
+      player.hp = 10;
+
+      player.poison(PoisonType.POISON);
+
+      var directions:Array = [new Point(-1, 0), new Point(1, 0)];
+      for (var i:int = 0;i < 50;i++) {
+	player.move(field, directions[i % 2], []);
+      }
+
+      Assert.assertEquals(6, player.hp);
+    }
   }
 }
