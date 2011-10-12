@@ -14,7 +14,7 @@
 *** DONE Add getters and setters for Point x and y
 *** DONE Field.getTile should take a Point instead of x and y
 *** DONE Field.setTile should take a Point instead of x and y
-*** TODO Convert the enums to stronger typed ones
+*** DONE Convert the enums to stronger typed ones
 **** DONE Add Enum.as to project 
      See http://scottbilas.com/blog/ultimate-as3-fake-enums/ for code.
 **** DONE Convert SpriteType to new enum style
@@ -25,8 +25,9 @@
 *** TODO Player and Enemy should have superclass Creature
 *** TODO Player should keep track of that action is performed
 ** Input
-*** TODO Interface for reading keys
-*** TODO Flixel implementation of reading keys
+*** DONE Interface for reading keys
+*** DONE Flixel implementation of reading keys
+    Only direction keys so far.
 ** Level
 *** TODO Listen for "start button" (whatever that is)
     Perhaps a "click to restart" instead.
