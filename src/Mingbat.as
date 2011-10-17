@@ -46,10 +46,8 @@ package
 	  item.position = position;
 	  itemController.addItem(item);
 	}
-      else
-	{
-	  generalDie(itemController, displayableStatus, graphicsFactory);
-	}
+
+      generalDie(itemController, displayableStatus, graphicsFactory);
     }
   }
 }

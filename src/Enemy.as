@@ -112,8 +112,11 @@ package
 				displayableStatus:DisplayableStatus,
 				graphicsFactory:GraphicsFactory):void
     {
-      itemController.addItem(new Blood(graphicsFactory,
-				       position));
+      if (itemController.getItemAtPosition(position) == null)
+	{
+	  itemController.addItem(new Blood(graphicsFactory,
+					   position));
+	}
       displayableStatus.print(name + " dies");
     }
 

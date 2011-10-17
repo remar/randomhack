@@ -10,6 +10,7 @@ package
     private var playerPos:Point;
 
     private var mingbat:Mingbat;
+    private var itemController:ItemController;
 
     [Before]
     public function setUp():void
@@ -25,24 +26,63 @@ package
       playerPos = new Point(7, 10);
 
       mingbat = new Mingbat(gf, ng);
+
+      itemController = new ItemController();
     }
 
     [Test]
     public function shouldPickUpItem():void
     {
-      var itemController:ItemController = new ItemController();
+      givenStickAt(new Point(9, 10));
+      givenNumberGeneratorReturns([1, 1]);
+      givenMingbatAtPosition(new Point(10, 10));
+
+      whenMingbatMoves();
+      whenMingbatMoves();
+
+      thenNumberOfItemsInTheFieldIs(0);
+    }
+
+    [Test]
+    public function shouldDropItemWhenItDies():void
+    {
+      // First, go and pick up an item
+      shouldPickUpItem();
+
+      whenMingbatDies();
+
+      thenNumberOfItemsInTheFieldIs(1);
+    }
+
+    private function givenStickAt(position:Point):void
+    {
       var stick:Stick = new Stick(gf, new Point(9, 10));
       itemController.addItem(stick);
+    }
 
-      mingbat.position = new Point(10, 10);
+    private function givenNumberGeneratorReturns(ints:Array):void
+    {
+      ng.addInts(ints);
+    }
 
-      // "random" numbers needed to move towards player
-      ng.addInts([1, 1]);
+    private function givenMingbatAtPosition(position:Point):void
+    {
+      mingbat.position = position;
+    }
 
+    private function whenMingbatMoves():void
+    {
       mingbat.move(field, playerPos, [], itemController);
-      mingbat.move(field, playerPos, [], itemController);
+    }
 
-      Assert.assertEquals(0, itemController.getItems().length);
+    private function whenMingbatDies():void
+    {
+      mingbat.die(itemController, new DisplayableStatus(), gf);
+    }
+
+    private function thenNumberOfItemsInTheFieldIs(items:int):void
+    {
+      Assert.assertEquals(items, itemController.getItems().length);
     }
   }
 }
