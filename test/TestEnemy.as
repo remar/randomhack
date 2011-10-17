@@ -29,7 +29,7 @@ package
     {
       ng.addInts([1, -1, -1]);
       enemy.position = new Point(3, 3);
-      enemy.move(field, new Point(25, 15), []);
+      enemy.move(field, new Point(25, 15), [], null);
 
       assertCorrectPosition(new Point(2, 2), enemy.position);
     }
@@ -39,7 +39,7 @@ package
     {
       ng.addInts([1, -1, -1]);
       enemy.position = new Point(3, 3);
-      enemy.move(field, new Point(5, 3), []);
+      enemy.move(field, new Point(5, 3), [], null);
 
       assertCorrectPosition(new Point(4, 3), enemy.position);
     }
@@ -49,7 +49,7 @@ package
     {
       ng.addInts([1, -1, -1]);
       enemy.position = new Point(3, 3);
-      enemy.move(field, new Point(4, 3), []);
+      enemy.move(field, new Point(4, 3), [], null);
 
       assertCorrectPosition(new Point(3, 3), enemy.position);
     }
@@ -60,7 +60,7 @@ package
       ng.addInts([10, -1, -1]);
 
       enemy.position = new Point(3, 3);
-      enemy.move(field, new Point(5, 3), []);
+      enemy.move(field, new Point(5, 3), [], null);
 
       assertCorrectPosition(new Point(3, 3), enemy.position);
     }

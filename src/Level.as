@@ -77,7 +77,7 @@ package
 	      printDeathMessage();
 	    }
 
-	  creatureController.moveEnemies(field, player.position);
+	  creatureController.moveEnemies(field, player.position, itemController);
 	  actionPerformed = false;
 	}
 
@@ -181,7 +181,7 @@ package
       creatureController = new CreatureController();
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
-      var enemyClasses:Array = [Bat, Flea, Snake, Goblin];
+      var enemyClasses:Array = [Bat, Flea, Snake, Goblin, Mingbat];
       for(var i:int = 0;i < numEnemies;i++)
 	{
 	  var randomEnemy:int = numberGenerator.getIntInRange(0, enemyClasses.length - 1);

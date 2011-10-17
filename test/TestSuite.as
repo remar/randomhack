@@ -13,5 +13,6 @@ package
       public var testTile:TestTile;
       public var testEnemy:TestEnemy;
       public var testItem:TestItem;
+      public var testMingbat:TestMingbat;
     }
 }

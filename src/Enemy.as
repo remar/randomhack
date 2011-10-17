@@ -28,17 +28,9 @@ package
       accuracy = 5;
     }
 
-    public function move(field:Field, playerPos:Point, creatures:Array):void
+    public function move(field:Field, playerPos:Point, creatures:Array, itemController:ItemController):void
     {
-      var distance:int = position.distanceTo(playerPos);
-
-      if(isDead() || distance == 1 || numberGenerator.getIntInRange(1, 10) > speed)
-	return;
-
-      if(distance <= lookDistance)
-	moveRelative(field, field.getDirection(position, playerPos), creatures);
-      else
-	roam(field, creatures);
+      generalMove(field, playerPos, creatures, itemController);
     }
 
     public function attack(player:Player, displayableStatus:DisplayableStatus):void
@@ -52,13 +44,33 @@ package
     }
 
     public function isDead():Boolean
-      {
-	return hp <= 0;
-      }
+    {
+      return hp <= 0;
+    }
+
+    public function die(itemController:ItemController,
+			displayableStatus:DisplayableStatus,
+			graphicsFactory:GraphicsFactory):void
+    {
+      generalDie(itemController, displayableStatus, graphicsFactory);
+    }
 
     public function get name():String
     {
       return _name;
+    }
+
+    protected function generalMove(field:Field, playerPos:Point, creatures:Array, itemController:ItemController):void
+    {
+      var distance:int = position.distanceTo(playerPos);
+
+      if(isDead() || distance == 1 || numberGenerator.getIntInRange(1, 10) > speed)
+	return;
+
+      if(distance <= lookDistance)
+	moveRelative(field, field.getDirection(position, playerPos), creatures);
+      else
+	roam(field, creatures);
     }
 
     protected function generalAttack(player:Player, displayableStatus:DisplayableStatus):void
@@ -94,6 +106,15 @@ package
 	{
 	  missed(displayableStatus);
 	}      
+    }
+
+    protected function generalDie(itemController:ItemController,
+				displayableStatus:DisplayableStatus,
+				graphicsFactory:GraphicsFactory):void
+    {
+      itemController.addItem(new Blood(graphicsFactory,
+				       position));
+      displayableStatus.print(name + " dies");
     }
 
     protected function set maxhp(maxHP:int):void

@@ -37,17 +37,17 @@ package
 			       {
 				 if(enemy.isDead())
 				   {
-				     itemController.addItem(new Blood(graphicsFactory,
-								      enemy.position));
-				     displayableStatus.print(enemy.name + " dies");
+				     enemy.die(itemController,
+					       displayableStatus,
+					       graphicsFactory);
 				   }
 				 return enemy.isDead() === false;
 			       });
     }
 
-    public function moveEnemies(field:Field, playerPosition:Point):void
+    public function moveEnemies(field:Field, playerPosition:Point, itemController:ItemController):void
     {
-      forEachEnemy(function (enemy:Enemy):void {enemy.move(field, playerPosition, enemies);});
+      forEachEnemy(function (enemy:Enemy):void {enemy.move(field, playerPosition, enemies, itemController);});
     }
 
     public function getEnemyAtPosition(position:Point):Enemy
