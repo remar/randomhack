@@ -14,5 +14,6 @@ package
       public var testEnemy:TestEnemy;
       public var testItem:TestItem;
       public var testMingbat:TestMingbat;
+      public var testTorch:TestTorch;
     }
 }

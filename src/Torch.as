@@ -25,6 +25,7 @@ package
 
       lightedSticks = 0;
       player.transformItems(transformStick);
+      itemController.transformItemsAtAndAround(player.position, transformStick);
       if(lightedSticks > 0)
 	{
 	  displayableStatus.print("You light the stick" + (lightedSticks > 1 ? "s" : ""));
