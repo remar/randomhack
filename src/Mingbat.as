@@ -29,7 +29,7 @@ package
       if(item == null)
 	{
 	  var i:Item = itemController.getItemAtPosition(position);
-	  if(i != null)
+	  if(i != null && i.canBeCarriedByEnemy())
 	    {
 	      itemController.removeItem(i);
 	      item = i;

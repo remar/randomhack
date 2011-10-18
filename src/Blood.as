@@ -12,5 +12,10 @@ package
     {
       return true;
     }
+
+    override public function canBeCarriedByEnemy():Boolean
+    {
+      return false;
+    }
   }
 }

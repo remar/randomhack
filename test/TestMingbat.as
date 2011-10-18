@@ -54,10 +54,29 @@ package
       thenNumberOfItemsInTheFieldIs(1);
     }
 
+    [Test]
+    public function shouldNotPickUpBlood():void
+    {
+      givenBloodAt(new Point(9, 10));
+      givenNumberGeneratorReturns([1, 1]);
+      givenMingbatAtPosition(new Point(10, 10));
+
+      whenMingbatMoves();
+      whenMingbatMoves();
+
+      thenNumberOfItemsInTheFieldIs(1);
+    }
+
     private function givenStickAt(position:Point):void
     {
       var stick:Stick = new Stick(gf, new Point(9, 10));
       itemController.addItem(stick);
+    }
+
+    private function givenBloodAt(position:Point):void
+    {
+      var blood:Blood = new Blood(gf, new Point(9, 10));
+      itemController.addItem(blood);
     }
 
     private function givenNumberGeneratorReturns(ints:Array):void

@@ -128,7 +128,8 @@
 *** DONE Flea
 *** DONE Snake
 *** DONE Goblin
-*** TODO Mingbat
+*** DONE Mingbat
+    Mingbat shouldn't pick up blood.
 *** TODO Undead
 *** TODO Mimic
 *** TODO Watershade

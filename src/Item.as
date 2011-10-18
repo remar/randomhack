@@ -43,5 +43,10 @@ package
     {
       return true;
     }
+
+    public function canBeCarriedByEnemy():Boolean
+    {
+      return true;
+    }
   }
 }
