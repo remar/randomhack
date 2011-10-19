@@ -71,10 +71,12 @@
      Kind of special. Can only carry one sword. No other kinds of
      weapons are available (except bare hands).
 *** DONE Stick
-*** TODO Torch
+*** DONE Torch
     Should light sticks all around the player (including stick that
     the player is standing on).
-*** TODO Rubble
+*** DONE Rubble
+    Done for now. Later on, rubble can be used to crush berries to
+    make jam. But first we need some berries!
 *** TODO Bottle
 *** TODO GOLD
 *** TODO SWEETBERRIES

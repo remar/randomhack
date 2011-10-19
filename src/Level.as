@@ -191,7 +191,7 @@ package
 	}
 
       var numItems:int = numberGenerator.getIntInRange(2, 5);
-      var itemClasses:Array = [Stick, Torch];
+      var itemClasses:Array = [Stick, Torch, Rubble];
       for(i = 0;i < numItems;i++)
 	{
 	  var rnd:int = numberGenerator.getIntInRange(0, itemClasses.length - 1);
