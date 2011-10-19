@@ -193,6 +193,10 @@ package
 	    {
 	      inventory.transformSelectedItem();
 	    }
+	  else if(item.isModified())
+	    {
+	      inventory.itemInInventoryIsModified();
+	    }
 	}
       else
 	{

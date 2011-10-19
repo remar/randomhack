@@ -17,6 +17,7 @@ package
     public static const TORCH:SpriteType = new SpriteType();
     public static const MINGBAT:SpriteType = new SpriteType();
     public static const RUBBLE:SpriteType = new SpriteType();
+    public static const BOTTLE:SpriteType = new SpriteType();
 
     // font
     public static const EXCLAMATION:SpriteType = new SpriteType();

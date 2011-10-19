@@ -86,6 +86,11 @@ package
       updateInventoryDisplay();
     }
 
+    public function itemInInventoryIsModified():void
+    {
+      updateInventoryDisplay();
+    }
+
     private function updateInventoryDisplay():void
     {
       displayableStatus.inventory = _inventory.map(itemToString);

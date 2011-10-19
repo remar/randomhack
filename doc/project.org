@@ -24,6 +24,8 @@
 **** DONE Convert LevelType to new enum style
 *** TODO Player and Enemy should have superclass Creature
 *** TODO Player should keep track of that action is performed
+*** TODO Bottle::useItem is long and ugly, make it nicer
+*** TODO Move up similarities in tests to superclass
 ** Input
 *** DONE Interface for reading keys
 *** DONE Flixel implementation of reading keys
@@ -77,7 +79,7 @@
 *** DONE Rubble
     Done for now. Later on, rubble can be used to crush berries to
     make jam. But first we need some berries!
-*** TODO Bottle
+*** DONE Bottle
 *** TODO GOLD
 *** TODO SWEETBERRIES
 *** TODO BLOOD

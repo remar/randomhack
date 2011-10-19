@@ -48,5 +48,10 @@ package
     {
       return true;
     }
+
+    public function isModified():Boolean
+    {
+      return false;
+    }
   }
 }
