@@ -57,9 +57,9 @@
 *** TODO Talking
 *** DONE Inventory
 *** DONE Picking up stuff
-*** TODO Dropping stuff
-*** TODO Selecting stuff
-*** TODO Using stuff
+*** DONE Dropping stuff
+*** DONE Selecting stuff
+*** DONE Using stuff
 *** DONE Poison
 *** DONE Should have a reference to DisplayableStatus, and update it
 ** Items
