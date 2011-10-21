@@ -46,6 +46,10 @@ package
 	      displayableStatus.print("You can't put this in a bottle");
 	    }
 	}
+      else
+	{
+	  displayableStatus.print("Nothing to scoop up here");
+	}
     }
 
     override public function isModified():Boolean
