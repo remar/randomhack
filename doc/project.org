@@ -28,6 +28,9 @@
 *** TODO Player should keep track of that action is performed
 *** TODO Bottle::useItem is long and ugly, make it nicer
 *** TODO Move up similarities in tests to superclass
+** Point
+*** TODO Add getPointsAround method
+    Should return Array of 8 Point objects.
 ** Input
 *** DONE Interface for reading keys
 *** DONE Flixel implementation of reading keys
@@ -78,6 +81,7 @@
 *** DONE Torch
     Should light sticks all around the player (including stick that
     the player is standing on).
+**** TODO Should call attackedWithFire on Enemy when used
 *** DONE Rubble
     Done for now. Later on, rubble can be used to crush berries to
     make jam. But first we need some berries!
@@ -148,8 +152,10 @@
 ***** TODO Add attackedWithFire to Enemy
 ***** TODO Call enemy.attackedWithFire when swinging torch
 **** TODO Undead enemy
-***** TODO Class
-***** TODO Override causesFear
+***** DONE Class
+***** DONE Override getter for causesFear
+***** DONE Override getter for fearType
+***** TODO Inflicts poison
 ***** TODO Override attackedWithFire
 *** TODO Mimic
 *** TODO Watershade

@@ -16,5 +16,6 @@ package
       public var testMingbat:TestMingbat;
       public var testTorch:TestTorch;
       public var testBottle:TestBottle;
+      public var testUndead:TestUndead;
     }
 }

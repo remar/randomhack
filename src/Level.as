@@ -187,7 +187,7 @@ package
       creatureController = new CreatureController();
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
-      var enemyClasses:Array = [Bat, Flea, Snake, Goblin, Mingbat];
+      var enemyClasses:Array = [Bat, Flea, Snake, Goblin, Mingbat, Undead];
       for(var i:int = 0;i < numEnemies;i++)
 	{
 	  var randomEnemy:int = numberGenerator.getIntInRange(0, enemyClasses.length - 1);
