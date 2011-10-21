@@ -61,6 +61,25 @@ package
       return enemy;
     }
 
+    public function getFearLevelAtPosition(position:Point):FearType
+    {
+      var fearType:FearType = FearType.NO_FEAR;
+
+      for(var y:int = -2;y <= 2;y++)
+	{
+	  for(var x:int = -2;x <= 2;x++)
+	    {
+	      var enemy:Enemy = getEnemyAtPosition(position.add(new Point(x, y)));
+	      if(enemy && enemy.causesFear && enemy.fearType.Index > fearType.Index)
+		{
+		  fearType = enemy.fearType;
+		}
+	    }
+	}
+
+      return fearType;
+    }
+
     private function forEachEnemy(fun:Function):void
     {
       enemies.forEach(function (enemy:Enemy, i:int, a:Array):void {fun(enemy);});

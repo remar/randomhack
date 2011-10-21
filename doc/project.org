@@ -7,6 +7,8 @@
 *** DONE Enemies shouldn't start on top of player or goal
     Fixed by filtering out positions that are close to player or
     goal.
+*** DONE Message when trying to scoop up torch with bottle (and other stuff)
+*** DONE Message when nothing to scoop up with bottle
 ** Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 *** DONE Push up checking for obstacles when moving to GameObject
@@ -135,6 +137,20 @@
 *** DONE Mingbat
     Mingbat shouldn't pick up blood.
 *** TODO Undead
+    Poison, fear, and weak to fire. Need to implement fear and weak to
+    fire.
+**** DONE Fear
+***** DONE Add FearType with NO_FEAR, FEAR, TERROR, and INSANITY.
+***** DONE Add getter for causesFear to Enemy
+***** DONE Add getter for fearType to Enemy
+***** DONE Check for insanity before moving player.
+**** TODO Weak to fire
+***** TODO Add attackedWithFire to Enemy
+***** TODO Call enemy.attackedWithFire when swinging torch
+**** TODO Undead enemy
+***** TODO Class
+***** TODO Override causesFear
+***** TODO Override attackedWithFire
 *** TODO Mimic
 *** TODO Watershade
 *** TODO Slime

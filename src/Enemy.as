@@ -60,6 +60,16 @@ package
       return _name;
     }
 
+    public function get causesFear():Boolean
+    {
+      return false;
+    }
+
+    public function get fearType():FearType
+    {
+      return FearType.NO_FEAR;
+    }
+
     protected function generalMove(field:Field, playerPos:Point, creatures:Array, itemController:ItemController):void
     {
       var distance:int = position.distanceTo(playerPos);

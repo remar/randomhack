@@ -120,9 +120,15 @@ package
 	    {
 	      var clickedTile:Point = getClickedTile(mousePos);
 	      var delta:Point = field.getDirection(player.position, clickedTile);
-
 	      var enemy:Enemy = creatureController.getEnemyAtPosition(player.position.add(delta));
-	      if(enemy != null)
+
+	      var fear:FearType = creatureController.getFearLevelAtPosition(player.position);
+
+	      if(numberGenerator.getIntInRange(1, 10) <= fear.Index)
+		{
+		  printMessage(["SHIT POMFRITT !"]);
+		}
+	      else if(enemy != null)
 		{
 		  player.attack(enemy, numberGenerator);
 		}
