@@ -31,13 +31,20 @@ package
 
       var item:Item = itemController.getItemAtPosition(player.position);
 
-      if(item != null && item.needBottleToCarry())
+      if(item != null)
 	{
-	  itemController.removeItem(item);
-	  carriedItem = item;
-	  _name = "bottled " + item.name;
-	  displayableStatus.print("You scoop up the " + item.name);
-	  modified = true;
+	  if(item.needBottleToCarry())
+	    {
+	      itemController.removeItem(item);
+	      carriedItem = item;
+	      _name = "bottled " + item.name;
+	      displayableStatus.print("You scoop up the " + item.name);
+	      modified = true;
+	    }
+	  else
+	    {
+	      displayableStatus.print("You can't put this in a bottle");
+	    }
 	}
     }
 
