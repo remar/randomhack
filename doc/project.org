@@ -155,7 +155,7 @@
 ***** DONE Class
 ***** DONE Override getter for causesFear
 ***** DONE Override getter for fearType
-***** TODO Inflicts poison
+***** DONE Inflicts poison
 ***** TODO Override attackedWithFire
 *** TODO Mimic
 *** TODO Watershade
