@@ -5,6 +5,13 @@ package
     public function Undead(gf:GraphicsFactory, ng:NumberGenerator):void
     {
       super(gf, SpriteType.UNDEAD, ng);
+
+      _name = "Undead";
+      lookDistance = 3;
+      speed = 2;
+      accuracy = 4;
+      power = 6;
+      maxhp = 12;
     }
 
     override public function get causesFear():Boolean
@@ -25,6 +32,14 @@ package
 	{      
 	  player.poison(PoisonType.POISON);
 	}
+    }
+
+    override public function attackedWithFire(player:Player, ds:DisplayableStatus):void
+    {
+      var damage:int = Math.min(999, numberGenerator.getIntInRange(player.playerpower * 2 + 1, player.playerpower * 4 + 1));
+      hit(damage);
+
+      ds.print(damage + " dmg to " + name);
     }
   }
 }

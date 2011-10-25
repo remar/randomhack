@@ -140,7 +140,7 @@
 *** DONE Goblin
 *** DONE Mingbat
     Mingbat shouldn't pick up blood.
-*** TODO Undead
+*** DONE Undead
     Poison, fear, and weak to fire. Need to implement fear and weak to
     fire.
 **** DONE Fear
@@ -148,15 +148,16 @@
 ***** DONE Add getter for causesFear to Enemy
 ***** DONE Add getter for fearType to Enemy
 ***** DONE Check for insanity before moving player.
-**** TODO Weak to fire
-***** TODO Add attackedWithFire to Enemy
-***** TODO Call enemy.attackedWithFire when swinging torch
-**** TODO Undead enemy
+**** DONE Weak to fire
+***** DONE Add attackedWithFire to Enemy
+***** DONE Call enemy.attackedWithFire when swinging torch
+**** DONE Undead enemy
+***** DONE Correct stats for Undead
 ***** DONE Class
 ***** DONE Override getter for causesFear
 ***** DONE Override getter for fearType
 ***** DONE Inflicts poison
-***** TODO Override attackedWithFire
+***** DONE Override attackedWithFire
 *** TODO Mimic
 *** TODO Watershade
 *** TODO Slime

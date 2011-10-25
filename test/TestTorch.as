@@ -9,8 +9,11 @@ package
     private var ng:DeterministicNumberGenerator;
     private var player:Player;
     private var itemController:ItemController;
+    private var cc:CreatureController;
 
     private var torch:Torch;
+
+    private var undead:Undead;
 
     [Before]
     public function setUp():void
@@ -27,6 +30,7 @@ package
       player.generateCharacter(ng);
 
       itemController = new ItemController();
+      cc = new CreatureController();
 
       torch = new Torch(gf, new Point(10, 10));
     }
@@ -43,6 +47,23 @@ package
       whenTorchIsUsed();
 
       thenSticksAreConvertedToTorchesAroundPlayer(playerX, playerY);
+    }
+
+    [Test]
+    public function shouldHurtFireWeakCreaturesWhenUsed():void
+    {
+      var playerX:int = 10;
+      var playerY:int = 10;
+
+      givenPlayerAt(playerX, playerY);
+      givenUndeadAt(new Point(playerX + 1, playerY));
+
+      ng.clear();
+      ng.addInts([20]);
+
+      whenTorchIsUsed();
+
+      thenUndeadIsKilled();
     }
 
     private function givenPlayerAt(playerX:int, playerY:int):void
@@ -63,9 +84,16 @@ package
       itemController.addItem(stick);
     }
 
+    private function givenUndeadAt(position:Point):void
+    {
+      undead = new Undead(gf, ng);
+      undead.position = position;
+      cc.addEnemy(undead);
+    }
+
     private function whenTorchIsUsed():void
     {
-      torch.useItem(player, null, itemController, null, ds);
+      torch.useItem(player, null, itemController, cc, ds);
     }
 
     private function thenSticksAreConvertedToTorchesAroundPlayer(playerX:int, playerY:int):void
@@ -76,6 +104,11 @@ package
 	    var item:Item = itemController.getItemAtPosition(new Point(playerX + x, playerY + y));
 	    Assert.assertTrue(item is Torch);
 	  }
+    }
+
+    private function thenUndeadIsKilled():void
+    {
+      Assert.assertTrue(undead.isDead());
     }
   }
 }

@@ -263,6 +263,11 @@ package
       displayableStatus.playerpower = playerPower;
     }
 
+    public function get playerpower():int
+    {
+      return playerPower;
+    }
+
     public function set weapon(_weapon:Weapon):void
     {
       this._weapon = _weapon;

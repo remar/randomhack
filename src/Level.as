@@ -151,10 +151,12 @@ package
 	    {
 	      dropItem();
 	    }
+	  actionPerformed = true;
 	}
       else if(inputReader.keyPressed(KeyType.LEFT))
 	{
 	  useItem();
+	  actionPerformed = true;
 	}
       if(inputReader.keyPressed(KeyType.UP))
 	{

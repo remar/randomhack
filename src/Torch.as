@@ -30,6 +30,7 @@ package
 	{
 	  displayableStatus.print("You light the stick" + (lightedSticks > 1 ? "s" : ""));
 	}
+      creatureController.harmFireWeakCreatures(player, displayableStatus);
     }
 
     override public function outOfCharges():Boolean

@@ -70,6 +70,11 @@ package
       return FearType.NO_FEAR;
     }
 
+    public function attackedWithFire(player:Player, displayableStatus:DisplayableStatus):void
+    {
+      // Do nothing in base class
+    }
+
     protected function generalMove(field:Field, playerPos:Point, creatures:Array, itemController:ItemController):void
     {
       var distance:int = position.distanceTo(playerPos);

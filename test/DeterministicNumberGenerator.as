@@ -9,11 +9,7 @@ package
 
     public function DeterministicNumberGenerator():void
     {
-      numbers = [];
-      numberCounter = 0;
-
-      ints = [];
-      intCounter = 0;
+      clear();
     }
 
     public function getNumber():Number
@@ -66,6 +62,15 @@ package
 	{
 	  addInt(ints[key]);
 	}
+    }
+
+    public function clear():void
+    {
+      numbers = [];
+      numberCounter = 0;
+
+      ints = [];
+      intCounter = 0;
     }
   }
 }

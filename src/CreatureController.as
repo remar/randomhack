@@ -80,6 +80,21 @@ package
       return fearType;
     }
 
+    public function harmFireWeakCreatures(player:Player, displayableStatus:DisplayableStatus):void
+    {
+      for(var y:int = -1;y <= 1;y++)
+	{
+	  for(var x:int = -1;x <= 1;x++)
+	    {
+	      var enemy:Enemy = getEnemyAtPosition(player.position.add(new Point(x, y)));
+	      if(enemy)
+		{
+		  enemy.attackedWithFire(player, displayableStatus);
+		}
+	    }
+	}
+    }
+
     private function forEachEnemy(fun:Function):void
     {
       enemies.forEach(function (enemy:Enemy, i:int, a:Array):void {fun(enemy);});

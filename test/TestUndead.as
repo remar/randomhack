@@ -47,5 +47,16 @@ package
       undead.attack(player, ds);
       Assert.assertTrue(infoView.hasPrintedMessage("You were poisoned!"));
     }
+
+    [Test]
+    public function shouldTakeDamageWhenAttackedWithFire():void
+    {
+      ng.addInts([15]);
+
+      undead.attackedWithFire(player, ds);
+
+      // Assert that Undead is... dead... -_-
+      Assert.assertTrue(undead.isDead());
+    }
   }
 }
