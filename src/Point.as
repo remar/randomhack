@@ -56,5 +56,17 @@ package
     {
       return "(" + x + "," + y + ")";
     }
+
+    public function getPointsAround():Array
+    {
+      var offsets:Array = [new Point(-1, -1), new Point(0, -1), new Point(1, -1),
+			   new Point(-1, 0), new Point(1, 0),
+			   new Point(-1, 1), new Point(0, 1), new Point(1, 1)];
+      var point:Point = this;
+      return offsets.map(function (p:Point, i:int, a:Array):Point
+			 {
+			   return point.add(p);
+			 });
+    }
   }
 }

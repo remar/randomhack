@@ -29,7 +29,7 @@
 *** TODO Bottle::useItem is long and ugly, make it nicer
 *** TODO Move up similarities in tests to superclass
 ** Point
-*** TODO Add getPointsAround method
+*** DONE Add getPointsAround method
     Should return Array of 8 Point objects.
 ** Input
 *** DONE Interface for reading keys

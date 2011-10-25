@@ -68,5 +68,30 @@ package
 
       Assert.assertEquals(0, p1.distanceTo(p2));
     }
+
+    [Test]
+    public function shouldReturnPointsAround():void
+    {
+      var p:Point = new Point(10, 10);
+
+      var points:Array = p.getPointsAround();
+
+      Assert.assertEquals(8, points.length);
+
+      var expected:Array = [new Point(9, 9),  new Point(10, 9),  new Point(11, 9),
+			    new Point(9, 10),                    new Point(11, 10),
+			    new Point(9, 11), new Point(10, 11), new Point(11, 11)];
+
+      for(var i:int = 0;i < expected.length;i++)
+	{
+	  var ex:Point = expected[i];
+	  var callback:Function = 
+	    function(p:Point, i:int, a:Array):Boolean
+	    {
+	      return p.equals(ex);
+	    };
+	  Assert.assertTrue(points.some(callback));
+	}
+    }
   }
 }
