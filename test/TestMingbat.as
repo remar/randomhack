@@ -25,7 +25,7 @@ package
 
       playerPos = new Point(7, 10);
 
-      mingbat = new Mingbat(gf, ng);
+      mingbat = new Mingbat(gf, ng, null);
 
       itemController = new ItemController();
     }

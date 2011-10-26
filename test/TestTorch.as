@@ -20,10 +20,9 @@ package
     {
       var fakeScreen:PixelScreen = new FakePixelScreen(256, 384);
       gf = new FlixelPixelGraphicsFactory(fakeScreen);      
-
       ds = new DisplayableStatus();
       ng = new DeterministicNumberGenerator();
-      player = new Player(gf, ds);
+      player = new Player(gf, ng, ds);
 
       ng.addInts([0]);
 
@@ -86,7 +85,7 @@ package
 
     private function givenUndeadAt(position:Point):void
     {
-      undead = new Undead(gf, ng);
+      undead = new Undead(gf, ng, ds);
       undead.position = position;
       cc.addEnemy(undead);
     }

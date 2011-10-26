@@ -24,9 +24,9 @@ package
       infoView = new FakeInfoView();
       ds.registerListener(infoView);
 
-      undead = new Undead(gf, ng);
+      undead = new Undead(gf, ng, ds);
 
-      player = new Player(gf, ds);
+      player = new Player(gf, ng, ds);
     }
 
     [Test]

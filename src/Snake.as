@@ -2,9 +2,9 @@ package
 {
   public class Snake extends Enemy
   {
-    public function Snake(gf:GraphicsFactory, numberGenerator:NumberGenerator):void
+    public function Snake(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, SpriteType.SNAKE, numberGenerator);
+      super(gf, SpriteType.SNAKE, ng, ds);
 
       _name = "Snake";
       maxhp=3;

@@ -4,10 +4,9 @@ package
   {
     private var item:Item;
 
-    public function Mingbat(gf:GraphicsFactory,
-			    ng:NumberGenerator):void
+    public function Mingbat(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, SpriteType.MINGBAT, ng);
+      super(gf, SpriteType.MINGBAT, ng, ds);
 
       _name = "Mingbat";
       maxhp = 4;

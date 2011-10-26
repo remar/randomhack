@@ -50,7 +50,7 @@ package
       consoleInfoView = new ConsoleInfoView(graphicsFactory);
       displayableStatus.registerListener(consoleInfoView);
 
-      player = new Player(graphicsFactory, displayableStatus);
+      player = new Player(graphicsFactory, numberGenerator, displayableStatus);
 
       inputReader = new FlixelInputReader();
 
@@ -193,7 +193,7 @@ package
       for(var i:int = 0;i < numEnemies;i++)
 	{
 	  var randomEnemy:int = numberGenerator.getIntInRange(0, enemyClasses.length - 1);
-	  var enemy:Enemy = new enemyClasses[randomEnemy](graphicsFactory, numberGenerator);
+	  var enemy:Enemy = new enemyClasses[randomEnemy](graphicsFactory, numberGenerator, displayableStatus);
 	  enemy.position = randomPositions.pop();
 	  creatureController.addEnemy(enemy);
 	}

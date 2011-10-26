@@ -20,7 +20,7 @@ package
 
       ds = new DisplayableStatus();
       ng = new DeterministicNumberGenerator();
-      player = new Player(gf, ds);
+      player = new Player(gf, ng, ds);
 
       ng.addInts([0]);
 

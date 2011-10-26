@@ -26,7 +26,7 @@ package
     [Test]
     public function shouldBeAbleToMove():void
     {
-      var player:Player = new Player(gf, null);
+      var player:Player = new Player(gf, null, null);
       player.position = new Point(3, 3);
       player.moveRelative(field, new Point(1, 0), []);
       Assert.assertTrue(player.position.equals(new Point(4, 3)));
@@ -35,10 +35,10 @@ package
     [Test]
     public function shouldNotWalkOverEnemies():void
     {
-      var player:Player = new Player(gf, null);
+      var player:Player = new Player(gf, null, null);
       player.position = new Point(3, 3);
       var ng:NumberGenerator = new DeterministicNumberGenerator();
-      var enemy:Enemy = new Enemy(gf, SpriteType.BAT, ng);
+      var enemy:Enemy = new Enemy(gf, SpriteType.BAT, ng, null);
       enemy.position = new Point(4, 3);
       player.moveRelative(field, new Point(1, 0), [enemy]);
       Assert.assertTrue(player.position.equals(new Point(3, 3)));
@@ -47,7 +47,7 @@ package
     [Test]
     public function shouldTake4HPDamageFromPoison():void
     {
-      var player:Player = new Player(gf, new DisplayableStatus());
+      var player:Player = new Player(gf, null, new DisplayableStatus());
       player.position = new Point(3, 3);
       player.hp = 10;
 

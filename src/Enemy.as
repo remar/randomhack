@@ -1,6 +1,6 @@
 package
 {
-  public class Enemy extends GameObject
+  public class Enemy extends Creature
   {
     protected var numberGenerator:NumberGenerator;
 
@@ -15,9 +15,11 @@ package
     protected var playerHit:Boolean;
 
     public function Enemy(gf:GraphicsFactory, spriteType:SpriteType,
-			  numberGenerator:NumberGenerator):void
+			  numberGenerator:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, spriteType);
+      super(gf, numberGenerator, ds);
+      setSprite(spriteType);
+
       this.numberGenerator = numberGenerator;
 
       _name = "Enemy";

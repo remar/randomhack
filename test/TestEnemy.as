@@ -16,12 +16,12 @@ package
       var fakeScreen:PixelScreen = new FakePixelScreen(256, 384);
       gf = new FlixelPixelGraphicsFactory(fakeScreen);
       ng = new DeterministicNumberGenerator();
-      enemy = new Enemy(gf, SpriteType.BAT, ng);
+      enemy = new Enemy(gf, SpriteType.BAT, ng, null);
 
       field = new Field(32, 24);
       field.clearField(TileType.EMPTY);
 
-      player = new Player(gf, new DisplayableStatus());
+      player = new Player(gf, ng, new DisplayableStatus());
     }
 
     [Test]

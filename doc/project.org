@@ -25,9 +25,13 @@
 **** DONE Convert KeyType to new enum style
 **** DONE Convert LevelType to new enum style
 *** TODO Player and Enemy should have superclass Creature
+    :CLOCK:
+    CLOCK: [2011-10-26 Wed 18:08]--[2011-10-26 Wed 18:17] =>  0:09
+    :END:
 *** TODO Player should keep track of that action is performed
 *** TODO Bottle::useItem is long and ugly, make it nicer
 *** TODO Move up similarities in tests to superclass
+*** TODO Use Point.getPointsAround where applicable
 ** Point
 *** DONE Add getPointsAround method
     Should return Array of 8 Point objects.
@@ -86,24 +90,25 @@
     Done for now. Later on, rubble can be used to crush berries to
     make jam. But first we need some berries!
 *** DONE Bottle
+*** TODO SWEETBOTTLE
+*** TODO BITTERBOTTLE
+*** TODO WATERBOTTLE
+    Pick up water if bottle used next to water tile.
+*** DONE BLOODBOTTLE
+*** TODO DUSTBOTTLE
+*** TODO SWEETBERRYBOTTLE
+*** TODO BITTERBERRYBOTTLE
 *** TODO GOLD
 *** TODO SWEETBERRIES
-*** TODO BLOOD
+*** DONE BLOOD
 *** TODO DUST
 *** TODO SWEETJAM
 *** TODO WATERPOOL
 *** TODO BITTERBERRIES
 *** TODO BITTERJAM
-*** TODO SWEETBOTTLE
-*** TODO BITTERBOTTLE
-*** TODO WATERBOTTLE
-*** TODO BLOODBOTTLE
-*** TODO DUSTBOTTLE
 *** TODO PICK
 *** TODO AMULET
 *** TODO SCROLL
-*** TODO SWEETBERRYBOTTLE
-*** TODO BITTERBERRYBOTTLE
 *** TODO BONES
 *** TODO GOALITEM
 *** TODO STOREITEM

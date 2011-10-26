@@ -2,9 +2,9 @@ package
 {
   public class Bat extends Enemy
   {
-    public function Bat(gf:GraphicsFactory, numberGenerator:NumberGenerator):void
+    public function Bat(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, SpriteType.BAT, numberGenerator);
+      super(gf, SpriteType.BAT, ng, ds);
 
       _name = "Bat";
       lookDistance = 4;

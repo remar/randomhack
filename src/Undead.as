@@ -2,9 +2,9 @@ package
 {
   public class Undead extends Enemy
   {
-    public function Undead(gf:GraphicsFactory, ng:NumberGenerator):void
+    public function Undead(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, SpriteType.UNDEAD, ng);
+      super(gf, SpriteType.UNDEAD, ng, ds);
 
       _name = "Undead";
       lookDistance = 3;

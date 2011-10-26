@@ -3,13 +3,12 @@ package
   public class Item extends GameObject
   {
     protected var _name:String;
-    protected var graphicsFactory:GraphicsFactory;
 
     public function Item(gf:GraphicsFactory, spriteType:SpriteType, name:String):void
     {
-      super(gf, spriteType);
+      super(gf);
+      setSprite(spriteType);
       _name = name;
-      graphicsFactory = gf;
     }
 
     public function get name():String

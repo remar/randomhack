@@ -5,12 +5,19 @@ package
     private var pos:Point;
     private var spriteInstance:SpriteInstance;
 
-    public function GameObject(gf:GraphicsFactory, spriteType:SpriteType):void
+    protected var graphicsFactory:GraphicsFactory;
+
+    public function GameObject(gf:GraphicsFactory):void
+    {
+      graphicsFactory = gf;
+    }
+
+    public function setSprite(spriteType:SpriteType):void
     {
       if(spriteType == SpriteType.EMPTY)
 	spriteInstance = null;
       else
-	spriteInstance = new SpriteInstance(gf.getSprite(spriteType));
+	spriteInstance = new SpriteInstance(graphicsFactory.getSprite(spriteType));
     }
 
     public function update():void

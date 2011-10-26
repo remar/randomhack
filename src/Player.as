@@ -1,6 +1,6 @@
 package
 {
-  public class Player extends GameObject
+  public class Player extends Creature
   {
     private var gender:int;
     private var attract:int;
@@ -11,7 +11,6 @@ package
     private var HP:int;
     private var maxHP:int;
     private var playerPower:int;
-    private var displayableStatus:DisplayableStatus;
 
     private var _weapon:Weapon;
 
@@ -19,11 +18,10 @@ package
 
     private var inventory:Inventory;
 
-    public function Player(gf:GraphicsFactory, ds:DisplayableStatus):void
+    public function Player(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, SpriteType.PLAYER);
-
-      displayableStatus = ds;
+      super(gf, ng, ds);
+      setSprite(SpriteType.PLAYER);
     }
 
     public function generateCharacter(numberGenerator:NumberGenerator):void

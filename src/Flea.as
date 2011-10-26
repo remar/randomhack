@@ -2,9 +2,9 @@ package
 {
   public class Flea extends Enemy
   {
-    public function Flea(gf:GraphicsFactory, numberGenerator:NumberGenerator):void
+    public function Flea(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, SpriteType.FLEA, numberGenerator);
+      super(gf, SpriteType.FLEA, ng, ds);
 
       _name = "Flea";
       lookDistance = 4;

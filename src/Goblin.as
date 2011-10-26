@@ -2,9 +2,9 @@ package
 {
   public class Goblin extends Enemy
   {
-    public function Goblin(gf:GraphicsFactory, numberGenerator:NumberGenerator):void
+    public function Goblin(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
-      super(gf, SpriteType.GOBLIN, numberGenerator);
+      super(gf, SpriteType.GOBLIN, ng, ds);
 
       _name = "Goblin";
       lookDistance = 4;

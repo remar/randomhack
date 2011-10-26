@@ -4,7 +4,8 @@ package
   {
     public function Goal(gf:GraphicsFactory, position:Point):void
     {
-      super(gf, SpriteType.GOAL);
+      super(gf);
+      setSprite(SpriteType.GOAL);
       super.position = position;
     }
   }
