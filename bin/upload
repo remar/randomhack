@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# make sure 'make' works properly
+killall python
+
 cd src
 make
 mv Randomhack.swf ../www
