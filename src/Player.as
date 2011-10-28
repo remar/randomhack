@@ -96,19 +96,7 @@ package
 
     public function attack(creature:Creature):void
     {
-      var damage:int = Math.min(numberGenerator.getIntInRange(0, playerPower + _weapon.power),
-				999);
-
-      displayableStatus.print("");
-
-      if(damage == 0)
-	{
-	  displayableStatus.print("You missed");
-	  return;
-	}
-
-      creature.hit(damage);
-      displayableStatus.print("You deal " + damage + " dmg");
+      generalAttack(creature);
     }
 
     public function move(field:Field, delta:Point, objects:Array):void
@@ -264,6 +252,21 @@ package
     {
       this._weapon = _weapon;
       displayableStatus.weapon = _weapon.name;
+    }
+
+    override protected function displayDamageMessage(damage:int):void
+    {
+      displayableStatus.print("You deal " + damage + " dmg");
+    }
+
+    override protected function get attackPower():int
+    {
+      return playerPower + _weapon.power + 1;
+    }
+
+    override protected function missed():void
+    {
+      displayableStatus.print("You missed");
     }
 
     private function dealPoisonDamage():void

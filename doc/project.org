@@ -26,6 +26,8 @@
 **** DONE Convert LevelType to new enum style
 *** TODO Player and Enemy should have superclass Creature
     :CLOCK:
+    CLOCK: [2011-10-28 Fri 16:56]--[2011-10-28 Fri 17:18] =>  0:22
+    CLOCK: [2011-10-28 Fri 08:21]--[2011-10-28 Fri 08:44] =>  0:23
     CLOCK: [2011-10-27 Thu 07:23]--[2011-10-27 Thu 07:47] =>  0:24
     CLOCK: [2011-10-26 Wed 18:19]--[2011-10-26 Wed 18:23] =>  0:04
     CLOCK: [2011-10-26 Wed 18:08]--[2011-10-26 Wed 18:17] =>  0:09

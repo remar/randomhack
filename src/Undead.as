@@ -26,7 +26,7 @@ package
 
     override public function attack(player:Player):void
     {
-      generalAttack(player, displayableStatus);
+      generalAttack(player);
 
       if(creatureHit && numberGenerator.getIntInRange(0, 9) == 0)
 	{      

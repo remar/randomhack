@@ -130,6 +130,7 @@ package
 		}
 	      else if(enemy != null)
 		{
+		  displayableStatus.print("");
 		  player.attack(enemy);
 		}
 	      else

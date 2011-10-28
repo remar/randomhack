@@ -30,7 +30,7 @@ package
 
     public function attack(player:Player):void
     {
-      generalAttack(player, displayableStatus);
+      generalAttack(player);
     }
 
     override public function hit(hurt:int):void
@@ -96,9 +96,19 @@ package
       hp = maxHP;
     }
 
-    override protected function missed(displayableStatus:DisplayableStatus):void
+    override protected function missed():void
     {
       displayableStatus.print(name + " missed");
+    }
+
+    override protected function struggle():Boolean
+    {
+      return numberGenerator.getIntInRange(0, 9) == 0;
+    }
+
+    override protected function hitsCreature():Boolean
+    {
+      return numberGenerator.getIntInRange(1, 10) <= accuracy;
     }
 
     private function roam(field:Field, creatures:Array):void

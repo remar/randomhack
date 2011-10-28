@@ -7,7 +7,7 @@ package
     protected var displayableStatus:DisplayableStatus;
 
     protected var creatureHit:Boolean;
-    protected var power:int;
+    protected var _power:int;
     protected var accuracy:int;
 
     protected var _name:String;
@@ -45,7 +45,7 @@ package
 	}
     }
 
-    protected function generalAttack(creature:Creature, displayableStatus:DisplayableStatus):void
+    protected function generalAttack(creature:Creature):void
     {
       creatureHit = false;
 
@@ -54,19 +54,19 @@ package
 	  return;
 	}
 
-      if(numberGenerator.getIntInRange(1, 10) <= accuracy)
+      if(hitsCreature())
 	{
-	  var damage:int = Math.min(numberGenerator.getIntInRange(0, power - 1), 999);
+	  var damage:int = Math.min(numberGenerator.getIntInRange(0, attackPower - 1), 999);
 
 	  // Struggle
-	  if(damage == 0 && numberGenerator.getIntInRange(0, 9) == 0)
+	  if(damage == 0 && struggle())
 	    {
 	      damage = 1;
 	    }
 
 	  if(damage == 0)
 	    {
-	      missed(displayableStatus);
+	      missed();
 	      return;
 	    }
 
@@ -76,11 +76,11 @@ package
 	}
       else
 	{
-	  missed(displayableStatus);
+	  missed();
 	}      
     }
 
-    protected function missed(displayableStatus:DisplayableStatus):void
+    protected function missed():void
     {
       displayableStatus.print("Missed!");
     }
@@ -93,6 +93,26 @@ package
     protected function displayDamageMessage(damage:int):void
     {
       displayableStatus.print(damage + " dmg by " + name);
+    }
+
+    protected function set power(_power:int):void
+    {
+      this._power = _power;
+    }
+
+    protected function get attackPower():int
+    {
+      return _power;
+    }
+
+    protected function hitsCreature():Boolean
+    {
+      return true;
+    }
+
+    protected function struggle():Boolean
+    {
+      return false;
     }
   }
 }
