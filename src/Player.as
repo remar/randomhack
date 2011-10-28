@@ -5,7 +5,6 @@ package
     private var gender:int;
     private var attract:int;
 
-    private var _name:String;
     private var _prefix:String;
 
     private var HP:int;
@@ -95,7 +94,7 @@ package
       displayableStatus.playerprefix = _prefix;
     }
 
-    public function attack(enemy:Enemy, numberGenerator:NumberGenerator):void
+    public function attack(creature:Creature):void
     {
       var damage:int = Math.min(numberGenerator.getIntInRange(0, playerPower + _weapon.power),
 				999);
@@ -108,7 +107,7 @@ package
 	  return;
 	}
 
-      enemy.hit(damage);
+      creature.hit(damage);
       displayableStatus.print("You deal " + damage + " dmg");
     }
 
@@ -118,7 +117,7 @@ package
       dealPoisonDamage();
     }
 
-    public function hit(hurt:int):void
+    override public function hit(hurt:int):void
     {
       hp = Math.max(hp - hurt, 0);
     }
@@ -220,11 +219,6 @@ package
     public function isDead():Boolean
     {
       return HP <= 0;
-    }
-
-    public function get name():String
-    {
-      return _name;
     }
 
     public function get prefix():String

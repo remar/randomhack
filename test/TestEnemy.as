@@ -6,6 +6,8 @@ package
   {
     private var gf:GraphicsFactory;
     private var ng:DeterministicNumberGenerator;
+    private var ds:DisplayableStatus;
+
     private var enemy:Enemy;
     private var field:Field;
     private var player:Player;
@@ -16,7 +18,8 @@ package
       var fakeScreen:PixelScreen = new FakePixelScreen(256, 384);
       gf = new FlixelPixelGraphicsFactory(fakeScreen);
       ng = new DeterministicNumberGenerator();
-      enemy = new Enemy(gf, SpriteType.BAT, ng, null);
+      ds = new DisplayableStatus();
+      enemy = new Enemy(gf, SpriteType.BAT, ng, ds);
 
       field = new Field(32, 24);
       field.clearField(TileType.EMPTY);
@@ -85,7 +88,7 @@ package
       player.position = new Point(3, 3);
       player.hp = 10;
       enemy.position = new Point(4, 3);
-      enemy.attack(player, new DisplayableStatus());
+      enemy.attack(player);
       Assert.assertEquals(9, player.hp);
     }
 
@@ -95,7 +98,7 @@ package
       player.position = new Point(3, 3);
       player.hp = 10;
       enemy.position = new Point(4, 4);
-      enemy.attack(player, new DisplayableStatus());
+      enemy.attack(player);
       Assert.assertEquals(9, player.hp);
     }
 
@@ -105,7 +108,7 @@ package
       player.position = new Point(2, 3);
       player.hp = 10;
       enemy.position = new Point(4, 3);
-      enemy.attack(player, new DisplayableStatus());
+      enemy.attack(player);
       Assert.assertEquals(10, player.hp);
     }
 

@@ -2,17 +2,10 @@ package
 {
   public class Enemy extends Creature
   {
-    protected var numberGenerator:NumberGenerator;
-
-    protected var _name:String;
     protected var lookDistance:int;
     protected var speed:int;
     protected var maxHP:int;
     protected var hp:int;
-    protected var power:int;
-    protected var accuracy:int;
-
-    protected var playerHit:Boolean;
 
     public function Enemy(gf:GraphicsFactory, spriteType:SpriteType,
 			  numberGenerator:NumberGenerator, ds:DisplayableStatus):void
@@ -35,12 +28,12 @@ package
       generalMove(field, playerPos, creatures, itemController);
     }
 
-    public function attack(player:Player, displayableStatus:DisplayableStatus):void
+    public function attack(player:Player):void
     {
       generalAttack(player, displayableStatus);
     }
 
-    public function hit(hurt:int):void
+    override public function hit(hurt:int):void
     {
       hp -= hurt;
     }
@@ -55,11 +48,6 @@ package
 			graphicsFactory:GraphicsFactory):void
     {
       generalDie(itemController, displayableStatus, graphicsFactory);
-    }
-
-    public function get name():String
-    {
-      return _name;
     }
 
     public function get causesFear():Boolean
@@ -90,41 +78,6 @@ package
 	roam(field, creatures);
     }
 
-    protected function generalAttack(player:Player, displayableStatus:DisplayableStatus):void
-    {
-      playerHit = false;
-
-      if(player.position.distanceTo(position) != 1)
-	{
-	  return;
-	}
-
-      if(numberGenerator.getIntInRange(1, 10) <= accuracy)
-	{
-	  var damage:int = Math.min(numberGenerator.getIntInRange(0, power - 1), 999);
-
-	  // Struggle
-	  if(damage == 0 && numberGenerator.getIntInRange(0, 9) == 0)
-	    {
-	      damage = 1;
-	    }
-
-	  if(damage == 0)
-	    {
-	      missed(displayableStatus);
-	      return;
-	    }
-
-	  player.hit(damage);
-	  displayableStatus.print(damage + " dmg by " + name);
-	  playerHit = true;
-	}
-      else
-	{
-	  missed(displayableStatus);
-	}      
-    }
-
     protected function generalDie(itemController:ItemController,
 				displayableStatus:DisplayableStatus,
 				graphicsFactory:GraphicsFactory):void
@@ -143,17 +96,17 @@ package
       hp = maxHP;
     }
 
+    override protected function missed(displayableStatus:DisplayableStatus):void
+    {
+      displayableStatus.print(name + " missed");
+    }
+
     private function roam(field:Field, creatures:Array):void
     {
       var xdiff:int = numberGenerator.getIntInRange(-1, 1);
       var ydiff:int = numberGenerator.getIntInRange(-1, 1);
 	    
       moveRelative(field, new Point(xdiff, ydiff), creatures);
-    }
-
-    private function missed(displayableStatus:DisplayableStatus):void
-    {
-      displayableStatus.print(name + " missed");
     }
   }
 }

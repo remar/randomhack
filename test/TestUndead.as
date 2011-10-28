@@ -44,7 +44,7 @@ package
 
       ng.addInts([1, 2, 0]);
 
-      undead.attack(player, ds);
+      undead.attack(player);
       Assert.assertTrue(infoView.hasPrintedMessage("You were poisoned!"));
     }
 

@@ -70,7 +70,7 @@ package
 	{
 	  creatureController.removeDeadEnemies(itemController, graphicsFactory,
 					       displayableStatus);
-	  creatureController.attack(player, displayableStatus);
+	  creatureController.attack(player);
 
 	  if(player.isDead())
 	    {
@@ -130,7 +130,7 @@ package
 		}
 	      else if(enemy != null)
 		{
-		  player.attack(enemy, numberGenerator);
+		  player.attack(enemy);
 		}
 	      else
 		{

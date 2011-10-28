@@ -26,6 +26,8 @@
 **** DONE Convert LevelType to new enum style
 *** TODO Player and Enemy should have superclass Creature
     :CLOCK:
+    CLOCK: [2011-10-27 Thu 07:23]--[2011-10-27 Thu 07:47] =>  0:24
+    CLOCK: [2011-10-26 Wed 18:19]--[2011-10-26 Wed 18:23] =>  0:04
     CLOCK: [2011-10-26 Wed 18:08]--[2011-10-26 Wed 18:17] =>  0:09
     :END:
 *** TODO Player should keep track of that action is performed

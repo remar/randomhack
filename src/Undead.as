@@ -24,11 +24,11 @@ package
       return FearType.FEAR;
     }
 
-    override public function attack(player:Player, displayableStatus:DisplayableStatus):void
+    override public function attack(player:Player):void
     {
       generalAttack(player, displayableStatus);
 
-      if(playerHit && numberGenerator.getIntInRange(0, 9) == 0)
+      if(creatureHit && numberGenerator.getIntInRange(0, 9) == 0)
 	{      
 	  player.poison(PoisonType.POISON);
 	}

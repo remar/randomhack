@@ -24,9 +24,9 @@ package
       forEachEnemy(function (enemy:Enemy):void {enemy.draw(drawable);});
     }
 
-    public function attack(player:Player, displayableStatus:DisplayableStatus):void
+    public function attack(player:Player):void
     {
-      forEachEnemy(function (enemy:Enemy):void {enemy.attack(player, displayableStatus);});
+      forEachEnemy(function (enemy:Enemy):void {enemy.attack(player);});
     }
 
     public function removeDeadEnemies(itemController:ItemController,
