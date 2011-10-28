@@ -41,25 +41,5 @@ package
       if(spriteInstance != null)
 	spriteInstance.draw(drawable);
     }
-
-    public function moveRelative(field:Field, delta:Point, objects:Array):void
-    {
-      if(field.getTile(position.add(delta)) != TileType.EMPTY)
-	{
-	  return;
-	}
-
-      var newPosition:Point = position.add(delta);
-
-      var test:Function = function (object:GameObject, i:int, a:Array):Boolean
-	                  {
-			    return object.position.equals(newPosition);
-			  };
-
-      if(!objects.some(test))
-	{
-	  position = position.add(delta);
-	}
-    }
   }
 }
