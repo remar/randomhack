@@ -141,6 +141,7 @@ package
 	      else
 		{
 		  player.move(field, delta, creatureController.getEnemies());
+		  useInstantItem();
 		}
 	      actionPerformed = true;
 	    }
@@ -280,6 +281,16 @@ package
     private function useItem():void
     {
       player.useItem(field, itemController, creatureController);
+    }
+
+    private function useInstantItem():void
+    {
+      var item:Item = itemController.getItemAtPosition(player.position);
+      if(item && item.instantUse())
+	{
+	  item.useItem(player, field, itemController, creatureController, displayableStatus);
+	  itemController.removeItem(item);
+	}
     }
 
     private function set currentLevel(_currentLevel:int):void

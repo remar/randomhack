@@ -7,6 +7,7 @@ package
 
     private var _prefix:String;
 
+    private var _gold:int;
     private var playerPower:int;
 
     private var _weapon:Weapon;
@@ -35,6 +36,8 @@ package
       weapon = new BareHands();
 
       inventory = new Inventory(displayableStatus);
+
+      gold = 0;
     }
 
     private function generateGender(numberGenerator:NumberGenerator):void
@@ -227,6 +230,17 @@ package
     {
       this._weapon = _weapon;
       displayableStatus.weapon = _weapon.name;
+    }
+
+    public function set gold(_gold:int):void
+    {
+      this._gold = _gold;
+      displayableStatus.gold = _gold;
+    }
+
+    public function addGold(_gold:int):void
+    {
+      gold = this._gold + _gold;
     }
 
     override protected function displayDamageMessage(damage:int):void

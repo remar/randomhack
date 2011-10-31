@@ -52,5 +52,10 @@ package
     {
       return false;
     }
+
+    public function instantUse():Boolean
+    {
+      return false;
+    }
   }
 }
