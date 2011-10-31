@@ -104,6 +104,11 @@
 *** TODO SWEETBERRYBOTTLE
 *** TODO BITTERBERRYBOTTLE
 *** TODO GOLD
+    :CLOCK:
+    CLOCK: [2011-10-31 Mon 08:49]--[2011-10-31 Mon 08:52] =>  0:03
+    CLOCK: [2011-10-31 Mon 08:27]--[2011-10-31 Mon 08:49] =>  0:22
+    :END:
+    Partially done. Should pick up when walked over.
 *** TODO SWEETBERRIES
 *** DONE BLOOD
 *** TODO DUST

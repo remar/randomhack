@@ -36,6 +36,8 @@ package
     private var creatureController:CreatureController;
     private var itemController:ItemController;
 
+    private var _currentLevel:int;
+
     override public function create():void
     {
       graphicsFactory = new FlixelPixelGraphicsFactory(new FlixelPixelScreen(screen));
@@ -84,6 +86,7 @@ package
       if(goal.position.equals(player.position))
 	{
 	  // WOOO!!!
+	  currentLevel = currentLevel + 1;
 	  generateLevel();
 	}
     }
@@ -101,6 +104,8 @@ package
 
     private function startGame():void
     {
+      currentLevel = 1;
+
       player.generateCharacter(numberGenerator);
 
       var sword:Sword = new Sword(graphicsFactory, new Point(1, 1));
@@ -207,6 +212,13 @@ package
 	  itemController.addItem(new itemClasses[rnd](graphicsFactory, randomPositions.pop()));
 	}
 
+      for(i = 0;i < 5;i++)
+	{
+	  var gold:Gold = new Gold(graphicsFactory, randomPositions.pop());
+	  gold.generateAmount(numberGenerator, currentLevel);
+	  itemController.addItem(gold);
+	}
+
       actionPerformed = false;
     }
 
@@ -268,6 +280,17 @@ package
     private function useItem():void
     {
       player.useItem(field, itemController, creatureController);
+    }
+
+    private function set currentLevel(_currentLevel:int):void
+    {
+      this._currentLevel = _currentLevel;
+      displayableStatus.level = _currentLevel;
+    }
+
+    private function get currentLevel():int
+    {
+      return _currentLevel;
     }
   }
 }
