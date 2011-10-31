@@ -4,8 +4,6 @@ package
   {
     protected var lookDistance:int;
     protected var speed:int;
-    protected var maxHP:int;
-    protected var hp:int;
 
     public function Enemy(gf:GraphicsFactory, spriteType:SpriteType,
 			  numberGenerator:NumberGenerator, ds:DisplayableStatus):void
@@ -31,16 +29,6 @@ package
     public function attack(player:Player):void
     {
       generalAttack(player);
-    }
-
-    override public function hit(hurt:int):void
-    {
-      hp -= hurt;
-    }
-
-    public function isDead():Boolean
-    {
-      return hp <= 0;
     }
 
     public function die(itemController:ItemController,
@@ -88,12 +76,6 @@ package
 					   position));
 	}
       displayableStatus.print(name + " dies");
-    }
-
-    protected function set maxhp(maxHP:int):void
-    {
-      this.maxHP = maxHP;
-      hp = maxHP;
     }
 
     override protected function missed():void

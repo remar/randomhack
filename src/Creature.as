@@ -12,6 +12,9 @@ package
 
     protected var _name:String;
 
+    protected var _hp:int;
+    protected var _maxhp:int;
+
     public function Creature(gf:GraphicsFactory, ng:NumberGenerator, ds:DisplayableStatus):void
     {
       super(gf);
@@ -21,9 +24,46 @@ package
 
     public function hit(hurt:int):void
     {
-      
+      hp -= hurt;
     }
 
+    public function set hp(_hp:int):void
+    {
+      this._hp = _hp;
+      hpSet();
+    }
+
+    public function get hp():int
+    {
+      return _hp;
+    }
+
+    public function set maxhp(_maxhp:int):void
+    {
+      this._maxhp = _maxhp;
+      hp = _maxhp;
+      maxhpSet();
+    }
+
+    public function get maxhp():int
+    {
+      return _maxhp;
+    }
+
+    public function isDead():Boolean
+    {
+      return hp <= 0;
+    }
+
+    protected function hpSet():void
+    {
+      // Override in subclass
+    }
+
+    protected function maxhpSet():void
+    {
+      // Override in subclass
+    }
 
     public function moveRelative(field:Field, delta:Point, objects:Array):void
     {

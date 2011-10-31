@@ -7,8 +7,6 @@ package
 
     private var _prefix:String;
 
-    private var HP:int;
-    private var maxHP:int;
     private var playerPower:int;
 
     private var _weapon:Weapon;
@@ -105,11 +103,6 @@ package
       dealPoisonDamage();
     }
 
-    override public function hit(hurt:int):void
-    {
-      hp = Math.max(hp - hurt, 0);
-    }
-
     public function poison(poisonType:PoisonType):void
     {
       if(_poison != 0)
@@ -204,37 +197,19 @@ package
       inventory.transformItems(transformer);
     }
 
-    public function isDead():Boolean
-    {
-      return HP <= 0;
-    }
-
     public function get prefix():String
     {
       return _prefix;
     }
 
-    public function set maxhp(maxHP:int):void
+    override protected function hpSet():void
     {
-      this.maxHP = maxHP;
-      hp = maxHP;
-      displayableStatus.maxhp = maxhp;
+      displayableStatus.hp = _hp;
     }
 
-    public function get maxhp():int
+    override protected function maxhpSet():void
     {
-      return maxHP;
-    }
-
-    public function set hp(HP:int):void
-    {
-      this.HP = HP;
-      displayableStatus.hp = hp;
-    }
-
-    public function get hp():int
-    {
-      return HP;
+      displayableStatus.maxhp = _maxhp;
     }
 
     public function set playerpower(playerPower:int):void
