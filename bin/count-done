@@ -1,0 +1,2 @@
+#!/bin/bash
+echo `grep DONE doc/project.org | wc -l`/`egrep "TODO|DONE" doc/project.org | wc -l`
