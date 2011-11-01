@@ -38,6 +38,8 @@ package
 
     private var _currentLevel:int;
 
+    private var enemyFactory:EnemyFactory;
+
     override public function create():void
     {
       graphicsFactory = new FlixelPixelGraphicsFactory(new FlixelPixelScreen(screen));
@@ -55,6 +57,8 @@ package
       player = new Player(graphicsFactory, numberGenerator, displayableStatus);
 
       inputReader = new FlixelInputReader();
+
+      enemyFactory = new EnemyFactory();
 
       startGame();
       super.create();
@@ -196,11 +200,10 @@ package
       creatureController = new CreatureController();
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
-      var enemyClasses:Array = [Bat, Flea, Snake, Goblin, Mingbat, Undead];
       for(var i:int = 0;i < numEnemies;i++)
 	{
-	  var randomEnemy:int = numberGenerator.getIntInRange(0, enemyClasses.length - 1);
-	  var enemy:Enemy = new enemyClasses[randomEnemy](graphicsFactory, numberGenerator, displayableStatus);
+	  var enemy:Enemy = enemyFactory.getEnemy(currentLevel, graphicsFactory,
+						  numberGenerator, displayableStatus);
 	  enemy.position = randomPositions.pop();
 	  creatureController.addEnemy(enemy);
 	}

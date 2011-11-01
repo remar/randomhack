@@ -51,6 +51,7 @@
 *** DONE Print out starting message
     Will do this as part of a startGame method.
 *** DONE Keep track of items in level
+*** TODO Some kind of LevelBuilder/LevelGenerator
 ** Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Better distance between player start and goal
@@ -149,7 +150,8 @@
 *** TODO Line of sight
 ** Enemies
 *** DONE Array of enemies in Level
-*** TODO Enemy factory
+*** DONE Enemy factory
+    CLOCK: [2011-11-01 Tue 07:19]--[2011-11-01 Tue 07:34] =>  0:15
 *** DONE Bat
 *** DONE Flea
 *** DONE Snake
