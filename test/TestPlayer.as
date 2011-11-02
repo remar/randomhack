@@ -48,6 +48,7 @@ package
     public function shouldTake4HPDamageFromPoison():void
     {
       var player:Player = new Player(gf, null, new DisplayableStatus());
+      player.generateCharacter(new RandomNumberGenerator());
       player.position = new Point(3, 3);
       player.hp = 10;
 

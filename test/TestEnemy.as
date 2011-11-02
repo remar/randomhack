@@ -25,6 +25,7 @@ package
       field.clearField(TileType.EMPTY);
 
       player = new Player(gf, ng, new DisplayableStatus());
+      player.generateCharacter(new RandomNumberGenerator());
     }
 
     [Test]
