@@ -29,7 +29,7 @@ package
 
     public function set hp(_hp:int):void
     {
-      this._hp = Math.min(_maxhp, _hp);
+      this._hp = _hp;
       hpSet();
     }
 
