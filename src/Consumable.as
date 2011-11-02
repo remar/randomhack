@@ -20,5 +20,14 @@ package
     {
       return _eaten;
     }
+
+    override public function useItem(player:Player, field:Field,
+				     itemController:ItemController,
+				     creatureController:CreatureController,
+				     displayableStatus:DisplayableStatus):void
+    {
+      player.eat(this);
+      _eaten = true;
+    }
   }
 }

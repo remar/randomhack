@@ -13,14 +13,5 @@ package
       _power = ng.getIntInRange(0, level/2) + 2 + level/3;
       _name = power + " sweet berries";
     }
-
-    override public function useItem(player:Player, field:Field,
-				     itemController:ItemController,
-				     creatureController:CreatureController,
-				     displayableStatus:DisplayableStatus):void
-    {
-      player.eat(this);
-      _eaten = true;
-    }
   }
 }

@@ -249,6 +249,10 @@ package
 	{
 	  eatSweetBerries(consumable.power);
 	}
+      else if(consumable is BitterBerries)
+	{
+	  eatBitterBerries(consumable.power);
+	}
     }
 
     override protected function displayDamageMessage(damage:int):void
@@ -295,6 +299,22 @@ package
 	{
 	  _poison /= 2;
 	  displayableStatus.print("The poison is weakened");
+	}
+    }
+
+    private function eatBitterBerries(amount:int):void
+    {
+      var temphp:int = hp;
+      maxhp = maxhp + amount;
+      hp = temphp + amount;
+
+      displayableStatus.print("You eat the bitter berr" + (amount == 1 ? "y" : "ies"));
+      displayableStatus.print("Maximum HP increases by " + amount);
+
+      if(_poison > 0)
+	{
+	  _poison = 0;
+	  displayableStatus.print("The poison is eliminated");
 	}
     }
   }

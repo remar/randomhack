@@ -222,9 +222,13 @@ package
 	  gold.generateAmount(numberGenerator, currentLevel);
 	  itemController.addItem(gold);
 
-	  var berries:SweetBerries = new SweetBerries(graphicsFactory, randomPositions.pop());
-	  berries.generateAmount(numberGenerator, currentLevel);
-	  itemController.addItem(berries);
+	  var sweetBerries:SweetBerries = new SweetBerries(graphicsFactory, randomPositions.pop());
+	  sweetBerries.generateAmount(numberGenerator, currentLevel);
+	  itemController.addItem(sweetBerries);
+
+	  var bitterBerries:BitterBerries = new BitterBerries(graphicsFactory, randomPositions.pop());
+	  bitterBerries.generateAmount(numberGenerator, currentLevel);
+	  itemController.addItem(bitterBerries);
 	}
 
       actionPerformed = false;
