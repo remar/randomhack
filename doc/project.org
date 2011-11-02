@@ -9,7 +9,9 @@
     goal.
 *** DONE Message when trying to scoop up torch with bottle (and other stuff)
 *** DONE Message when nothing to scoop up with bottle
-*** TODO Make sure hp doesn't exceed maxhp
+*** DONE Make sure hp doesn't exceed maxhp
+    CLOCK: [2011-11-02 Wed 07:28]--[2011-11-02 Wed 07:31] =>  0:03
+*** TODO Remove sweet berries from inventory when used
 ** Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 *** DONE Push up checking for obstacles when moving to GameObject
