@@ -221,6 +221,10 @@ package
 	  var gold:Gold = new Gold(graphicsFactory, randomPositions.pop());
 	  gold.generateAmount(numberGenerator, currentLevel);
 	  itemController.addItem(gold);
+
+	  var berries:SweetBerries = new SweetBerries(graphicsFactory, randomPositions.pop());
+	  berries.generateAmount(numberGenerator, currentLevel);
+	  itemController.addItem(berries);
 	}
 
       actionPerformed = false;

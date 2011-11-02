@@ -9,6 +9,7 @@
     goal.
 *** DONE Message when trying to scoop up torch with bottle (and other stuff)
 *** DONE Message when nothing to scoop up with bottle
+*** TODO Make sure hp doesn't exceed maxhp
 ** Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 *** DONE Push up checking for obstacles when moving to GameObject
@@ -111,7 +112,11 @@
     CLOCK: [2011-10-31 Mon 08:27]--[2011-10-31 Mon 08:49] =>  0:22
     :END:
     Partially done. Should pick up when walked over.
-*** TODO SWEETBERRIES
+*** DONE SWEETBERRIES
+    :CLOCK:
+    CLOCK: [2011-11-02 Wed 07:19]--[2011-11-02 Wed 07:25] =>  0:06
+    CLOCK: [2011-11-01 Tue 17:56]--[2011-11-01 Tue 18:24] =>  0:28
+    :END:
 *** DONE BLOOD
 *** TODO DUST
 *** TODO SWEETJAM

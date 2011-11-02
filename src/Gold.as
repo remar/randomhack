@@ -12,8 +12,8 @@ package
 
     public function generateAmount(ng:NumberGenerator, level:int):void
     {
-	amount = ng.getIntInRange(1, level/2 + 1);
-	_name = amount + " gold";
+      amount = ng.getIntInRange(1, level/2 + 1);
+      _name = amount + " gold";
     }
 
     override public function useItem(player:Player, field:Field,

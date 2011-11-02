@@ -20,6 +20,7 @@ package
     public static const BOTTLE:SpriteType = new SpriteType();
     public static const UNDEAD:SpriteType = new SpriteType();
     public static const GOLD:SpriteType = new SpriteType();
+    public static const SWEET_BERRIES:SpriteType = new SpriteType();
 
     // font
     public static const EXCLAMATION:SpriteType = new SpriteType();

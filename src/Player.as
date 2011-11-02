@@ -243,6 +243,14 @@ package
       gold = this._gold + _gold;
     }
 
+    public function eat(consumable:Consumable):void
+    {
+      if(consumable is SweetBerries)
+	{
+	  eatSweetBerries(consumable.power);
+	}
+    }
+
     override protected function displayDamageMessage(damage:int):void
     {
       displayableStatus.print("You deal " + damage + " dmg");
@@ -274,6 +282,19 @@ package
       if(_poison == 0)
 	{
 	  displayableStatus.print("The poison wears out");
+	}
+    }
+
+    private function eatSweetBerries(amount:int):void
+    {
+      hp = hp + amount;
+      displayableStatus.print("You eat the sweet berries");
+      displayableStatus.print("You recover " + amount + " HP");
+
+      if(_poison > 0)
+	{
+	  _poison /= 2;
+	  displayableStatus.print("The poison is weakened");
 	}
     }
   }
