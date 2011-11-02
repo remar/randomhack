@@ -112,7 +112,7 @@ package
 
       for(var i:int = 0;i < INVENTORY_SIZE;i++)
 	{
-	  if(_inventory[i] === undefined)
+	  if(!_inventory[i])
 	    {
 	      freeSpot = i;
 	      break;

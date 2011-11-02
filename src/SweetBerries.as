@@ -20,6 +20,7 @@ package
 				     displayableStatus:DisplayableStatus):void
     {
       player.eat(this);
+      _eaten = true;
     }
   }
 }

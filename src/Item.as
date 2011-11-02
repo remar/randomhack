@@ -30,7 +30,7 @@ package
 
     public function transformItem():Item
     {
-      return new Item(graphicsFactory, SpriteType.EMPTY, _name);
+      return undefined;
     }
 
     public function needBottleToCarry():Boolean
