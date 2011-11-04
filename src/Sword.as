@@ -2,10 +2,9 @@ package
 {
   public class Sword extends Weapon
   {
-    public function Sword(gf:GraphicsFactory, position:Point)
+    public function Sword(gf:GraphicsFactory)
     {
       super(gf, SpriteType.SWORD);
-      this.position = position;
       _name = "no name";
       _power = 0;
     }

@@ -39,6 +39,8 @@ package
     private var _currentLevel:int;
 
     private var enemyFactory:EnemyFactory;
+    private var itemFactory:ItemFactory;
+
 
     override public function create():void
     {
@@ -46,7 +48,7 @@ package
 
       drawable = graphicsFactory.getDrawable();
       fieldDrawable = new OffsetDrawable(drawable, FIELD_OFFSET);
-	    
+
       numberGenerator = new RandomNumberGenerator();
       field = new Field(FIELD_WIDTH, FIELD_HEIGHT);
 
@@ -59,6 +61,7 @@ package
       inputReader = new FlixelInputReader();
 
       enemyFactory = new EnemyFactory();
+      itemFactory = new ItemFactory(graphicsFactory, numberGenerator);
 
       startGame();
       super.create();
@@ -112,7 +115,7 @@ package
 
       player.generateCharacter(numberGenerator);
 
-      var sword:Sword = new Sword(graphicsFactory, new Point(1, 1));
+      var sword:Sword = new Sword(graphicsFactory);
       sword.generateNameAndPower(1, numberGenerator);
       player.weapon = sword;
 
@@ -181,6 +184,7 @@ package
     
     private function generateLevel():void
     {
+      itemFactory.currentLevel = _currentLevel;
       graphicsFactory.setLevelType(LevelType.CAVE);
 
       field.clearField(TileType.BLOCK);
@@ -208,27 +212,18 @@ package
 	  creatureController.addEnemy(enemy);
 	}
 
+      createItems(3, ItemType.SWORD, randomPositions);
+      createItems(8, ItemType.GOLD, randomPositions);
+      createItems(3, ItemType.SWEET_BERRIES, randomPositions);
+      // createRareItems(5, randomPositions);
+      // createVeryRareItems(2, randomPositions);
+
       var numItems:int = numberGenerator.getIntInRange(2, 5);
       var itemClasses:Array = [Stick, Torch, Rubble, Bottle];
       for(i = 0;i < numItems;i++)
 	{
 	  var rnd:int = numberGenerator.getIntInRange(0, itemClasses.length - 1);
 	  itemController.addItem(new itemClasses[rnd](graphicsFactory, randomPositions.pop()));
-	}
-
-      for(i = 0;i < 5;i++)
-	{
-	  var gold:Gold = new Gold(graphicsFactory, randomPositions.pop());
-	  gold.generateAmount(numberGenerator, currentLevel);
-	  itemController.addItem(gold);
-
-	  var sweetBerries:SweetBerries = new SweetBerries(graphicsFactory, randomPositions.pop());
-	  sweetBerries.generateAmount(numberGenerator, currentLevel);
-	  itemController.addItem(sweetBerries);
-
-	  var bitterBerries:BitterBerries = new BitterBerries(graphicsFactory, randomPositions.pop());
-	  bitterBerries.generateAmount(numberGenerator, currentLevel);
-	  itemController.addItem(bitterBerries);
 	}
 
       actionPerformed = false;
@@ -313,6 +308,16 @@ package
     private function get currentLevel():int
     {
       return _currentLevel;
+    }
+    
+    private function createItems(amount:int, type:ItemType, randomPositions:Array):void
+    {
+      for(var i:int = 0;i < amount;i++)
+	{
+	  var item:Item = itemFactory.getItem(type);
+	  item.position = randomPositions.pop();
+	  itemController.addItem(item);
+	}
     }
   }
 }

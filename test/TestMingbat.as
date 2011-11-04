@@ -75,7 +75,8 @@ package
 
     private function givenBloodAt(position:Point):void
     {
-      var blood:Blood = new Blood(gf, new Point(9, 10));
+      var blood:Blood = new Blood(gf);
+      blood.position = position;
       itemController.addItem(blood);
     }
 

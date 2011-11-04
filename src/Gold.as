@@ -4,10 +4,9 @@ package
   {
     private var amount:int;
 
-    public function Gold(gf:GraphicsFactory, position:Point):void
+    public function Gold(gf:GraphicsFactory):void
     {
       super(gf, SpriteType.GOLD, "some gold");
-      this.position = position;
     }
 
     public function generateAmount(ng:NumberGenerator, level:int):void

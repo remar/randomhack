@@ -2,10 +2,9 @@ package
 {
   public class Blood extends Item
   {
-    public function Blood(gf:GraphicsFactory, position:Point)
+    public function Blood(gf:GraphicsFactory)
     {
       super(gf, SpriteType.BLOOD, "blood");
-      this.position = position;
     }
 
     override public function needBottleToCarry():Boolean

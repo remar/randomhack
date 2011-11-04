@@ -89,6 +89,10 @@
 *** TODO ItemController
 **** TODO Check if position is taken when adding item
 *** TODO Item factory
+    :CLOCK:
+    CLOCK: [2011-11-03 Thu 18:05]--[2011-11-03 Thu 18:21] =>  0:16
+    CLOCK: [2011-11-03 Thu 08:23]--[2011-11-03 Thu 08:44] =>  0:21
+    :END:
 *** DONE Weapons
 **** DONE Bare hands
 **** DONE Sword(s)

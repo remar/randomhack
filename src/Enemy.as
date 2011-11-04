@@ -72,8 +72,9 @@ package
     {
       if (itemController.getItemAtPosition(position) == null)
 	{
-	  itemController.addItem(new Blood(graphicsFactory,
-					   position));
+	  var blood:Blood = new Blood(graphicsFactory);
+	  blood.position = position;
+	  itemController.addItem(blood);
 	}
       displayableStatus.print(name + " dies");
     }
