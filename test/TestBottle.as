@@ -28,7 +28,8 @@ package
 
       itemController = new ItemController();
 
-      bottle = new Bottle(gf, new Point(10, 10));
+      bottle = new Bottle(gf);
+      bottle.position = new Point(10, 10);
     }
 
     [Test]

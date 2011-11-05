@@ -215,16 +215,8 @@ package
       createItems(3, ItemType.SWORD, randomPositions);
       createItems(8, ItemType.GOLD, randomPositions);
       createItems(3, ItemType.SWEET_BERRIES, randomPositions);
-      // createRareItems(5, randomPositions);
-      // createVeryRareItems(2, randomPositions);
-
-      var numItems:int = numberGenerator.getIntInRange(2, 5);
-      var itemClasses:Array = [Stick, Torch, Rubble, Bottle];
-      for(i = 0;i < numItems;i++)
-	{
-	  var rnd:int = numberGenerator.getIntInRange(0, itemClasses.length - 1);
-	  itemController.addItem(new itemClasses[rnd](graphicsFactory, randomPositions.pop()));
-	}
+      createRareItems(5, randomPositions);
+      createVeryRareItems(2, randomPositions);
 
       actionPerformed = false;
     }
@@ -315,6 +307,29 @@ package
       for(var i:int = 0;i < amount;i++)
 	{
 	  var item:Item = itemFactory.getItem(type);
+	  item.position = randomPositions.pop();
+	  itemController.addItem(item);
+	}
+    }
+
+    private function createRareItems(amount:int, randomPositions:Array):void
+    {
+      for(var i:int = 0;i < amount;i++)
+	{
+	  var item:Item = itemFactory.getRareItem();
+	  item.position = randomPositions.pop();
+	  itemController.addItem(item);
+	}
+    }
+
+    private function createVeryRareItems(amount:int, randomPositions:Array):void
+    {
+      if(currentLevel < 3)
+	return;
+
+      for(var i:int = 0;i < amount;i++)
+	{
+	  var item:Item = itemFactory.getVeryRareItem();
 	  item.position = randomPositions.pop();
 	  itemController.addItem(item);
 	}

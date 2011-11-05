@@ -5,10 +5,9 @@ package
     private var carriedItem:Item;
     private var modified:Boolean;
 
-    public function Bottle(gf:GraphicsFactory, position:Point):void
+    public function Bottle(gf:GraphicsFactory):void
     {
       super(gf, SpriteType.BOTTLE, "an empty bottle");
-      this.position = position;
       carriedItem = null;
       modified = false;
     }

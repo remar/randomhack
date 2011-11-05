@@ -1,6 +1,4 @@
 * Randomhack
-** Look up
-*** TODO Look up mock frameworks for FlexUnit
 ** Bugs
 *** DONE Enemy array isn't cleared when generating a new level
 *** DONE There should only be 8 item slots (and 9 console lines)
@@ -88,8 +86,10 @@
 *** DONE Item supertype
 *** TODO ItemController
 **** TODO Check if position is taken when adding item
-*** TODO Item factory
+*** DONE Item factory
     :CLOCK:
+    CLOCK: [2011-11-05 Sat 20:25]--[2011-11-05 Sat 20:32] =>  0:07
+    CLOCK: [2011-11-05 Sat 15:31]--[2011-11-05 Sat 15:37] =>  0:06
     CLOCK: [2011-11-03 Thu 18:05]--[2011-11-03 Thu 18:21] =>  0:16
     CLOCK: [2011-11-03 Thu 08:23]--[2011-11-03 Thu 08:44] =>  0:21
     :END:

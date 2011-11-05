@@ -44,19 +44,44 @@ package
 	  b.generateAmount(numberGenerator, _currentLevel);
 	  item = b;
 	  break;
-	  /*
-    STICK
-    TORCH
-    RUBBLE
-    BOTTLE
-    GOLD
-    SWEET_BERRIES
-    BITTER_BERRIES
-	  */
 
+	case ItemType.BITTER_BERRIES:
+	  var b2:BitterBerries = new BitterBerries(graphicsFactory);
+	  b2.generateAmount(numberGenerator, _currentLevel);
+	  item = b2;
+	  break;
+
+	case ItemType.STICK:
+	  item = new Stick(graphicsFactory);
+	  break;
+
+	case ItemType.TORCH:
+	  item = new Torch(graphicsFactory);
+	  break;
+
+	case ItemType.RUBBLE:
+	  item = new Rubble(graphicsFactory);
+	  break;
+
+	case ItemType.BOTTLE:
+	  item = new Bottle(graphicsFactory);
+	  break;
 	}
 
       return item;
+    }
+
+    public function getRareItem():Item
+    {
+      var rareItems:Array = [ItemType.BITTER_BERRIES, ItemType.STICK,
+			     ItemType.TORCH, ItemType.RUBBLE];
+      return getItem(rareItems[numberGenerator.getIntInRange(0, rareItems.length - 1)]);
+    }
+
+    public function getVeryRareItem():Item
+    {
+      var rareItems:Array = [ItemType.BOTTLE];
+      return getItem(rareItems[numberGenerator.getIntInRange(0, rareItems.length - 1)]);
     }
   }
 }

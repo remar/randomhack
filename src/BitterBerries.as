@@ -2,10 +2,9 @@ package
 {
   public class BitterBerries extends Consumable
   {
-    public function BitterBerries(gf:GraphicsFactory, position:Point):void
+    public function BitterBerries(gf:GraphicsFactory):void
     {
       super(gf, SpriteType.BITTER_BERRIES, "bitter berries");
-      this.position = position;
     }
 
     public function generateAmount(ng:NumberGenerator, level:int):void

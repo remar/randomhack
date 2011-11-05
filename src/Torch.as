@@ -5,10 +5,9 @@ package
     private var charges:int;
     private var lightedSticks:int;
 
-    public function Torch(gf:GraphicsFactory, position:Point):void
+    public function Torch(gf:GraphicsFactory):void
     {
       super(gf, SpriteType.TORCH, "a torch");
-      this.position = position;
       charges = 5;
     }
 
@@ -40,7 +39,9 @@ package
 
     override public function transformItem():Item
     {
-      return new Stick(graphicsFactory, position);
+      var stick:Stick = new Stick(graphicsFactory);
+      stick.position = position;
+      return stick;
     }
 
     private function transformStick(item:Item):Item
@@ -48,7 +49,9 @@ package
       if(item is Stick)
 	{
 	  lightedSticks++;
-	  return new Torch(graphicsFactory, item.position);
+	  var torch:Torch = new Torch(graphicsFactory);
+	  torch.position = item.position;
+	  return torch;
 	}
 
       return item;

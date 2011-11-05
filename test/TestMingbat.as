@@ -69,7 +69,8 @@ package
 
     private function givenStickAt(position:Point):void
     {
-      var stick:Stick = new Stick(gf, position);
+      var stick:Stick = new Stick(gf);
+      stick.position = position;
       itemController.addItem(stick);
     }
 

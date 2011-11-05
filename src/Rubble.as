@@ -2,10 +2,9 @@ package
 {
   public class Rubble extends Item
   {
-    public function Rubble(gf:GraphicsFactory, position:Point):void
+    public function Rubble(gf:GraphicsFactory):void
     {
       super(gf, SpriteType.RUBBLE, "rubble");
-      this.position = position;
     }
   }
 }

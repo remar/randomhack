@@ -31,7 +31,8 @@ package
       itemController = new ItemController();
       cc = new CreatureController();
 
-      torch = new Torch(gf, new Point(10, 10));
+      torch = new Torch(gf);
+      torch.position = new Point(10, 10);
     }
 
     [Test]
@@ -79,7 +80,8 @@ package
 
     private function givenStickAt(position:Point):void
     {
-      var stick:Stick = new Stick(gf, position);
+      var stick:Stick = new Stick(gf);
+      stick.position = position;
       itemController.addItem(stick);
     }
 
