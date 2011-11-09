@@ -142,6 +142,19 @@ package
       return positions;
     }
 
+    public function getTileTypesAroundPosition(pos:Point):Array
+    {
+      var positions:Array = pos.getPointsAround();
+      var tileTypes:Array = [];
+
+      for(var i:int = 0;i < positions.length;i++)
+	{
+	  tileTypes.push(getTile(positions[i]));
+	}
+
+      return tileTypes;
+    }
+
     private function sign(x:int):int
     {
       if (x < 0)
