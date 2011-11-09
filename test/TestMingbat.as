@@ -11,6 +11,7 @@ package
 
     private var mingbat:Mingbat;
     private var itemController:ItemController;
+    private var itemFactory:ItemFactory;
 
     [Before]
     public function setUp():void
@@ -28,6 +29,7 @@ package
       mingbat = new Mingbat(gf, ng, null);
 
       itemController = new ItemController();
+      itemFactory = new ItemFactory(gf, ng);
     }
 
     [Test]
@@ -98,7 +100,7 @@ package
 
     private function whenMingbatDies():void
     {
-      mingbat.die(itemController, new DisplayableStatus(), gf);
+      mingbat.die(itemController, new DisplayableStatus(), itemFactory);
     }
 
     private function thenNumberOfItemsInTheFieldIs(items:int):void

@@ -33,9 +33,9 @@ package
 
     public function die(itemController:ItemController,
 			displayableStatus:DisplayableStatus,
-			graphicsFactory:GraphicsFactory):void
+			itemFactory:ItemFactory):void
     {
-      generalDie(itemController, displayableStatus, graphicsFactory);
+      generalDie(itemController, displayableStatus, itemFactory);
     }
 
     public function get causesFear():Boolean
@@ -67,12 +67,12 @@ package
     }
 
     protected function generalDie(itemController:ItemController,
-				displayableStatus:DisplayableStatus,
-				graphicsFactory:GraphicsFactory):void
+				  displayableStatus:DisplayableStatus,
+				  itemFactory:ItemFactory):void
     {
-      if (itemController.getItemAtPosition(position) == null)
+      if(itemController.getItemAtPosition(position) == null)
 	{
-	  var blood:Blood = new Blood(graphicsFactory);
+	  var blood:Item = itemFactory.getItem(ItemType.BLOOD);
 	  blood.position = position;
 	  itemController.addItem(blood);
 	}

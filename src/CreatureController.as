@@ -3,10 +3,12 @@ package
   public class CreatureController
   {
     private var enemies:Array;
+    private var itemFactory:ItemFactory;
 
-    public function CreatureController()
+    public function CreatureController(itemFactory:ItemFactory)
     {
       enemies = [];
+      this.itemFactory = itemFactory;
     }
 
     public function addEnemy(enemy:Enemy):void
@@ -30,7 +32,6 @@ package
     }
 
     public function removeDeadEnemies(itemController:ItemController,
-				      graphicsFactory:GraphicsFactory,
 				      displayableStatus:DisplayableStatus):void
     {
       enemies = enemies.filter(function (enemy:Enemy, i:int, a:Array):Boolean
@@ -39,7 +40,7 @@ package
 				   {
 				     enemy.die(itemController,
 					       displayableStatus,
-					       graphicsFactory);
+					       itemFactory);
 				   }
 				 return enemy.isDead() === false;
 			       });

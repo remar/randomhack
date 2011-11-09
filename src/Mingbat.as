@@ -38,7 +38,7 @@ package
 
     override public function die(itemController:ItemController,
 				 displayableStatus:DisplayableStatus,
-				 graphicsFactory:GraphicsFactory):void
+				 itemFactory:ItemFactory):void
     {
       if(item != null)
 	{
@@ -46,7 +46,7 @@ package
 	  itemController.addItem(item);
 	}
 
-      generalDie(itemController, displayableStatus, graphicsFactory);
+      generalDie(itemController, displayableStatus, itemFactory);
     }
   }
 }

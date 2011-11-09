@@ -29,7 +29,7 @@ package
       player.generateCharacter(ng);
 
       itemController = new ItemController();
-      cc = new CreatureController();
+      cc = new CreatureController(null);
 
       torch = new Torch(gf);
       torch.position = new Point(10, 10);

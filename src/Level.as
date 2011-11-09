@@ -77,8 +77,7 @@ package
 
       if(actionPerformed)
 	{
-	  creatureController.removeDeadEnemies(itemController, graphicsFactory,
-					       displayableStatus);
+	  creatureController.removeDeadEnemies(itemController, displayableStatus);
 	  creatureController.attack(player);
 
 	  if(player.isDead())
@@ -201,7 +200,7 @@ package
 								       positions);
 
       itemController = new ItemController();
-      creatureController = new CreatureController();
+      creatureController = new CreatureController(itemFactory);
 
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
       for(var i:int = 0;i < numEnemies;i++)
