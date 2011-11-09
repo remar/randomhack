@@ -14,8 +14,19 @@ package
       speed = 2;
 
       setRandomSprite();
-      // tempid.drop = GOLD;
     }
+
+    override public function die(itemController:ItemController,
+				 displayableStatus:DisplayableStatus,
+				 itemFactory:ItemFactory):void
+    {
+      var gold:Item = itemFactory.getItem(ItemType.GOLD);
+      gold.position = position;
+      itemController.addItem(gold);
+
+      generalDie(itemController, displayableStatus, itemFactory);
+    }
+
 
     private function setRandomSprite():void
     {

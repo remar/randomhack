@@ -198,8 +198,9 @@
 ***** DONE Override getter for fearType
 ***** DONE Inflicts poison
 ***** DONE Override attackedWithFire
-*** TODO Mimic
+*** DONE Mimic
     :CLOCK:
+    CLOCK: [2011-11-09 Wed 20:49]--[2011-11-09 Wed 20:55] =>  0:06
     CLOCK: [2011-11-09 Wed 20:34]--[2011-11-09 Wed 20:48] =>  0:14
     CLOCK: [2011-11-09 Wed 17:56]--[2011-11-09 Wed 18:16] =>  0:20
     :END:
