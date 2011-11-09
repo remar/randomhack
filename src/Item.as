@@ -18,7 +18,8 @@ package
 
     public function useItem(player:Player, field:Field, itemController:ItemController,
 			    creatureController:CreatureController,
-			    displayableStatus:DisplayableStatus):void
+			    displayableStatus:DisplayableStatus,
+			    itemFactory:ItemFactory):void
     {
       displayableStatus.print("You can't use this here");      
     }

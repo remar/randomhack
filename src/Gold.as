@@ -18,7 +18,8 @@ package
     override public function useItem(player:Player, field:Field,
 				     itemController:ItemController,
 				     creatureController:CreatureController,
-				     displayableStatus:DisplayableStatus):void
+				     displayableStatus:DisplayableStatus,
+				     itemFactory:ItemFactory):void
     {
       player.addGold(amount);
       displayableStatus.print("Found " + amount + " gold");

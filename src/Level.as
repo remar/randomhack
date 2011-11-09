@@ -215,6 +215,7 @@ package
       createItems(3, ItemType.SWORD, randomPositions);
       createItems(8, ItemType.GOLD, randomPositions);
       createItems(3, ItemType.SWEET_BERRIES, randomPositions);
+      createItems(10, ItemType.BOTTLE, randomPositions);
       createRareItems(5, randomPositions);
       createVeryRareItems(2, randomPositions);
 
@@ -278,7 +279,7 @@ package
 
     private function useItem():void
     {
-      player.useItem(field, itemController, creatureController);
+      player.useItem(field, itemController, creatureController, itemFactory);
     }
 
     private function useInstantItem():void
@@ -286,7 +287,7 @@ package
       var item:Item = itemController.getItemAtPosition(player.position);
       if(item && item.instantUse())
 	{
-	  item.useItem(player, field, itemController, creatureController, displayableStatus);
+	  item.useItem(player, field, itemController, creatureController, displayableStatus, itemFactory);
 	  itemController.removeItem(item);
 	}
     }

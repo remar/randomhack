@@ -109,7 +109,13 @@
 *** DONE Bottle
 *** TODO SWEETBOTTLE
 *** TODO BITTERBOTTLE
-*** TODO WATERBOTTLE
+*** DONE WATERBOTTLE
+    :CLOCK:
+    CLOCK: [2011-11-09 Wed 07:22]--[2011-11-09 Wed 07:41] =>  0:19
+    CLOCK: [2011-11-08 Tue 07:29]--[2011-11-08 Tue 07:43] =>  0:14
+    CLOCK: [2011-11-07 Mon 18:06]--[2011-11-07 Mon 18:25] =>  0:19
+    CLOCK: [2011-11-07 Mon 08:22]--[2011-11-07 Mon 08:30] =>  0:08
+    :END:
     Pick up water if bottle used next to water tile.
 *** DONE BLOODBOTTLE
 *** TODO DUSTBOTTLE

@@ -164,12 +164,13 @@ package
     }
 
     public function useItem(field:Field, itemController:ItemController,
-			    creatureController:CreatureController):void
+			    creatureController:CreatureController,
+			    itemFactory:ItemFactory):void
     {
       var item:Item = inventory.getSelectedItem();
       if(item)
 	{
-	  item.useItem(this, field, itemController, creatureController, displayableStatus);
+	  item.useItem(this, field, itemController, creatureController, displayableStatus, itemFactory);
 	  if(item.outOfCharges())
 	    {
 	      inventory.transformSelectedItem();

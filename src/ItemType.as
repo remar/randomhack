@@ -13,5 +13,6 @@ package
     public static const GOLD:ItemType = new ItemType();
     public static const SWEET_BERRIES:ItemType = new ItemType();
     public static const BITTER_BERRIES:ItemType = new ItemType();
+    public static const WATER_POOL:ItemType = new ItemType();
   }
 }

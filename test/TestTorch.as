@@ -94,7 +94,7 @@ package
 
     private function whenTorchIsUsed():void
     {
-      torch.useItem(player, null, itemController, cc, ds);
+      torch.useItem(player, null, itemController, cc, ds, null);
     }
 
     private function thenSticksAreConvertedToTorchesAroundPlayer(playerX:int, playerY:int):void

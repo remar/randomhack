@@ -22,6 +22,7 @@ package
     public static const GOLD:SpriteType = new SpriteType();
     public static const SWEET_BERRIES:SpriteType = new SpriteType();
     public static const BITTER_BERRIES:SpriteType = new SpriteType();
+    public static const WATER_POOL:SpriteType = new SpriteType();
 
     // font
     public static const EXCLAMATION:SpriteType = new SpriteType();

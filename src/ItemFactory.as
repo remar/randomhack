@@ -66,6 +66,10 @@ package
 	case ItemType.BOTTLE:
 	  item = new Bottle(graphicsFactory);
 	  break;
+
+	case ItemType.WATER_POOL:
+	  item = new WaterPool(graphicsFactory);
+	  break;
 	}
 
       return item;
