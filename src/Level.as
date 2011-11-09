@@ -215,7 +215,6 @@ package
       createItems(3, ItemType.SWORD, randomPositions);
       createItems(8, ItemType.GOLD, randomPositions);
       createItems(3, ItemType.SWEET_BERRIES, randomPositions);
-      createItems(10, ItemType.BOTTLE, randomPositions);
       createRareItems(5, randomPositions);
       createVeryRareItems(2, randomPositions);
 
