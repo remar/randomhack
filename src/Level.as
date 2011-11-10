@@ -114,10 +114,6 @@ package
 
       player.generateCharacter(numberGenerator);
 
-      var sword:Sword = new Sword(graphicsFactory);
-      sword.generateNameAndPower(1, numberGenerator);
-      player.weapon = sword;
-
       generateLevel();
       printStartingMessage();
     }
@@ -259,7 +255,7 @@ package
 
     private function pickUpItem(item:Item):void
     {
-      if(player.pickUp(item))
+      if(player.pickUp(item, itemController))
 	{
 	  displayableStatus.print("Picked up " + item.name);
 	  itemController.removeItem(item);

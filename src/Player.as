@@ -120,8 +120,15 @@ package
 	}
     }
 
-    public function pickUp(item:Item):Boolean
+    public function pickUp(item:Item, itemController:ItemController):Boolean
     {
+      if(item is Weapon)
+	{
+	  dropCarriedWeapon(itemController);
+	  weapon = Weapon(item);
+	  return true;
+	}
+
       if(item.needBottleToCarry())
 	{
 	  displayableStatus.print("Use a bottle to carry that");
@@ -152,6 +159,7 @@ package
 
       if(item)
 	{
+	  displayableStatus.print("Dropped " + item.name);
 	  item.position = position;
 	}
       else
@@ -159,7 +167,6 @@ package
 	  displayableStatus.print("Nothing to drop in this slot");
 	}
 
-      displayableStatus.print("Dropped " + item.name);
       return item;
     }
 
@@ -316,6 +323,16 @@ package
 	{
 	  _poison = 0;
 	  displayableStatus.print("The poison is eliminated");
+	}
+    }
+
+    private function dropCarriedWeapon(itemController:ItemController):void
+    {
+      if(!(_weapon is BareHands))
+	{
+	  var weaponDropped:Weapon = _weapon;
+	  weaponDropped.position = position;
+	  itemController.addItem(weaponDropped);
 	}
     }
   }
