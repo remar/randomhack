@@ -39,7 +39,8 @@
     CLOCK: [2011-10-26 Wed 18:08]--[2011-10-26 Wed 18:17] =>  0:09
     :END:
 *** TODO Player should keep track of that action is performed
-*** TODO Bottle::useItem is long and ugly, make it nicer
+*** DONE Bottle::useItem is long and ugly, make it nicer
+    CLOCK: [2011-11-10 Thu 07:23]--[2011-11-10 Thu 07:29] =>  0:06
 *** TODO Move up similarities in tests to superclass
 *** TODO Use Point.getPointsAround where applicable
 ** Point
@@ -82,6 +83,7 @@
 *** DONE Using stuff
 *** DONE Poison
 *** DONE Should have a reference to DisplayableStatus, and update it
+*** TODO Equip weapon when picked up
 ** Items
 *** DONE Item supertype
 *** TODO ItemController

@@ -46,33 +46,9 @@ package
 	      displayableStatus.print("You can't put this in a bottle");
 	    }
 	}
-      else
+      else if(scoopUpWater(player, field, displayableStatus, itemFactory) == false)
 	{
-	  // Try to scoop up water
-	  var tileTypes:Array = field.getTileTypesAroundPosition(player.position);
-	  var waterFound:Boolean = false;
-	  for(var i:int = 0;i < tileTypes.length;i++)
-	    {
-	      if(tileTypes[i] === TileType.WATER)
-		{
-		  waterFound = true;
-		  break;
-		}
-	    }
-
-	  if(waterFound)
-	    {
-	      displayableStatus.print("SCOOP UP WATER");
-	      carriedItem = itemFactory.getItem(ItemType.WATER_POOL);
-	      _name = "bottled water";
-	      displayableStatus.print("You scoop up 5 parts of water");
-	      modified = true;
-	      waterCharges = 5;
-	    }
-	  else
-	    {
-	      displayableStatus.print("Nothing to scoop up here");
-	    }
+	  displayableStatus.print("Nothing to scoop up here");
 	}
     }
 
@@ -118,6 +94,34 @@ package
 	  displayableStatus.print("The water runs out");
 	  emptyBottle();
 	}
+    }
+
+    private function scoopUpWater(player:Player, field:Field,
+				  displayableStatus:DisplayableStatus,
+				  itemFactory:ItemFactory):Boolean
+    {
+      // Try to scoop up water
+      var tileTypes:Array = field.getTileTypesAroundPosition(player.position);
+      var waterFound:Boolean = false;
+      for(var i:int = 0;i < tileTypes.length;i++)
+	{
+	  if(tileTypes[i] === TileType.WATER)
+	    {
+	      waterFound = true;
+	      break;
+	    }
+	}
+
+      if(waterFound)
+	{
+	  carriedItem = itemFactory.getItem(ItemType.WATER_POOL);
+	  _name = "bottled water";
+	  displayableStatus.print("You scoop up 5 parts of water");
+	  modified = true;
+	  waterCharges = 5;
+	}
+
+      return waterFound;
     }
 
     private function emptyBottle():void
