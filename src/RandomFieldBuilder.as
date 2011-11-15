@@ -32,16 +32,14 @@ package
 
     private function generateCave(fieldCarver:FieldCarver):StartPositions
     {
-      floodWithWater(fieldCarver, numberGenerator);
+      floodWithWater(fieldCarver);
 
       // Carve rooms (7-13 holes)
       var numPrimaryRooms:int = 4;
-      var primaryRooms:Array = getPrimaryRoomPositions(numberGenerator,
-						       numPrimaryRooms);
+      var primaryRooms:Array = getPrimaryRoomPositions(numPrimaryRooms);
 
       var numSecondaryRooms:int = numberGenerator.getIntInRange(3, 9);
-      var secondaryRooms:Array = getSecondaryRoomPositions(numberGenerator,
-							   numSecondaryRooms);
+      var secondaryRooms:Array = getSecondaryRoomPositions(numSecondaryRooms);
 
       var maxHoleSize:int = numberGenerator.getIntInRange(2, 4);
 
@@ -73,11 +71,10 @@ package
 
     private function generateRuins(fieldCarver:FieldCarver):StartPositions
     {
-      floodWithWater(fieldCarver, numberGenerator);
+      floodWithWater(fieldCarver);
 
       var numPrimaryRooms:int = 4;
-      var primaryRooms:Array = getPrimaryRoomPositions(numberGenerator,
-						       numPrimaryRooms);
+      var primaryRooms:Array = getPrimaryRoomPositions(numPrimaryRooms);
       var maxHoleSize:int = numberGenerator.getIntInRange(2, 4);
 
       for(var i:int = 0;i < primaryRooms.length;i++)
@@ -96,8 +93,7 @@ package
 				primaryRooms[primaryRooms.length - 1]);      
     }
 
-    private function floodWithWater(fieldCarver:FieldCarver,
-				    numberGenerator:NumberGenerator):void
+    private function floodWithWater(fieldCarver:FieldCarver):void
     {
       var pools:int = numberGenerator.getIntInRange(0, 7);
 
@@ -107,11 +103,9 @@ package
 	}
     }
 
-    private function getPrimaryRoomPositions(numberGenerator:NumberGenerator,
-					     numPrimaryRooms:int):Array
+    private function getPrimaryRoomPositions(numPrimaryRooms:int):Array
     {
-      var roomPositions:Array = getRoomPositions(numberGenerator,
-						 numPrimaryRooms - 1);
+      var roomPositions:Array = getRoomPositions(numPrimaryRooms - 1);
 
       var firstPosition:Point = roomPositions[0];
 
@@ -149,14 +143,12 @@ package
       return roomPositions;
     }
 
-    private function getSecondaryRoomPositions(numberGenerator:NumberGenerator,
-					       numSecondaryRooms:int):Array
+    private function getSecondaryRoomPositions(numSecondaryRooms:int):Array
     {
-      return getRoomPositions(numberGenerator, numSecondaryRooms);
+      return getRoomPositions(numSecondaryRooms);
     }
 
-    private function getRoomPositions(numberGenerator:NumberGenerator,
-				      numRooms:int):Array
+    private function getRoomPositions(numRooms:int):Array
     {
       var roomPositions:Array = [];
       for(var i:int = 0;i < numRooms;i++)
