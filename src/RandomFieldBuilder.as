@@ -10,12 +10,28 @@ package
       this.numberGenerator = numberGenerator;
     }
 
-    public function generate(field:Field):StartPositions
+    public function generate(field:Field, type:LevelType):StartPositions
     {
       this.field = field;
 
       var fieldCarver:FieldCarver = new FieldCarver(field);
 
+      var startPos:StartPositions;
+
+      if(type == LevelType.CAVE)
+	{
+	  startPos = generateCave(fieldCarver);
+	}
+      else if(type == LevelType.RUINS)
+	{
+	  startPos = generateRuins(fieldCarver);
+	}
+
+      return startPos;
+    }
+
+    private function generateCave(fieldCarver:FieldCarver):StartPositions
+    {
       floodWithWater(fieldCarver, numberGenerator);
 
       // Carve rooms (7-13 holes)
@@ -53,6 +69,31 @@ package
       // Return proposed start and goal positions
       return new StartPositions(primaryRooms[0],
 				primaryRooms[primaryRooms.length - 1]);
+    }
+
+    private function generateRuins(fieldCarver:FieldCarver):StartPositions
+    {
+      floodWithWater(fieldCarver, numberGenerator);
+
+      var numPrimaryRooms:int = 4;
+      var primaryRooms:Array = getPrimaryRoomPositions(numberGenerator,
+						       numPrimaryRooms);
+      var maxHoleSize:int = numberGenerator.getIntInRange(2, 4);
+
+      for(var i:int = 0;i < primaryRooms.length;i++)
+	{
+	  fieldCarver.carveHole(primaryRooms[i],
+				numberGenerator.getIntInRange(0, maxHoleSize));
+	  // Carve path
+	  if(i != 0)
+	    {
+	      fieldCarver.carvePath(primaryRooms[i-1], primaryRooms[i],
+				    numberGenerator.getIntInRange(2, 3));
+	    }
+	}
+
+      return new StartPositions(primaryRooms[0],
+				primaryRooms[primaryRooms.length - 1]);      
     }
 
     private function floodWithWater(fieldCarver:FieldCarver,

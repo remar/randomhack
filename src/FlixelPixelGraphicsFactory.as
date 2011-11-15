@@ -9,7 +9,8 @@ package
     private static const tileHeight:int = 8;
 
     private static const EMPTY_COLOR:int = 0x000000;
-    private static const BLOCK_COLOR:int = 0xff5050;
+    private static const CAVE_BLOCK_COLOR:int = 0xff5050;
+    private static const RUINS_BLOCK_COLOR:int = RGB15(21,21,31);
     private static const WATER_COLOR:int = 0x0000ff;
 
     private static const SPRITE_DATA:Object = {};
@@ -61,7 +62,14 @@ package
 	  break;
 
 	case TileType.BLOCK:
-	  color = BLOCK_COLOR;
+	  if(levelType == LevelType.CAVE)
+	    {
+	      color = CAVE_BLOCK_COLOR;
+	    }
+	  else
+	    {
+	      color = RUINS_BLOCK_COLOR;
+	    }
 	  break;
 
 	case TileType.WATER:
@@ -1141,7 +1149,7 @@ package
 					     0xffffff];
     }
 
-    private function RGB15(r:int, g:int, b:int):int
+    private static function RGB15(r:int, g:int, b:int):int
     {
       return (r << 19) + (g << 11) + (b << 3);
     }

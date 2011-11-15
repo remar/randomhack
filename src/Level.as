@@ -179,14 +179,15 @@ package
     
     private function generateLevel():void
     {
+      var levelType:LevelType = LevelType.RUINS;
+
       itemFactory.currentLevel = _currentLevel;
-      graphicsFactory.setLevelType(LevelType.CAVE);
+      graphicsFactory.setLevelType(levelType);
 
       field.clearField(TileType.BLOCK);
 
       var fieldBuilder:FieldBuilder = new RandomFieldBuilder(numberGenerator);
-
-      var positions:StartPositions = fieldBuilder.generate(field);
+      var positions:StartPositions = fieldBuilder.generate(field, levelType);
       field.renderBackgroundTiles(graphicsFactory, numberGenerator);
 
       player.position = positions.start;

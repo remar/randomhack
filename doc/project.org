@@ -1,5 +1,5 @@
 * Randomhack
-** Bugs
+** DONE Bugs
 *** DONE Enemy array isn't cleared when generating a new level
 *** DONE There should only be 8 item slots (and 9 console lines)
 *** DONE Enemies shouldn't start on top of player or goal
@@ -14,7 +14,7 @@
     :END:
 *** DONE Remove sweet berries from inventory when used
     CLOCK: [2011-11-02 Wed 07:31]--[2011-11-02 Wed 07:38] =>  0:07
-** Refactorings
+** TODO Refactorings
 *** DONE Push up moveRelative from Player and Enemy to GameObject
 *** DONE Push up checking for obstacles when moving to GameObject
 *** DONE Create class CreatureController, move methods from Level to it
@@ -43,14 +43,14 @@
 *** TODO Player should keep track of that action is performed
 *** TODO Move up similarities in tests to superclass
 *** TODO Use Point.getPointsAround where applicable
-** Point
+** DONE Point
 *** DONE Add getPointsAround method
     Should return Array of 8 Point objects.
-** Input
+** DONE Input
 *** DONE Interface for reading keys
 *** DONE Flixel implementation of reading keys
     Only direction keys so far.
-** Level
+** TODO Level
 *** TODO Listen for "start button" (whatever that is)
     Perhaps a "click to restart" instead.
 *** DONE Check if player is dead
@@ -58,15 +58,20 @@
     Will do this as part of a startGame method.
 *** DONE Keep track of items in level
 *** TODO Some kind of LevelBuilder/LevelGenerator
-** Field
+** TODO Field
 *** DONE Get a randomized list of empty tile positions
 *** TODO Better distance between player start and goal
 *** DONE Tile rendering
     Should randomly make jagged edges in cave levels.
 *** TODO Ruins
 **** TODO Generate ruins
-**** TODO Draw ruins
-** Player
+     :CLOCK:
+     CLOCK: [2011-11-15 Tue 18:09]--[2011-11-15 Tue 18:13] =>  0:04
+     CLOCK: [2011-11-15 Tue 18:04]--[2011-11-15 Tue 18:09] =>  0:05
+     CLOCK: [2011-11-15 Tue 08:23]--[2011-11-15 Tue 08:44] =>  0:21
+     :END:
+**** DONE Draw ruins
+** TODO Player
 *** DONE Generate gender and attractive gender
 *** DONE Generate name and prefix
 *** DONE Generate playerpower
@@ -85,7 +90,7 @@
 *** DONE Should have a reference to DisplayableStatus, and update it
 *** DONE Equip weapon when picked up
     CLOCK: [2011-11-10 Thu 07:31]--[2011-11-10 Thu 07:44] =>  0:13
-** Items
+** TODO Items
 *** DONE Item supertype
 *** TODO ItemController
 **** TODO Check if position is taken when adding item
@@ -160,7 +165,7 @@
 *** TODO IDENTIFIER
 *** TODO FLAME
 *** TODO EMBERS
-** General enemy stuff
+** TODO General enemy stuff
 *** DONE Enemy name
 *** TODO Enemy prefix (and additional modifications)
 *** DONE Keep track of hp and max hp
@@ -173,7 +178,7 @@
 **** DONE Add power
 *** DONE Print to the console when attacking
 *** TODO Line of sight
-** Enemies
+** TODO Enemies
 *** DONE Array of enemies in Level
 *** DONE Enemy factory
     CLOCK: [2011-11-01 Tue 07:19]--[2011-11-01 Tue 07:34] =>  0:15
@@ -231,7 +236,7 @@
 *** TODO ZombieDrgn
 *** TODO DarkYoung
 *** TODO Zentraidon
-** Info screen
+** TODO Info screen
    In the original, all info and items where displayed as text in a
    console view. This should be made more general so that how the
    information is displayed can be changed at a later point. I'll
