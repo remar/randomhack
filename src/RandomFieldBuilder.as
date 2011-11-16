@@ -73,8 +73,8 @@ package
     {
       floodWithWater(fieldCarver);
 
-      var numPrimaryRooms:int = 4;
-      var primaryRooms:Array = getPrimaryRoomPositions(numPrimaryRooms);
+      var numPrimaryRooms:int = 8;
+      var primaryRooms:Array = getPrimaryRoomPositionsOrthogonal(numPrimaryRooms);
       var maxHoleSize:int = numberGenerator.getIntInRange(2, 4);
 
       for(var i:int = 0;i < primaryRooms.length;i++)
@@ -101,6 +101,11 @@ package
 	{
 	  fieldCarver.createPool(numberGenerator);
 	}
+    }
+
+    private function getPrimaryRoomPositionsOrthogonal(numPrimaryRooms:int):Array
+    {
+      return getRoomPositionsOrthogonal(numPrimaryRooms);
     }
 
     private function getPrimaryRoomPositions(numPrimaryRooms:int):Array
@@ -153,10 +158,44 @@ package
       var roomPositions:Array = [];
       for(var i:int = 0;i < numRooms;i++)
 	{
-	  roomPositions.push(new Point(numberGenerator.getIntInRange(1, field.getWidth() - 2),
-				       numberGenerator.getIntInRange(1, field.getHeight() - 2)));
+	  roomPositions.push(new Point(getRandomFieldPositionX(),
+				       getRandomFieldPositionY()));
 	}
       return roomPositions;
+    }
+
+    private function getRoomPositionsOrthogonal(numRooms:int):Array
+    {
+      var roomPositions:Array = [];
+
+      var x:int = getRandomFieldPositionX();
+      var y:int = getRandomFieldPositionY();
+      var moveHorizontal:Boolean = true;
+
+      for(var i:int = 0;i < numRooms;i++)
+	{
+	  if(moveHorizontal)
+	    {
+	      x = getRandomFieldPositionX();
+	    }
+	  else
+	    {
+	      y = getRandomFieldPositionY();
+	    }
+	  moveHorizontal = !moveHorizontal;
+	  roomPositions.push(new Point(x, y));
+	}
+      return roomPositions;
+    }
+
+    private function getRandomFieldPositionX():int
+    {
+      return numberGenerator.getIntInRange(1, field.getWidth() - 2);
+    }
+
+    private function getRandomFieldPositionY():int
+    {
+      return numberGenerator.getIntInRange(1, field.getHeight() - 2);
     }
   }
 }
