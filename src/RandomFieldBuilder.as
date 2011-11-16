@@ -75,7 +75,7 @@ package
 
       var numPrimaryRooms:int = 8;
       var primaryRooms:Array = getPrimaryRoomPositionsOrthogonal(numPrimaryRooms);
-      var maxHoleSize:int = numberGenerator.getIntInRange(2, 4);
+      var maxHoleSize:int = 2;
 
       for(var i:int = 0;i < primaryRooms.length;i++)
 	{
@@ -85,8 +85,30 @@ package
 	  if(i != 0)
 	    {
 	      fieldCarver.carvePath(primaryRooms[i-1], primaryRooms[i],
-				    numberGenerator.getIntInRange(2, 3));
+				    numberGenerator.getIntInRange(1, 2));
 	    }
+	}
+
+      var numSecondaryRooms:int = numberGenerator.getIntInRange(5, 7);
+      var moveHorizontal:Boolean = true;
+
+      for(i = 0;i < numSecondaryRooms;i++)
+	{
+	  var targetRoom:Point = primaryRooms[numberGenerator.getIntInRange(0, numPrimaryRooms - 1)];
+	  var secondaryRoom:Point;
+
+	  if(moveHorizontal)
+	    {
+	      secondaryRoom = new Point(getRandomFieldPositionX(), targetRoom.y);
+	    }
+	  else
+	    {
+	      secondaryRoom = new Point(targetRoom.x, getRandomFieldPositionY());
+	    }
+	  fieldCarver.carveHole(secondaryRoom,
+				numberGenerator.getIntInRange(0, maxHoleSize));	      
+	  fieldCarver.carvePath(secondaryRoom, targetRoom,
+				numberGenerator.getIntInRange(1, 2));
 	}
 
       return new StartPositions(primaryRooms[0],
