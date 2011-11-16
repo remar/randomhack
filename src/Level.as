@@ -202,9 +202,16 @@ package
       var numEnemies:int = numberGenerator.getIntInRange(3, 8);
       for(var i:int = 0;i < numEnemies;i++)
 	{
+	  var position:Point = randomPositions.pop();
+
+	  if(position == null)
+	    {
+	      break;
+	    }
+
 	  var enemy:Enemy = enemyFactory.getEnemy(currentLevel, graphicsFactory,
 						  numberGenerator, displayableStatus);
-	  enemy.position = randomPositions.pop();
+	  enemy.position = position;
 	  creatureController.addEnemy(enemy);
 	}
 
@@ -302,8 +309,15 @@ package
     {
       for(var i:int = 0;i < amount;i++)
 	{
+	  var position:Point = randomPositions.pop();
+
+	  if(position == null)
+	    {
+	      break;
+	    }
+
 	  var item:Item = itemFactory.getItem(type);
-	  item.position = randomPositions.pop();
+	  item.position = position;
 	  itemController.addItem(item);
 	}
     }
@@ -312,8 +326,15 @@ package
     {
       for(var i:int = 0;i < amount;i++)
 	{
+	  var position:Point = randomPositions.pop();
+
+	  if(position == null)
+	    {
+	      break;
+	    }
+
 	  var item:Item = itemFactory.getRareItem();
-	  item.position = randomPositions.pop();
+	  item.position = position;
 	  itemController.addItem(item);
 	}
     }
@@ -325,8 +346,15 @@ package
 
       for(var i:int = 0;i < amount;i++)
 	{
+	  var position:Point = randomPositions.pop();
+
+	  if(position == null)
+	    {
+	      break;
+	    }
+
 	  var item:Item = itemFactory.getVeryRareItem();
-	  item.position = randomPositions.pop();
+	  item.position = position;
 	  itemController.addItem(item);
 	}
     }
