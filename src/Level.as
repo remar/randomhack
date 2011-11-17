@@ -149,6 +149,11 @@ package
 	    }
 	}
 
+      if(inputReader.keyPressed(KeyType.HELP))
+	{
+	  printHelpMessage();
+	}
+
       if(inputReader.keyPressed(KeyType.RIGHT))
 	{
 	  var item:Item = itemController.getItemAtPosition(player.position);
@@ -236,7 +241,7 @@ package
       printMessage(["",
 		    "",
 		    "WELCOME TO RANDOMHACK 0.1",
-		    "PUSH <button> FOR CONTROLS",
+		    "PUSH H FOR CONTROLS",
 		    "",
 		    "Your beloved is being offered",
 		    "as a sacrifice deep below this",
@@ -357,6 +362,21 @@ package
 	  item.position = position;
 	  itemController.addItem(item);
 	}
+    }
+
+    private function printHelpMessage():void
+    {
+      printMessage(["",
+		    //"Start = new game",
+		    //"L+Start = new hardcore game",
+		    "Mouse click: move/attack",
+		    "Right: pick up/drop item",
+		    "Left: use item in slot",
+		    //"L or R + Y = use item on ground",
+		    "Up or Down: select slot",
+		    //"L or R + Touch = look",
+		    //"DPad = same as A,B,Y,X"
+		    ]);
     }
   }
 }

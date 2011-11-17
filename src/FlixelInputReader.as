@@ -1,14 +1,25 @@
+
 package
 {
   import org.flixel.FlxG;
 
   public class FlixelInputReader implements InputReader
   {
-    private var keyTypeToString:Array = ["RIGHT", "UP", "LEFT", "DOWN"];
+    private var keyTypeToString:Object = {};
 
     public function FlixelInputReader():void
     {
       FlxG.mouse.show();
+      setupKeymap();
+    }
+
+    private function setupKeymap():void
+    {
+      keyTypeToString[KeyType.RIGHT.Index] = "RIGHT";
+      keyTypeToString[KeyType.UP.Index] = "UP";
+      keyTypeToString[KeyType.LEFT.Index] = "LEFT";
+      keyTypeToString[KeyType.DOWN.Index] = "DOWN";
+      keyTypeToString[KeyType.HELP.Index] = "H";
     }
 
     public function mousePressed():Boolean

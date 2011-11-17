@@ -50,6 +50,9 @@
 *** DONE Interface for reading keys
 *** DONE Flixel implementation of reading keys
     Only direction keys so far.
+** DONE Help
+   CLOCK: [2011-11-17 Thu 07:26]--[2011-11-17 Thu 07:43] =>  0:17
+   Press <key> for help.
 ** TODO Level
 *** TODO Listen for "start button" (whatever that is)
     Perhaps a "click to restart" instead.
