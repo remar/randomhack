@@ -216,6 +216,11 @@ package
     override protected function hpSet():void
     {
       displayableStatus.hp = _hp;
+
+      if(_hp <= 0)
+	{
+	  setSprite(SpriteType.BONES);
+	}
     }
 
     override protected function maxhpSet():void

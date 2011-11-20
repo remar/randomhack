@@ -53,6 +53,14 @@
 ** DONE Help
    CLOCK: [2011-11-17 Thu 07:26]--[2011-11-17 Thu 07:43] =>  0:17
    Press <key> for help.
+** TODO Game Over
+*** DONE Show bones instead of player sprite
+    :CLOCK:
+    CLOCK: [2011-11-20 Sun 21:04]--[2011-11-20 Sun 21:06] =>  0:02
+    CLOCK: [2011-11-17 Thu 18:08]--[2011-11-17 Thu 18:22] =>  0:14
+    :END:
+*** TODO Lock input (don't walk around as dead...)
+*** TODO Press <key> (enter?) to restart
 ** TODO Level
 *** TODO Listen for "start button" (whatever that is)
     Perhaps a "click to restart" instead.

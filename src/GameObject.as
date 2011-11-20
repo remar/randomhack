@@ -15,9 +15,14 @@ package
     public function setSprite(spriteType:SpriteType):void
     {
       if(spriteType == SpriteType.EMPTY)
-	spriteInstance = null;
+	{
+	  spriteInstance = null;
+	}
       else
-	spriteInstance = new SpriteInstance(graphicsFactory.getSprite(spriteType));
+	{
+	  spriteInstance = new SpriteInstance(graphicsFactory.getSprite(spriteType));
+	  setSpritePosition(pos);
+	}
     }
 
     public function update():void
@@ -27,8 +32,7 @@ package
     public function set position(pos:Point):void
     {
       this.pos = pos;
-      if(spriteInstance != null)
-	spriteInstance.setFieldPosition(pos);
+      setSpritePosition(pos);
     }
 
     public function get position():Point
@@ -40,6 +44,14 @@ package
     {
       if(spriteInstance != null)
 	spriteInstance.draw(drawable);
+    }
+
+    private function setSpritePosition(pos:Point):void
+    {
+      if(spriteInstance != null && pos != null)
+	{
+	  spriteInstance.setFieldPosition(pos);
+	}
     }
   }
 }
