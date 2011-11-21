@@ -120,6 +120,16 @@ package
 
     private function handleInput():void
     {
+      if(inputReader.keyPressed(KeyType.ENTER))
+	{
+	  startGame();
+	}
+
+      if(player.isDead())
+	{
+	  return;
+	}
+
       if(inputReader.mousePressed())
 	{
 	  var mousePos:Point = inputReader.mousePosition();

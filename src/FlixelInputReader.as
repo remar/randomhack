@@ -20,6 +20,7 @@ package
       keyTypeToString[KeyType.LEFT.Index] = "LEFT";
       keyTypeToString[KeyType.DOWN.Index] = "DOWN";
       keyTypeToString[KeyType.HELP.Index] = "H";
+      keyTypeToString[KeyType.ENTER.Index] = "ENTER";
     }
 
     public function mousePressed():Boolean

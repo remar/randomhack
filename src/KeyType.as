@@ -9,5 +9,6 @@ package
     public static const LEFT:KeyType = new KeyType();
     public static const DOWN:KeyType = new KeyType();
     public static const HELP:KeyType = new KeyType();
+    public static const ENTER:KeyType = new KeyType();
   }
 }
