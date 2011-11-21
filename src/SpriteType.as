@@ -24,6 +24,7 @@ package
     public static const BITTER_BERRIES:SpriteType = new SpriteType();
     public static const WATER_POOL:SpriteType = new SpriteType();
     public static const BONES:SpriteType = new SpriteType();
+    public static const WATER_SHADE:SpriteType = new SpriteType();
 
     // font
     public static const EXCLAMATION:SpriteType = new SpriteType();

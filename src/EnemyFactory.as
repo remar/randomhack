@@ -2,7 +2,7 @@ package
 {
   public class EnemyFactory
   {
-    private var enemyClasses:Array = [Bat, Flea, Snake, Goblin, Mingbat, Undead, Mimic];
+    private var enemyClasses:Array = [Bat, Flea, Snake, Goblin, Mingbat, Undead, Mimic, WaterShade];
 
     public function getEnemy(level:int,
 			     graphicsFactory:GraphicsFactory,

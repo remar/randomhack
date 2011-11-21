@@ -53,7 +53,7 @@
 ** DONE Help
    CLOCK: [2011-11-17 Thu 07:26]--[2011-11-17 Thu 07:43] =>  0:17
    Press <key> for help.
-** TODO Game Over
+** DONE Game Over
 *** DONE Show bones instead of player sprite
     :CLOCK:
     CLOCK: [2011-11-20 Sun 21:04]--[2011-11-20 Sun 21:06] =>  0:02
@@ -228,6 +228,14 @@
     CLOCK: [2011-11-09 Wed 17:56]--[2011-11-09 Wed 18:16] =>  0:20
     :END:
 *** TODO Watershade
+**** DONE Base
+    :CLOCK:
+     CLOCK: [2011-11-21 Mon 07:45]--[2011-11-21 Mon 07:45] =>  0:00
+     CLOCK: [2011-11-21 Mon 07:44]--[2011-11-21 Mon 07:44] =>  0:00
+     CLOCK: [2011-11-21 Mon 07:35]--[2011-11-21 Mon 07:44] =>  0:09
+    :END:
+**** TODO Weak to fire
+**** TODO Drop water pool
 *** TODO Slime
 *** TODO Stoneworm
 *** TODO Flicker
