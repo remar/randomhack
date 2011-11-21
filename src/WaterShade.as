@@ -19,5 +19,16 @@ package
     {
       generalAttackedWithFire(player, ds);
     }
+
+    override public function die(itemController:ItemController,
+				 displayableStatus:DisplayableStatus,
+				 itemFactory:ItemFactory):void
+    {
+      var pool:Item = itemFactory.getItem(ItemType.WATER_POOL);
+      pool.position = position;
+      itemController.addItem(pool);
+
+      generalDie(itemController, displayableStatus, itemFactory);
+    }
   }
 }

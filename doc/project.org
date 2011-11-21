@@ -227,7 +227,7 @@
     CLOCK: [2011-11-09 Wed 20:34]--[2011-11-09 Wed 20:48] =>  0:14
     CLOCK: [2011-11-09 Wed 17:56]--[2011-11-09 Wed 18:16] =>  0:20
     :END:
-*** TODO Watershade
+*** DONE Watershade
 **** DONE Base
     :CLOCK:
      CLOCK: [2011-11-21 Mon 07:45]--[2011-11-21 Mon 07:45] =>  0:00
@@ -236,7 +236,8 @@
     :END:
 **** DONE Weak to fire
      CLOCK: [2011-11-21 Mon 18:05]--[2011-11-21 Mon 18:11] =>  0:06
-**** TODO Drop water pool
+**** DONE Drop water pool
+     CLOCK: [2011-11-21 Mon 18:12]--[2011-11-21 Mon 18:18] =>  0:06
 *** TODO Slime
 *** TODO Stoneworm
 *** TODO Flicker
