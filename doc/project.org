@@ -234,7 +234,8 @@
      CLOCK: [2011-11-21 Mon 07:44]--[2011-11-21 Mon 07:44] =>  0:00
      CLOCK: [2011-11-21 Mon 07:35]--[2011-11-21 Mon 07:44] =>  0:09
     :END:
-**** TODO Weak to fire
+**** DONE Weak to fire
+     CLOCK: [2011-11-21 Mon 18:05]--[2011-11-21 Mon 18:11] =>  0:06
 **** TODO Drop water pool
 *** TODO Slime
 *** TODO Stoneworm

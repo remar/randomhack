@@ -12,8 +12,12 @@ package
       accuracy = 5;
       lookDistance = 4;
       speed = 8;
-      // tempid.weaktofire=true;
       // tempid.drop=WATERPOOL;
+    }
+
+    override public function attackedWithFire(player:Player, ds:DisplayableStatus):void
+    {
+      generalAttackedWithFire(player, ds);
     }
   }
 }

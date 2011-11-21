@@ -53,6 +53,14 @@ package
       // Do nothing in base class
     }
 
+    protected function generalAttackedWithFire(player:Player, ds:DisplayableStatus):void
+    {
+      var damage:int = Math.min(999, numberGenerator.getIntInRange(player.playerpower * 2 + 1, player.playerpower * 4 + 1));
+      hit(damage);
+
+      ds.print(damage + " dmg to " + name);
+    }
+
     protected function generalMove(field:Field, playerPos:Point, creatures:Array, itemController:ItemController):void
     {
       var distance:int = position.distanceTo(playerPos);
