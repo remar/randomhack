@@ -7,6 +7,7 @@ package
       super(gf, SpriteType.SNAKE, ng, ds);
 
       _name = "Snake";
+      _prefix = "a";
       maxhp=3;
       power=2;
       accuracy=3;

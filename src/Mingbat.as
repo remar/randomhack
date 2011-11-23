@@ -9,6 +9,7 @@ package
       super(gf, SpriteType.MINGBAT, ng, ds);
 
       _name = "Mingbat";
+      _prefix = "a";
       maxhp = 4;
       power = 2;
       accuracy = 5;      

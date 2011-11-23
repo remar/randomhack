@@ -183,6 +183,22 @@
 ** TODO General enemy stuff
 *** DONE Enemy name
 *** TODO Enemy prefix (and additional modifications)
+    :CLOCK:
+    CLOCK: [2011-11-23 Wed 07:34]--[2011-11-23 Wed 07:47] =>  0:13
+    CLOCK: [2011-11-22 Tue 17:58]--[2011-11-22 Tue 18:20] =>  0:22
+    CLOCK: [2011-11-22 Tue 08:37]--[2011-11-22 Tue 08:43] =>  0:06
+    CLOCK: [2011-11-22 Tue 08:22]--[2011-11-22 Tue 08:35] =>  0:13
+    :END:
+**** DONE Add natural prefix to all enemies
+     CLOCK: [2011-11-22 Tue 08:35]--[2011-11-22 Tue 08:37] =>  0:02
+     Bat,
+     Flea,
+     Snake,
+     Goblin,
+     Mingbat,
+     Undead,
+     Mimic,
+     WaterShade
 *** DONE Keep track of hp and max hp
 *** DONE Movement
     Right now an enemy moves every time that it is its turn, but

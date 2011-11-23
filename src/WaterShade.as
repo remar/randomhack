@@ -7,6 +7,7 @@ package
       super(gf, SpriteType.WATER_SHADE, ng, ds);
 
       _name = "WaterShade";
+      _prefix = "a";
       maxhp = 12;
       power = 4;
       accuracy = 5;

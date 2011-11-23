@@ -5,8 +5,6 @@ package
     private var gender:int;
     private var attract:int;
 
-    private var _prefix:String;
-
     private var _gold:int;
     private var playerPower:int;
 

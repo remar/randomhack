@@ -7,6 +7,7 @@ package
       super(gf, SpriteType.BAT, ng, ds);
 
       _name = "Bat";
+      _prefix = "a";
       lookDistance = 4;
       speed = 5;
       maxhp = 2;

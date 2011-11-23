@@ -7,6 +7,7 @@ package
       super(gf, SpriteType.UNDEAD, ng, ds);
 
       _name = "Undead";
+      _prefix = "an";
       lookDistance = 3;
       speed = 2;
       accuracy = 4;

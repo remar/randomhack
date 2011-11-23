@@ -7,6 +7,7 @@ package
       super(gf, SpriteType.EMPTY, ng, ds);
 
       _name = "Mimic";
+      _prefix = "a";
       maxhp = 10;
       power = 5;
       accuracy = 5;

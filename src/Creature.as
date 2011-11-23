@@ -11,6 +11,7 @@ package
     protected var accuracy:int;
 
     protected var _name:String;
+    protected var _prefix:String;
 
     protected var _hp:int;
     protected var _maxhp:int;

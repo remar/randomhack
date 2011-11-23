@@ -7,6 +7,7 @@ package
       super(gf, SpriteType.GOBLIN, ng, ds);
 
       _name = "Goblin";
+      _prefix = "a";
       lookDistance = 4;
       speed = 7;
       maxhp = 5;

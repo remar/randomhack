@@ -7,6 +7,7 @@ package
       super(gf, SpriteType.FLEA, ng, ds);
 
       _name = "Flea";
+      _prefix = "a";
       lookDistance = 4;
       speed = 8;
       maxhp = 2;

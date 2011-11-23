@@ -14,11 +14,24 @@ package
       this.numberGenerator = numberGenerator;
 
       _name = "Enemy";
+      _prefix = "an";
       lookDistance = 5;
       speed = 5;
       maxhp = 5;
       power = 5;
       accuracy = 5;
+    }
+
+    public function generatePrefix():void
+    {
+      if(true || numberGenerator.getIntInRange(1, 5) == 1)
+	{
+	  giveRandomPrefix();
+	}
+      else
+	{
+	  giveStandardPrefix();
+	}
     }
 
     public function move(field:Field, playerPos:Point, creatures:Array, itemController:ItemController):void
@@ -109,5 +122,31 @@ package
 	    
       moveRelative(field, new Point(xdiff, ydiff), creatures);
     }
+
+    private function giveRandomPrefix():void
+    {
+      // Idea: Modifier (multiplier, divisor) for a field
+      //       Modification consists of Modifiers for each field + prefix
+      var modification:Modification = ModificationFactory.getRandomModification(numberGenerator);
+      applyModification(modification);
+
+      _name = _prefix + " " + _name;
+    }
+
+    private function applyModification(modification:Modification):void
+    {
+      _prefix = modification.prefix;
+      lookDistance = modification.applyLookDistanceModifier(lookDistance);
+      speed = modification.applySpeedModifier(speed);
+      maxhp = modification.applyMaxhpModifier(maxhp);
+      power = modification.applyPowerModifier(_power);
+      accuracy = modification.applyAccuracyModifier(accuracy);
+    }
+
+    private function giveStandardPrefix():void
+    {
+      _name = _prefix + " " + _name;
+    }
+
   }
 }
