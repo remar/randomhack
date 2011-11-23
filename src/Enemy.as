@@ -24,7 +24,7 @@ package
 
     public function generatePrefix():void
     {
-      if(true || numberGenerator.getIntInRange(1, 5) == 1)
+      if(numberGenerator.getIntInRange(1, 5) == 1)
 	{
 	  giveRandomPrefix();
 	}
@@ -125,8 +125,6 @@ package
 
     private function giveRandomPrefix():void
     {
-      // Idea: Modifier (multiplier, divisor) for a field
-      //       Modification consists of Modifiers for each field + prefix
       var modification:Modification = ModificationFactory.getRandomModification(numberGenerator);
       applyModification(modification);
 
@@ -136,11 +134,21 @@ package
     private function applyModification(modification:Modification):void
     {
       _prefix = modification.prefix;
-      lookDistance = modification.applyLookDistanceModifier(lookDistance);
-      speed = modification.applySpeedModifier(speed);
-      maxhp = modification.applyMaxhpModifier(maxhp);
-      power = modification.applyPowerModifier(_power);
-      accuracy = modification.applyAccuracyModifier(accuracy);
+      lookDistance = clampMin(1, modification.applyLookDistanceModifier(lookDistance));
+      speed = clamp(0, 10, modification.applySpeedModifier(speed));
+      maxhp = clampMin(1, modification.applyMaxhpModifier(maxhp));
+      power = clampMin(1, modification.applyPowerModifier(_power));
+      accuracy = clamp(0, 10, modification.applyAccuracyModifier(accuracy));
+    }
+
+    private function clamp(min:int, max:int, value:int):int
+    {
+      return Math.min(max, clampMin(min, value));
+    }
+
+    private function clampMin(min:int, value:int):int
+    {
+      return Math.max(min, value);
     }
 
     private function giveStandardPrefix():void

@@ -182,8 +182,9 @@
 *** TODO EMBERS
 ** TODO General enemy stuff
 *** DONE Enemy name
-*** TODO Enemy prefix (and additional modifications)
+*** DONE Enemy prefix (and additional modifications)
     :CLOCK:
+    CLOCK: [2011-11-23 Wed 18:01]--[2011-11-23 Wed 18:19] =>  0:18
     CLOCK: [2011-11-23 Wed 07:34]--[2011-11-23 Wed 07:47] =>  0:13
     CLOCK: [2011-11-22 Tue 17:58]--[2011-11-22 Tue 18:20] =>  0:22
     CLOCK: [2011-11-22 Tue 08:37]--[2011-11-22 Tue 08:43] =>  0:06
